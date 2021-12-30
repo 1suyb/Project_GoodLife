@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Control : MonoBehaviour
 {
     [SerializeField]
     private float speed = 5f;
     private bool f_space = false;
-    Vector3 getTilePosition(Vector3 posi){
+    [SerializeField]
+    private Tilemap tile;
+    [SerializeField]
+    private TileBase changetile;
+
+    Vector3Int getTilePosition(Vector3 posi){
         int x,y,z;
         z = (int)posi.z;
         if((posi.x*posi.x) %1 > 0.25 )
@@ -20,7 +26,7 @@ public class Control : MonoBehaviour
         else
             y = (int)posi.y; 
         
-        Vector3 tileposi = new Vector3(x,y,z);
+        Vector3Int tileposi = new Vector3Int(x,y,z);
         return tileposi;
     }
     void Update()
@@ -33,10 +39,11 @@ public class Control : MonoBehaviour
             this.transform.position += new Vector3(-1, 0, 0) * speed*Time.deltaTime;
         if (UnityEngine.Input.GetKey(KeyCode.D))
             this.transform.position += new Vector3(1, 0, 0) * speed*Time.deltaTime;
-        if(UnityEngine.Input.GetKey(KeyCode.Space)&&!f_space){
+        if (UnityEngine.Input.GetKey(KeyCode.Space)&&!f_space){
             f_space = true;
             Debug.Log(this.transform.position+"실제위치");
             Debug.Log(getTilePosition(this.transform.position)+"보정위치");
+            tile.SetTile(getTilePosition(this.transform.position), changetile);
             f_space = false;
         }
         
