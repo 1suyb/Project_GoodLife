@@ -11,36 +11,13 @@ public class Control : MonoBehaviour
 
     [SerializeField]
     [Tooltip("배경 타일맵")]
-    private Tilemap backGroundTileMap;
-    
+    public Tilemap backGroundTileMap;
+    /*
     [SerializeField]
     [Tooltip("")]
     private Tilemap plantTileMap;
-
-    [SerializeField]
-    [Tooltip("경작된땅 타일들")]
-    private TileBase[] cultivatedTiles = new TileBase[9];
-
-    [SerializeField]
-    [Tooltip("젖은 땅의 이름")]
-    private TileBase[] wetTiles = new TileBase[9];
+*/
     
-    [SerializeField]
-    [Tooltip("맨땅의 이름")]
-    private string nomalTileName = "Nomal";
-
-    [SerializeField]
-    [Tooltip("경작된땅의 이름")]
-    private string cultivatedTileName = "Cultivated";
-
-    [SerializeField]
-    [Tooltip("젖은 땅의 이름")]
-    private string wetTileName = "Wet";
-
-    [SerializeField]
-    [Tooltip("식물기본프리팹")]
-    private GameObject plantPrefeb;
-
     private bool[] playerLookDirect = new bool[4] ;
     private bool f_space = false;
     private GameObject plant;
@@ -64,63 +41,18 @@ public class Control : MonoBehaviour
         Vector3Int tileposi = new Vector3Int(x,y,z);
         return tileposi;
     }
-    /*
-    void changeTile(Vector3Int posi){
-        string posiname = tile.GetTile(posi).name;
-        string[] tilename = posiname.Split('_');
-        if(tilename[0]!=digtilename){
-            tile.SetTile(getTilePosition(this.transform.position),changetiles[4]);
-        }
-        else{
-            string[] NearbyTiles = new string[3];
-            bool[] f_sameTypeTile = new bool[3];
-            Vector3Int[] NearbyTilePosi = new Vector3Int[3];
-            if(playerLookDirect[0]){
-                NearbyTilePosi[0] = posi+new Vector3Int(-1,1,0);
-                NearbyTilePosi[1] = posi+new Vector3Int(0,1,0);
-                NearbyTilePosi[2] = posi+new Vector3Int(1,1,0);
-
-                NearbyTiles[0] = tile.GetTile(NearbyTilePosi[0]).name;
-                NearbyTiles[1] = tile.GetTile(NearbyTilePosi[1]).name;
-                NearbyTiles[2] = tile.GetTile(NearbyTilePosi[2]).name;
-
-                foreach(string name in NearbyTiles){
-                    tilename = name.Split('_');
-                    if(tilename[0] == digtilename && tilename[2]==digtilename){
-                        tile.SetTile(NearbyTilePosi[0],changetiles[0]);
-                        tile.SetTile(NearbyTilePosi[2],changetiles[2]);
-                        
-                    }
-                    else if()
-                }
-                
-            }
-            if(playerLookDirect[1]){
-                NearbyTiles[0] = tile.GetTile(posi+new Vector3Int(-1,-1,0)).name;
-                NearbyTiles[1] = tile.GetTile(posi+new Vector3Int(0,-1,0)).name;
-                NearbyTiles[2] = tile.GetTile(posi+new Vector3Int(1,-1,0)).name;
-            }
-            if(playerLookDirect[2]){
-                NearbyTiles[0] = tile.GetTile(posi+new Vector3Int(-1,1,0)).name;
-                NearbyTiles[1] = tile.GetTile(posi+new Vector3Int(-1,0,0)).name;
-                NearbyTiles[2] = tile.GetTile(posi+new Vector3Int(-1,-1,0)).name;
-            }
-            if(playerLookDirect[3]){
-                NearbyTiles[0] = tile.GetTile(posi+new Vector3Int(1,1,0)).name;
-                NearbyTiles[1] = tile.GetTile(posi+new Vector3Int(1,0,0)).name;
-                NearbyTiles[2] = tile.GetTile(posi+new Vector3Int(1,-1,0)).name;
-            }
-        }
-    }
-    */
     
     void Interaction(){
+        /*
         Vector3Int position = GetTilePosition(this.transform.position);
+
         string posiname = backGroundTileMap.GetTile(position).name;
         string[] tilename = posiname.Split('_');
+
         if (tilename[0] == nomalTileName){
             ChangeTile(position,cultivatedTileName);
         }
+        
         else if(tilename[0] == cultivatedTileName){
             if(plant!=null){
                 Plant plantndata = plant.GetComponent<Plant>();
@@ -147,23 +79,26 @@ public class Control : MonoBehaviour
         else if(changetilename == wetTileName){
             backGroundTileMap.SetTile(posi,wetTiles[index]);
         }
+        */
     }
+    
     int RuleTile(Vector3Int posi){
         /*
             인접타일의 번호를 보고 규칙에 따라 깔릴 타일의 번호를 정해주는 함수
         */
         return 0;
     }
+    /*
     void Planting(Vector3Int posi){
         if(plant != null){
             return;
         }
-        /* 
+        
         프리팹 스크립트에 각종 정보를 넣어주는 과정
-        */
+        
         
         Instantiate(plantPrefeb,posi,Quaternion.identity);
-    }
+    }*/
     void OnTriggerEnter2D(Collider2D col){
         if(col.tag == "Plant"){
             plant = col.gameObject;
@@ -215,9 +150,12 @@ public class Control : MonoBehaviour
 
         if (UnityEngine.Input.GetKey(KeyCode.Space)&&!f_space){
             f_space = true;
-            Interaction();            
+            //Interaction();
+            Vector3Int posi = GetTilePosition(this.transform.position);
+            Debug.Log(backGroundTileMap.GetTransformMatrix(posi));
             f_space = false;
         }
+        /*
         if(UnityEngine.Input.GetKey(KeyCode.F)&&!f_space){
             f_space = true;
             Planting(GetTilePosition(this.transform.position));
@@ -230,7 +168,7 @@ public class Control : MonoBehaviour
                 p.Days = 3;
                 p.Harvested(this.transform.position);
             }
-        }
+        }*/
     }
     void OneClick(){
         f_space = false;
