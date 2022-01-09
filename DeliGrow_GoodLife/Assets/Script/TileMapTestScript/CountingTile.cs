@@ -15,9 +15,11 @@ public class CountingTile : Tile
     //public TileBase[] tilesToCheck;
 
     private TileBase[] nearbyTile = new TileBase[9];
-    private 
+
 
     //determines which Tiles in the vicinity are updated when this Tile is added to the Tilemap
+    
+    /*
     public override void RefreshTile(Vector3Int location, ITilemap tilemap){
         for (int xd = -1; xd <= 1; xd++){
             for (int yd = -1; yd <= 1; yd++){
@@ -42,22 +44,22 @@ public class CountingTile : Tile
                 nearbyTilePositions[i++] = location + new Vector3Int(xd,yd,0);
             }
         }
-        /*
+        
             상하 좌우 타일 검사
             대각선 검사
-        */
+        
     }
     int getIndex(int sum){
-        /*
+        
             검사한거 이용해서 인덱스 뱉기
-        */
+        
 
     }
 
     Quaternion getRotation(int sum){
-        /*
+        
             회전시키기
-        */
+        
 
     }
     
@@ -69,4 +71,5 @@ public class CountingTile : Tile
         AssetDatabase.CreateAsset(ScriptableObject.CreateInstance<CountingTile>(), path);
     }
 #endif
+*/
 }
