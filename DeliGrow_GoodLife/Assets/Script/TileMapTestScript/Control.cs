@@ -9,14 +9,30 @@ public class Control : MonoBehaviour
     [Tooltip("케릭터가 움직일 속도")]
     private float speed = 5f;
 
-    [SerializeField]
     [Tooltip("배경 타일맵")]
-    public Tilemap backGroundTileMap;
+    public Tilemap BackGroundTileMap;
+
+    [Tooltip("경작된 땅 타일베이스")]
+    public TileBase CultivatedTile;
+
+    [Tooltip("젖은 땅 TileBase")]
+    public TileBase WetTile;
+
+    [Tooltip("일반 땅 이름")]
+    public string NormalTilename;
+
+    [Tooltip("경작된 땅 이름")]
+    public string CultivatedTileName;
+
+    [Tooltip("젖은 땅 이름")]
+    public string WetTileName;
+    [Tooltip("심을 식물 프리팹")]
+    public GameObject plantPrefeb;
     /*
     [SerializeField]
     [Tooltip("")]
     private Tilemap plantTileMap;
-*/
+    */
     
     private bool[] playerLookDirect = new bool[4] ;
     private bool f_space = false;
@@ -43,62 +59,41 @@ public class Control : MonoBehaviour
     }
     
     void Interaction(){
-        /*
         Vector3Int position = GetTilePosition(this.transform.position);
-
-        string posiname = backGroundTileMap.GetTile(position).name;
-        string[] tilename = posiname.Split('_');
-
-        if (tilename[0] == nomalTileName){
-            ChangeTile(position,cultivatedTileName);
+        string[] tilename = new string[2];
+        tilename = BackGroundTileMap.GetTile(position).name.Split('_');
+        if(tilename[0] == NormalTilename){
+            cultivating(position);
+        }
+        else if(tilename[0] == CultivatedTileName){
+            watering(position);
+        }
+    }
+    void cultivating(Vector3Int position){
+        
+        BackGroundTileMap.SetTile(position,CultivatedTile);
+    }
+    void watering(Vector3Int position){
+        
+        BackGroundTileMap.SetTile(position,WetTile);
+        if(plant != null){
+            Plant plantinfo = plant.GetComponent<Plant>();
+            plantinfo.F_Watering = true;
         }
         
-        else if(tilename[0] == cultivatedTileName){
-            if(plant!=null){
-                Plant plantndata = plant.GetComponent<Plant>();
-                plantndata.F_Watering = true;
-                ChangeTile(position,wetTileName);
-            }
-            else{
-                Planting(position);
-            }
-        }
-        else if(tilename[0] == wetTileName){
-            Debug.Log("이미 젖은 땅");
-        }
-        else {
-            Debug.Log("아무것도 못하는 땅");
-        }
-        Debug.Log(tilename[0]);
+        
     }
-    void ChangeTile(Vector3Int posi, string changetilename){
-        int index = RuleTile(posi);
-        if(changetilename == cultivatedTileName){
-            backGroundTileMap.SetTile(posi,cultivatedTiles[index]);
-        }
-        else if(changetilename == wetTileName){
-            backGroundTileMap.SetTile(posi,wetTiles[index]);
-        }
-        */
-    }
-    
-    int RuleTile(Vector3Int posi){
-        /*
-            인접타일의 번호를 보고 규칙에 따라 깔릴 타일의 번호를 정해주는 함수
-        */
-        return 0;
-    }
-    /*
+
     void Planting(Vector3Int posi){
         if(plant != null){
             return;
         }
-        
+        /*
         프리팹 스크립트에 각종 정보를 넣어주는 과정
         
-        
+        */
         Instantiate(plantPrefeb,posi,Quaternion.identity);
-    }*/
+    }
     void OnTriggerEnter2D(Collider2D col){
         if(col.tag == "Plant"){
             plant = col.gameObject;
@@ -148,11 +143,13 @@ public class Control : MonoBehaviour
             playerLookDirect[3] = true;
         }
 
-        if (UnityEngine.Input.GetKey(KeyCode.Space)&&!f_space){
+        if (UnityEngine.Input.GetKeyDown(KeyCode.Space)&&!f_space){
             f_space = true;
-            //Interaction();
-            Vector3Int posi = GetTilePosition(this.transform.position);
-            Debug.Log(backGroundTileMap.GetTransformMatrix(posi));
+            Interaction();
+            //Vector3Int posi = GetTilePosition(this.transform.position);
+            //Debug.Log(backGroundTileMap.GetTransformMatrix(posi));
+        }
+        if(UnityEngine.Input.GetKeyUp(KeyCode.Space)){
             f_space = false;
         }
         /*
