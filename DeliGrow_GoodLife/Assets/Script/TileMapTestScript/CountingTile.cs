@@ -35,9 +35,11 @@ public class CountingTile : Tile
     }
 
     int GetNeighbor(Vector3Int location, ITilemap tilemap){
+        int i = 0;
+        Vector3Int[] nearbyTilePositions = new Vector3Int[9];
         for(int yd = 1; yd >= -1; yd++){
             for (int xd = -1; xd <= 1; xd++){
-                
+                nearbyTilePositions[i++] = location + new Vector3Int(xd,yd,0);
             }
         }
         /*
