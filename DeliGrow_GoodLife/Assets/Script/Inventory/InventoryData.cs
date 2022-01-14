@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class InventoryData : MonoBehaviour
 {
-    public int datatest;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +17,5 @@ public class InventoryData : MonoBehaviour
     {
         
     }
-    public static void test(){
-        Debug.Log("hi");
-    }
-        
+
 }
