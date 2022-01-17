@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
+    public InventorySlotUI[] inventorySlots;
     public GameObject moveSlotItemSlot;
-    private bool Is_MovingItemSlot;
+    public bool Is_MovingItemSlot;
     public InventorySlotUI handInSlot;
     private Transform moveSlotItemSlotTransform;
 
@@ -23,23 +24,54 @@ public class InventoryUI : MonoBehaviour
         Sprite sprite_hand;
         int itemcount_hand;
         int invenindex_hand;
+        Category cate_hand;
 
         Sprite sprite_put;
         int itemcount_put;
         int invenindex_put;
+        Category cate_put;
 
-        handInSlot.GetSlotData(out sprite_hand, out itemcount_hand, out invenindex_hand);
-        putDownSlot.GetSlotData(out sprite_put, out itemcount_put, out invenindex_put);
+        handInSlot.GetSlotData(out sprite_hand, out itemcount_hand, out invenindex_hand, out cate_hand);
+        putDownSlot.GetSlotData(out sprite_put, out itemcount_put, out invenindex_put, out cate_put);
 
-        handInSlot.ChangeItemSprite(sprite_put,itemcount_put,invenindex_put);
-        putDownSlot.ChangeItemSprite(sprite_hand,itemcount_hand,invenindex_hand);
+        handInSlot.ChangeItemSprite(sprite_put,itemcount_put,invenindex_put,cate_put);
+        putDownSlot.ChangeItemSprite(sprite_hand,itemcount_hand,invenindex_hand,cate_hand);
         
-        moveSlotItemSlot.SetActive(false);
+        EndMovingItemSlot();
     }
+    public void EndMovingItemSlot(){
+        moveSlotItemSlot.SetActive(false);
+        handInSlot.EndMovingItemSlot();
+        handInSlot = null;
+        Is_MovingItemSlot = false;
+    }
+
+    public void EmphasizeCategoryItem(Category category){
+        Sprite sp;
+        int itemcnt;
+        int itemindex;
+        Category cate;
+        foreach(var item in inventorySlots){
+            item.GetSlotData(out sp, out itemcnt, out itemindex, out cate);
+            if(cate == category){
+                item.Activate();
+            }
+            else{
+                item.Deactivate();
+            }
+        }
+    }
+    public void ReleaseEmphasizeCategoryItem(){
+        foreach(var item in inventorySlots){
+            item.Activate();
+        }
+    }
+
         // Start is called before the first frame update
     void Start()
     {
         moveSlotItemSlotTransform = moveSlotItemSlot.transform;
+        inventorySlots = this.GetComponentsInChildren<InventorySlotUI>();
     }
 
     // Update is called once per frame
@@ -48,8 +80,7 @@ public class InventoryUI : MonoBehaviour
         if(Is_MovingItemSlot){
             moveSlotItemSlotTransform.position = Input.mousePosition;
             if(Input.GetMouseButtonUp(0)){
-                /* 아무것도 아닌 곳에 마우스 드래그를 놨을 경우 
-                     그냥 이제 무브슬롯아이템슬롯을 셋엑티브페일해줌*/
+                EndMovingItemSlot();
             }
         }
     }
