@@ -6,6 +6,8 @@ using TMPro;
 
 public class InventorySlotUI : MonoBehaviour
 {
+    [Tooltip("인벤토리 총괄 스크립트")]
+    public Inventory inventory;
     [Tooltip("부모의 인벤토리 UI 스크립트")]
     public InventoryUI Invnetory_UI;
     [Tooltip("아이템 아이콘 스프라이트가 들어갈 게임오브젝트")]
@@ -27,12 +29,11 @@ public class InventorySlotUI : MonoBehaviour
     [Tooltip("슬롯 ")]
     public float Max_mouse_down_time;
 
+    public SlotData itemdata;
     
     private Image item_icon_image;
     private TextMeshPro item_count_text;
-    private Sprite itemicon_sprite;
-    private int inventory_index;
-    private int item_cnt = 0;
+   
     private Vector4 deactivate_color;
     private Vector4 activate_color;
     private bool is_active = true;
@@ -40,61 +41,103 @@ public class InventorySlotUI : MonoBehaviour
     private bool is_beginPointDown = false;
     private float current_mouse_down_time = 0f;
     private bool is_movingItemSlot = false;
+    // 슬롯 데이터를 주는 함수
+    public void GetSlotData(out Sprite sprite, out int itencount, out int index, out Category category){
+        sprite = itemdata.itemicon_sprite;
+        itencount = itemdata.item_cnt;
+        index = itemdata.inventory_index;
+        category = itemdata.category;
+    }
+    
+    // 슬롯의 데이터들과 스프라이트들을 변경하는 함수
+    public void ChangeItemSprite(Sprite itemsprite, int itemcount,int index, Category category){
+        if(itemdata.inventory_index == -1){
+            item_icon_image.color = activate_color;
+        }
+        itemdata.itemicon_sprite = itemsprite;
+        item_icon_image.sprite = itemdata.itemicon_sprite;
 
-    public void GetSlotData(out Sprite sprite, out int itencount, out int index){
-        sprite = item_icon_image.sprite;
-        itencount = item_cnt;
-        index = inventory_index;
+        itemdata.item_cnt = itemcount;
+
+        item_count_text.text = itemdata.item_cnt.ToString();
+        itemdata.inventory_index = index;
+
+        itemdata.category = category;
     }
-    public void ChangeItemSprite(Sprite itemsprite, int itemcount,int index){
-        item_icon_image.sprite = itemsprite;
-        item_cnt = itemcount;
-        item_count_text.text = item_cnt.ToString();
-        this.inventory_index = index;
-    }
+    // 슬롯을 비우는 함수
     public void MakeEmpty(){
         item_icon_image.sprite = null;
         item_icon_image.color = new Vector4(255,255,255,0);
-        item_cnt = 0;
-        inventory_index = -1;
+
+        itemdata.item_cnt = 0;
+        itemdata.inventory_index = -1;
+        itemdata.category = Category.none;
     }
+
+    // 슬롯에 있는 아이템을 추가하는 함수
     public void AddItem(int itemcount){
-        item_cnt += itemcount;
-        item_count_text.text = item_cnt.ToString();
+        itemdata.item_cnt += itemcount;
+        if(itemdata.item_cnt <= 0){
+            MakeEmpty();
+            return;
+        }
+        item_count_text.text = itemdata.item_cnt.ToString();
     }
+    // deactivate상태로 만드는 함수
     public void Deactivate(){
         this.GetComponent<Image>().color = deactivate_color;
-        item_icon_image.color = deactivate_color;
+        if(itemdata.inventory_index>-1){
+            item_icon_image.color = deactivate_color;
+        }
+        
         is_active = false;
     }
+    // deactivate상태를 해제하는 함수
     public void Activate(){
         this.GetComponent<Image>().color = activate_color;
         item_icon_image.color = activate_color;
         is_active = true;
     }
-
+    // 포인터가 위로 오버레이 됬을 때 설명이 보이는 함수
     public void ShowItemDescription(){
         is_mouseOn = true;
         
         Item_description_window_object.SetActive(true);
 
     }
+    // 포인터가 밖으로 나갔을때 설명이 사라지는 함수
     public void HideItemDescription(){
         is_mouseOn = false;
         Item_description_window_object.SetActive(false);
     }
+
     public void BeginPointDown(){
-        is_beginPointDown = true;
+        if(Input.GetMouseButtonDown(0)){
+            is_beginPointDown = true;
+        }
+        if(Input.GetMouseButtonDown(1)){
+            inventory.UseItem();
+        }
     }
-    // 슬롯 체인지 등으로 이름 바꾸기
+
+    public void PointUp(){
+        if(is_beginPointDown&& Input.GetMouseButtonUp(0)){
+            SelectItem();
+            is_beginPointDown = false;
+        }
+        if(Invnetory_UI.Is_MovingItemSlot && Input.GetMouseButtonUp(0)){
+            Invnetory_UI.SwapItemSlot(this);
+        }
+    }
+
+    public void SelectItem(){
+        Debug.Log("아이템 선택됫음 ");
+    }
+
     public void EndMovingItemSlot(){
-        // 인벤토리 유아이에서 지금 슬롯옮기는 중인지 체크
-        Invnetory_UI.SwapItemSlot(this);
-        
+        Debug.Log("call endmovingitemslot");
+        is_movingItemSlot = false;
     }
-    // 엔드무빙아이템 슬롯 함수를 만들어서
-    // 자기가 움직이는 중이라는 체크를 해제
-    
 
     // Start is called before the first frame update
     void Start()
@@ -122,7 +165,7 @@ public class InventorySlotUI : MonoBehaviour
         }
     }
     public static bool operator ==(InventorySlotUI op1, InventorySlotUI op2){
-        return op1.inventory_index == op2.inventory_index;
+        return op1.itemdata.inventory_index == op2.itemdata.inventory_index;
     }
     public static bool operator !=(InventorySlotUI op1, InventorySlotUI op2){
         return !(op1 == op2);
@@ -130,12 +173,18 @@ public class InventorySlotUI : MonoBehaviour
 
     public override bool Equals(object obj)
     {
-       return this.inventory_index == ((InventorySlotUI)obj).inventory_index;
+       return this.itemdata.inventory_index == ((InventorySlotUI)obj).itemdata.inventory_index;
     }
     
     // override object.GetHashCode
     public override int GetHashCode()
     {
-        return inventory_index;
+        return itemdata.inventory_index;
     }
+}
+public struct SlotData{
+    public Sprite itemicon_sprite;
+    public int inventory_index;
+    public int item_cnt;
+    public Category category;
 }
