@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemDescriptionWindow : MonoBehaviour
+public class UI : MonoBehaviour
 {
+    public virtual bool Open()
+    {
+        return true;
+    }
     // Start is called before the first frame update
     void Start()
     {
