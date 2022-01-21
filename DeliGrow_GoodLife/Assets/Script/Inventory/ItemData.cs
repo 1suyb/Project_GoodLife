@@ -11,6 +11,12 @@ public class ItemData
         get => m_id;
         set => m_id = value;
     }
+    private Sprite m_itemSprite;
+    public Sprite itemSprite
+    {
+        get => m_itemSprite;
+        set => m_itemSprite = value;
+    }
 
     // 아이템 이름
     private string m_itemName;
@@ -60,6 +66,22 @@ public class ItemData
         m_itemDescription = itemDescription;
         m_category = category;
         m_itemCount = itemcount;
+    }
+    public ItemData Clone()
+    {
+        ItemData val = new ItemData(this.m_id,this.m_itemName,this.m_itemDescription,this.m_category,this.m_itemCount);
+        return val;
+    }
+    public bool IsEqual(ItemData val)
+    {
+        if(this.id == val.id)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }
