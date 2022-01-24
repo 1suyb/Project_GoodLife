@@ -331,14 +331,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add80aefa434a7c4e8e9a274317ab9af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_inventorySlots: []
   m_inventoryCategoryParentObject: {fileID: 0}
-  m_inventoryCategories: []
+  m_slotMoveSlotObject: {fileID: 0}
   m_itemDescriptionWindowObject: {fileID: 0}
-  m_itemSlectWindow: {fileID: 0}
+  m_itemSelectWindowGO: {fileID: 0}
   deactivateRGB: 0
   deactivateAlpha: 0
-  InventoryData: {fileID: 0}
+  m_GoldTextGO: {fileID: 0}
+  inventory: {fileID: 0}
   m_isMoving: 0
 --- !u!114 &21374589
 MonoBehaviour:
@@ -1042,7 +1042,6 @@ GameObject:
   - component: {fileID: 469429992}
   - component: {fileID: 469429991}
   - component: {fileID: 469429993}
-  - component: {fileID: 469429994}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -1140,20 +1139,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &469429994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469429989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89bf0074936009b448a1bf4a8c4d6bc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inventoryUI: {fileID: 21374588}
-  _inventoryData: {fileID: 0}
 --- !u!1 &474429977
 GameObject:
   m_ObjectHideFlags: 0
@@ -1696,15 +1681,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 637834186}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a429d0c9dfd2a0846b0838eb6d469706, type: 3}
+  m_Script: {fileID: 11500000, guid: c4361a7475abea84d8d229f932ce0223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisCategory: 0
-  inventorySlotGrid: {fileID: 21374586}
-  deactivateRGB: 0.5
-  deactivateAlpha: 1
-  deactivateColor: {x: 0, y: 0, z: 0, w: 0}
-  activateColor: {x: 0, y: 0, z: 0, w: 0}
+  m_category: 1
 --- !u!114 &637834191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4093,15 +4073,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 917216695}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a429d0c9dfd2a0846b0838eb6d469706, type: 3}
+  m_Script: {fileID: 11500000, guid: c4361a7475abea84d8d229f932ce0223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisCategory: 5
-  inventorySlotGrid: {fileID: 21374586}
-  deactivateRGB: 0.5
-  deactivateAlpha: 1
-  deactivateColor: {x: 0, y: 0, z: 0, w: 0}
-  activateColor: {x: 0, y: 0, z: 0, w: 0}
+  m_category: 6
 --- !u!114 &917216700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4217,15 +4192,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1167593404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a429d0c9dfd2a0846b0838eb6d469706, type: 3}
+  m_Script: {fileID: 11500000, guid: c4361a7475abea84d8d229f932ce0223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisCategory: 3
-  inventorySlotGrid: {fileID: 21374586}
-  deactivateRGB: 0.5
-  deactivateAlpha: 1
-  deactivateColor: {x: 0, y: 0, z: 0, w: 0}
-  activateColor: {x: 0, y: 0, z: 0, w: 0}
+  m_category: 4
 --- !u!114 &1167593409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4788,15 +4758,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1406319358}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a429d0c9dfd2a0846b0838eb6d469706, type: 3}
+  m_Script: {fileID: 11500000, guid: c4361a7475abea84d8d229f932ce0223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisCategory: 4
-  inventorySlotGrid: {fileID: 21374586}
-  deactivateRGB: 0.5
-  deactivateAlpha: 1
-  deactivateColor: {x: 0, y: 0, z: 0, w: 0}
-  activateColor: {x: 0, y: 0, z: 0, w: 0}
+  m_category: 5
 --- !u!114 &1406319363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5219,7 +5184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c4f18139ab448440b968da0adb2f63a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inven: {fileID: 469429994}
+  inven: {fileID: 0}
   sprite: {fileID: 21300000, guid: e15a0aaf619d8aa429bd091186fb29a2, type: 3}
 --- !u!1 &1537096371
 GameObject:
@@ -5516,8 +5481,8 @@ GameObject:
   - component: {fileID: 1933916620}
   - component: {fileID: 1933916622}
   - component: {fileID: 1933916621}
-  - component: {fileID: 1933916623}
   - component: {fileID: 1933916624}
+  - component: {fileID: 1933916623}
   m_Layer: 5
   m_Name: inven_categori_crops
   m_TagString: Untagged
@@ -5591,15 +5556,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1933916619}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a429d0c9dfd2a0846b0838eb6d469706, type: 3}
+  m_Script: {fileID: 11500000, guid: c4361a7475abea84d8d229f932ce0223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisCategory: 2
-  inventorySlotGrid: {fileID: 21374586}
-  deactivateRGB: 0.5
-  deactivateAlpha: 1
-  deactivateColor: {x: 0, y: 0, z: 0, w: 0}
-  activateColor: {x: 0, y: 0, z: 0, w: 0}
+  m_category: 3
 --- !u!114 &1933916624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5617,7 +5577,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1933916623}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: InventoryCategory, Assembly-CSharp
           m_MethodName: SelectedCategory
           m_Mode: 1
@@ -6634,15 +6594,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2060710391}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a429d0c9dfd2a0846b0838eb6d469706, type: 3}
+  m_Script: {fileID: 11500000, guid: c4361a7475abea84d8d229f932ce0223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisCategory: 1
-  inventorySlotGrid: {fileID: 21374586}
-  deactivateRGB: 0.5
-  deactivateAlpha: 1
-  deactivateColor: {x: 0, y: 0, z: 0, w: 0}
-  activateColor: {x: 0, y: 0, z: 0, w: 0}
+  m_category: 2
 --- !u!114 &2060710396
 MonoBehaviour:
   m_ObjectHideFlags: 0

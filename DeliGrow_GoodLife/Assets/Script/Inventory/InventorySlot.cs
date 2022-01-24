@@ -34,7 +34,7 @@ public class InventorySlot : MonoBehaviour
         get => m_itemCountText;
     }
 
-    private SlotData m_slotData;
+    private SlotData m_slotData = new SlotData();
     public SlotData slotData
     {
         get => m_slotData;
@@ -59,7 +59,7 @@ public class InventorySlot : MonoBehaviour
     private bool isShowing = false;
 
 
-    public void SetSlotData(ItemData item,int _itemIndex)
+    public void SetSlotData(ItemData item, int _itemIndex)
     {
         if (m_slotData.inventoryIndex != -1)
         {
@@ -74,17 +74,38 @@ public class InventorySlot : MonoBehaviour
         }
         SlotUpdate();
     }
+    public void ClearSlot()
+    {
+        m_slotData.itemicon = null;
+        m_slotData.itemCount = 0;
+        m_slotData.inventoryIndex = -1;
+        m_slotData.itemCategory = Category.NONE;
+        SlotUpdate();
+
+    }
 
     public void SlotUpdate()
     {
         m_itemIconImage.sprite = m_slotData.itemicon;
         m_itemCountText.text = m_slotData.itemCount.ToString();
+        if (!m_slotData.itemicon)
+        {
+            m_itemIconImage.color = activateColor;
+            m_itemCountText.color = activateColor;
+        }
+        else
+        {
+            m_itemIconImage.color = Color.clear;
+            m_itemCountText.color = Color.clear;
+        }
     }
+
     public void Activate()
     {
         m_itemIconImage.color = activateColor;
         isActivate = true;
     }
+
     public void Deactivate()
     {
         m_itemIconImage.color = deactivateColor;
@@ -96,6 +117,7 @@ public class InventorySlot : MonoBehaviour
         m_itemCountText = itemCountObject.GetComponent<TextMeshProUGUI>();
         m_itemIconImage = itemIconImage.GetComponent<Image>();
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -119,6 +141,7 @@ public class InventorySlot : MonoBehaviour
             }
         }
     }
+
     private void OnMouseEnter()
     {
         if (!isActivate)
@@ -161,7 +184,6 @@ public class InventorySlot : MonoBehaviour
         }
         
     }
-
     private void OnMouseUp()
     {
         if (isMoving)
@@ -177,7 +199,6 @@ public class InventorySlot : MonoBehaviour
         }
         
     }
-
     private void AllocateInventoryUIPutDownSlot()
     {
         m_inventoryUI.allowedSlot = this;

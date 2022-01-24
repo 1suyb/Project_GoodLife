@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class ItemData
 {
     // ¾ÆÀÌÅÛ ID
@@ -74,6 +75,7 @@ public class ItemData
     }
     public bool IsEqual(ItemData val)
     {
+        
         if(this.id == val.id)
         {
             return true;
@@ -82,6 +84,14 @@ public class ItemData
         {
             return false;
         }
+    }
+    public static bool operator >(ItemData val1,ItemData val2)
+    {
+        return val1.id > val2.id;
+    }
+    public static bool operator <(ItemData val1, ItemData val2)
+    {
+        return val1.id < val2.id;
     }
 
 }

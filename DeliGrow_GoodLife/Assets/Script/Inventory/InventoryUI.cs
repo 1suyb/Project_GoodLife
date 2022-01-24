@@ -2,34 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class InventoryUI : UI
 {
-
-    [Tooltip("인벤토리 슬롯 UI")]
-    [SerializeField]
+    // 인벤토리 slots
     private InventorySlot[] m_inventorySlots;
 
     [Tooltip("인벤토리 카테고리슬롯 부모 오브젝트")]
     [SerializeField]
     private GameObject m_inventoryCategoryParentObject;
 
-    [Tooltip("인벤토리 카테고리 슬롯 UI")]
-    [SerializeField]
     private InventoryCategory[] m_inventoryCategories;
 
-    [Tooltip("아이템슬롯")]
+    [Tooltip("아이템 움직일때 슬롯 GameObject")]
+    [SerializeField]
     private GameObject m_slotMoveSlotObject;
     private Image m_moveSlotImage;
+
+    
 
     [Tooltip("아이템 설명 윈도우오브젝트")]
     [SerializeField]
     private GameObject m_itemDescriptionWindowObject;
-    [Tooltip("아이템 설명 윈도우")]
+
     private ItemDescription m_itemDescriptionWindow;
-    [Tooltip("아이템 선택 윈도우")]
+
+    [Tooltip("아이템 선택 윈도우게임오브젝트")]
     [SerializeField]
-    private GameObject m_itemSlectWindow;
+    private GameObject m_itemSelectWindowGO;
+
+    private ItemSeletWindow m_itemSeletWindow;
+
+    [Tooltip("아이템 나누기 윈도우 게임오브젝트")]
+    private GameObject m_itemDivideWindowGO;
 
     [Range(0, 1)]
     [Tooltip("비활성화시 RGB값")]
@@ -40,6 +47,12 @@ public class InventoryUI : UI
     [Tooltip("비활성화시 Alpha값")]
     [SerializeField]
     private float deactivateAlpha;
+
+    [Tooltip("돈 텍스트 오브젝트")]
+    [SerializeField]
+    private GameObject m_GoldTextGO;
+
+    private TextMeshProUGUI m_goldText;
 
     // 비활성화시 적용할 컬러
     private Vector4 m_deactivateColor;
@@ -57,9 +70,6 @@ public class InventoryUI : UI
         set => m_activateColor = value;
     }
 
-
-
-
     private InventorySlot m_allowedSlot;
     public InventorySlot allowedSlot
     {
@@ -67,7 +77,7 @@ public class InventoryUI : UI
         set => m_allowedSlot = value;
     }
 
-    public InventoryData InventoryData;
+    public Inventory inventory;
 
     [SerializeField]
     private bool m_isMoving = false;
@@ -79,23 +89,57 @@ public class InventoryUI : UI
 
     public override bool Open()
     {
-        /* 
-         전체 슬롯 초기화
-         */
+        foreach(var item in m_inventorySlots)
+        {
+            item.SlotUpdate();
+        }
+        Unemphasize();
         this.gameObject.SetActive(true);
         return true;
     }
 
-    public void InputItem(int invenindex)
+    public bool PutInSlot(int invenindex)
     {
-        int slotIndex = SearchSlot(invenindex);
-        if (slotIndex != -1)
+        if (inventory.inventoryDatas[invenindex] != null)
         {
+            int slotIndex = SearchSlot(invenindex);
+            if (slotIndex != -1)
+            {
+                m_inventorySlots[slotIndex].SetSlotData(inventory.inventoryDatas[invenindex], invenindex);
+                return true;
+            }
+            else
+            {
+                slotIndex = SearchNullSlot();
+                if(slotIndex != -1)
+                {
+                    m_inventorySlots[slotIndex].SetSlotData(inventory.inventoryDatas[invenindex], invenindex);
+                    return true;
+                }
+            }
         }
+        
+        return false;
     }
-    public void GetItem(int invenindex)
+    public bool TakeOutItemAtSlot(int invenindex)
     {
-
+        int slotindex = SearchSlot(invenindex);
+        ItemData item = inventory.inventoryDatas[invenindex];
+        if (item == null)
+        {
+            
+            if (slotindex != -1)
+            {
+                m_inventorySlots[slotindex].ClearSlot();
+                return true;
+            }
+        }
+        else
+        {
+            m_inventorySlots[slotindex].SetSlotData(item, invenindex);
+            return true;
+        }
+        return false;
     }
 
     public int SearchSlot(int inventoryindex)
@@ -140,9 +184,9 @@ public class InventoryUI : UI
         if (allowedSlot != null && allowedSlot==slot)
         {
             SlotData handSlot = slot.slotData;
-            ItemData item = InventoryData.inventoryDatas[handSlot.inventoryIndex].Clone(); ;
+            ItemData item = inventory.inventoryDatas[handSlot.inventoryIndex].Clone(); ;
 
-            slot.SetSlotData(InventoryData.inventoryDatas[allowedSlot.slotData.inventoryIndex], allowedSlot.slotData.inventoryIndex);
+            slot.SetSlotData(inventory.inventoryDatas[allowedSlot.slotData.inventoryIndex], allowedSlot.slotData.inventoryIndex);
             allowedSlot.SetSlotData(item, handSlot.inventoryIndex);
         }
         else
@@ -150,6 +194,10 @@ public class InventoryUI : UI
             allowedSlot = null;
         }
     }
+
+
+    // Emphasize 관련 부분
+#region
     public void EmphasizeItemCategory(Category category)
     {
         foreach(var item in m_inventorySlots)
@@ -191,9 +239,20 @@ public class InventoryUI : UI
             item.Activate();
         }
     }
-    public void UpdateGold(int addGold)
-    {
+#endregion
 
+
+    public void UpdateGold(ulong gold)
+    {
+        m_goldText.text = gold.ToString();
+    }
+
+    public void Sort()
+    {
+        for(int i = 0; i < m_inventorySlots.Length; i++)
+        {
+            m_inventorySlots[i].SetSlotData(inventory.inventoryDatas[i], i);
+        }
     }
     public void DumpItem()
     {
@@ -216,6 +275,7 @@ public class InventoryUI : UI
         m_inventorySlots = this.GetComponentsInChildren<InventorySlot>();
         m_inventoryCategories = m_inventoryCategoryParentObject.GetComponentsInChildren<InventoryCategory>();
         m_itemDescriptionWindow = m_itemDescriptionWindowObject.GetComponent<ItemDescription>();
+        m_goldText = m_GoldTextGO.GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
