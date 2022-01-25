@@ -70,11 +70,11 @@ public class InventoryUI : UI
         set => m_activateColor = value;
     }
 
-    private InventorySlot m_allowedSlot;
-    public InventorySlot allowedSlot
+    private InventorySlot m_allocatedSlot;
+    public InventorySlot allocatedSlot
     {
-        get => m_allowedSlot;
-        set => m_allowedSlot = value;
+        get => m_allocatedSlot;
+        set => m_allocatedSlot = value;
     }
 
     public Inventory inventory;
@@ -86,7 +86,21 @@ public class InventoryUI : UI
         get => m_isMoving;
         set => m_isMoving = value;
     }
-
+    public void Initialize()
+    {
+        for(int i = 0; i < m_inventorySlots.Length; i++)
+        {
+            if (inventory.inventoryDatas[i].id != 0)
+            {
+                Debug.Log("ÀÌ´Ï¼È"+i);
+                m_inventorySlots[i].SetSlotData(inventory.inventoryDatas[i], i);
+            }
+            else
+            {
+                m_inventorySlots[i].ClearSlot();
+            }
+        }
+    }
     public override bool Open()
     {
         foreach(var item in m_inventorySlots)
@@ -181,17 +195,18 @@ public class InventoryUI : UI
     public void EndMoving(InventorySlot slot) 
     {
         m_isMoving = false;
-        if (allowedSlot != null && allowedSlot==slot)
+        if (m_allocatedSlot != null && m_allocatedSlot == slot)
         {
             SlotData handSlot = slot.slotData;
             ItemData item = inventory.inventoryDatas[handSlot.inventoryIndex].Clone(); ;
 
-            slot.SetSlotData(inventory.inventoryDatas[allowedSlot.slotData.inventoryIndex], allowedSlot.slotData.inventoryIndex);
-            allowedSlot.SetSlotData(item, handSlot.inventoryIndex);
+            slot.SetSlotData(inventory.inventoryDatas[m_allocatedSlot.slotData.inventoryIndex], m_allocatedSlot.slotData.inventoryIndex);
+            m_allocatedSlot.SetSlotData(item, handSlot.inventoryIndex);
+            inventory.Swap(slot.slotData.inventoryIndex, m_allocatedSlot.slotData.inventoryIndex);
         }
         else
         {
-            allowedSlot = null;
+            m_allocatedSlot = null;
         }
     }
 
@@ -272,10 +287,14 @@ public class InventoryUI : UI
     void Start()
     {
         m_moveSlotImage = m_slotMoveSlotObject.GetComponent<Image>();
+        m_slotMoveSlotObject.SetActive(false);
         m_inventorySlots = this.GetComponentsInChildren<InventorySlot>();
         m_inventoryCategories = m_inventoryCategoryParentObject.GetComponentsInChildren<InventoryCategory>();
-        m_itemDescriptionWindow = m_itemDescriptionWindowObject.GetComponent<ItemDescription>();
-        m_goldText = m_GoldTextGO.GetComponent<TextMeshProUGUI>();
+        inventory._inventoryUI = this;
+        //m_itemDescriptionWindow = m_itemDescriptionWindowObject.GetComponent<ItemDescription>();
+        //m_goldText = m_GoldTextGO.GetComponent<TextMeshProUGUI>();
+
+        Initialize();
     }
 
     // Update is called once per frame

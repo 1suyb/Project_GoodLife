@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[CreateAssetMenu(fileName = "Inventory",menuName = "Scriptable/Inventory")]
 public class Inventory : ScriptableObject
 {
     [SerializeField]
-    private InventoryUI _inventoryUI;
-
-    private ItemData[] _inventoryDatas = new ItemData[30];
+    public InventoryUI _inventoryUI;
+    [SerializeField]
+    private ItemData[] _inventoryDatas;
     public ItemData[] inventoryDatas
     {
         get => _inventoryDatas;
@@ -23,18 +23,22 @@ public class Inventory : ScriptableObject
 
     public bool PutInItem(ItemData item)
     {
+
         int index = SearchItem(item);
         if (index != -1)
         {
-            inventoryDatas[index] = item;
+            Debug.Log("아이템서치 성공");
+            inventoryDatas[index].itemCount += item.itemCount;
             return _inventoryUI.PutInSlot(index);
         }
         index = SearchNull();
         if(index != -1)
         {
+            Debug.Log("널슬롯 서치 성공");
             inventoryDatas[index] = item;
             return _inventoryUI.PutInSlot(index);
         }
+        Debug.Log("공간 서치 실패");
         return false;
         
     }
@@ -109,7 +113,7 @@ public class Inventory : ScriptableObject
     {
 
     }
-
+    /*
     private int PutItemInInventory(ItemData item)
     {
         if (item.itemCount < 0)
@@ -136,13 +140,20 @@ public class Inventory : ScriptableObject
             }
         }
         return -1;
+    }*/
+
+    public void Swap(int index1, int index2)
+    {
+        ItemData tmp = inventoryDatas[index1];
+        inventoryDatas[index1] = inventoryDatas[index2];
+        inventoryDatas[index2] = tmp;
     }
 
     private int SearchItem(ItemData item)
     {
         for (int i = 0; i < inventoryDatas.Length; i++)
         {
-            if (inventoryDatas[i] != null)
+            if (inventoryDatas[i].id != 0)
             {
                 if (inventoryDatas[i].IsEqual(item))
                 {
@@ -156,7 +167,11 @@ public class Inventory : ScriptableObject
     {
         for (int i = 0; i < inventoryDatas.Length; i++)
         {
-            if (inventoryDatas[i] == null)
+            if (inventoryDatas[i].id != 0)
+            {
+                Debug.Log("널아닌뎁쇼..");
+            }
+            else
             {
                 return i;
             }

@@ -6,12 +6,14 @@ using UnityEngine;
 public class ItemData
 {
     // 아이템 ID
+    [SerializeField]
     private int m_id;
     public int id
     {
         get => m_id;
         set => m_id = value;
     }
+    [SerializeField]
     private Sprite m_itemSprite;
     public Sprite itemSprite
     {
@@ -20,6 +22,7 @@ public class ItemData
     }
 
     // 아이템 이름
+    [SerializeField]
     private string m_itemName;
     public string itemName
     {
@@ -28,6 +31,7 @@ public class ItemData
     }
 
     // 아이템 설명
+    [SerializeField]
     private string m_itemDescription;
     public string itemDescription
     {
@@ -36,6 +40,7 @@ public class ItemData
     }
 
     // 아이템 카테고리
+    [SerializeField]
     private Category m_category;
     public Category category
     {
@@ -43,6 +48,7 @@ public class ItemData
         set => m_category = value;
     }
 
+    [SerializeField]
     private int m_itemCount;
     public int itemCount
     {

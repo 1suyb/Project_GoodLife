@@ -16,9 +16,10 @@ public class InventorySlot : MonoBehaviour
     }
     [Tooltip("ItemIcon을 넣을 게임 오브젝트")]
     [SerializeField]
-    private GameObject itemIconObject;
-
     private Image m_itemIconImage;
+    //private GameObject itemIconObject;
+
+
     public Image itemIconImage
     {
         get => m_itemIconImage;
@@ -26,14 +27,15 @@ public class InventorySlot : MonoBehaviour
 
     [Tooltip("ItemCount텍스트를 넣을 게임 오브젝트")]
     [SerializeField]
-    private GameObject itemCountObject;
-
     private TextMeshProUGUI m_itemCountText;
+    //private GameObject itemCountObject;
+
+
     public TextMeshProUGUI itemCountText
     {
         get => m_itemCountText;
     }
-
+    [SerializeField]
     private SlotData m_slotData = new SlotData();
     public SlotData slotData
     {
@@ -61,6 +63,7 @@ public class InventorySlot : MonoBehaviour
 
     public void SetSlotData(ItemData item, int _itemIndex)
     {
+        
         if (m_slotData.inventoryIndex != -1)
         {
             m_slotData.itemCount += item.itemCount;
@@ -69,6 +72,7 @@ public class InventorySlot : MonoBehaviour
         {
             m_slotData.itemicon = item.itemSprite;
             m_slotData.itemCount = item.itemCount;
+            Debug.Log("셋팅데이터"+_itemIndex);
             m_slotData.inventoryIndex = _itemIndex;
             m_slotData.itemCategory = item.category;
         }
@@ -88,10 +92,10 @@ public class InventorySlot : MonoBehaviour
     {
         m_itemIconImage.sprite = m_slotData.itemicon;
         m_itemCountText.text = m_slotData.itemCount.ToString();
-        if (!m_slotData.itemicon)
+        if (m_slotData.inventoryIndex != -1)
         {
             m_itemIconImage.color = activateColor;
-            m_itemCountText.color = activateColor;
+            m_itemCountText.color = Color.black;
         }
         else
         {
@@ -102,6 +106,11 @@ public class InventorySlot : MonoBehaviour
 
     public void Activate()
     {
+        if(slotData.inventoryIndex == -1)
+        {
+            m_itemCountText.color = Color.clear;
+            m_itemIconImage.color = Color.clear;
+        }
         m_itemIconImage.color = activateColor;
         isActivate = true;
     }
@@ -114,8 +123,12 @@ public class InventorySlot : MonoBehaviour
 
     private void Awake()
     {
-        m_itemCountText = itemCountObject.GetComponent<TextMeshProUGUI>();
-        m_itemIconImage = itemIconImage.GetComponent<Image>();
+        m_slotData.inventoryIndex = -1;
+    }
+    private void OnEnable()
+    {
+        //m_itemCountText = itemCountObject.GetComponent<TextMeshProUGUI>();
+        //m_itemIconImage = itemIconImage.GetComponent<Image>();
     }
 
     // Start is called before the first frame update
@@ -201,7 +214,7 @@ public class InventorySlot : MonoBehaviour
     }
     private void AllocateInventoryUIPutDownSlot()
     {
-        m_inventoryUI.allowedSlot = this;
+        m_inventoryUI.allocatedSlot = this;
     }
     private void ShowItemDescription()
     {
@@ -209,12 +222,12 @@ public class InventorySlot : MonoBehaviour
     }
     private void DeacllocateInventoryUIPutDownSlot()
     {
-        m_inventoryUI.allowedSlot = null;
+        m_inventoryUI.allocatedSlot = null;
     }
     private void HideItemDescription()
     {
 
-        m_inventoryUI.allowedSlot = null;
+        m_inventoryUI.allocatedSlot = null;
     }
     private void EndMoving()
     {
@@ -230,6 +243,7 @@ public class InventorySlot : MonoBehaviour
 
     }
 }
+[System.Serializable]
 public struct SlotData
 {
     public Sprite itemicon;
