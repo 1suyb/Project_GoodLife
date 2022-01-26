@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 
 public class InventoryUI : UI
@@ -29,6 +28,7 @@ public class InventoryUI : UI
 
     private ItemDescription m_itemDescriptionWindow;
 
+
     [Tooltip("아이템 선택 윈도우게임오브젝트")]
     [SerializeField]
     private GameObject m_itemSelectWindowGO;
@@ -52,7 +52,7 @@ public class InventoryUI : UI
     [SerializeField]
     private GameObject m_GoldTextGO;
 
-    private TextMeshProUGUI m_goldText;
+    private Text m_goldText;
 
     // 비활성화시 적용할 컬러
     private Vector4 m_deactivateColor;
@@ -86,6 +86,9 @@ public class InventoryUI : UI
         get => m_isMoving;
         set => m_isMoving = value;
     }
+    private bool isShowDescription = false;
+
+
     public void Initialize()
     {
         for(int i = 0; i < m_inventorySlots.Length; i++)
@@ -181,11 +184,16 @@ public class InventoryUI : UI
 
     public void ShowItemDescription(int inventoryIndex)
     {
+        m_itemDescriptionWindow.descriptionItem(inventory.inventoryDatas[inventoryIndex]);
+        m_itemDescriptionWindowObject.SetActive(true);
+        isShowDescription = true;
+
 
     }
     public void HideItemDescription()
     {
-
+        m_itemDescriptionWindowObject.SetActive(false);
+        isShowDescription = false;
     }
     public void MovingItem(Sprite sprite)
     {
@@ -280,7 +288,7 @@ public class InventoryUI : UI
 
     void Awake() {
         m_deactivateColor = new Vector4(deactivateRGB, deactivateRGB, deactivateRGB, deactivateAlpha);
-        m_activateColor = new Vector4(1, 1, 1, 1);
+        m_activateColor = Color.white;
     }
 
     // Start is called before the first frame update
@@ -291,7 +299,7 @@ public class InventoryUI : UI
         m_inventorySlots = this.GetComponentsInChildren<InventorySlot>();
         m_inventoryCategories = m_inventoryCategoryParentObject.GetComponentsInChildren<InventoryCategory>();
         inventory._inventoryUI = this;
-        //m_itemDescriptionWindow = m_itemDescriptionWindowObject.GetComponent<ItemDescription>();
+        m_itemDescriptionWindow = m_itemDescriptionWindowObject.GetComponent<ItemDescription>();
         //m_goldText = m_GoldTextGO.GetComponent<TextMeshProUGUI>();
 
         Initialize();
@@ -303,6 +311,10 @@ public class InventoryUI : UI
         if (isMoving)
         {
             m_slotMoveSlotObject.transform.position = Input.mousePosition;
+        }
+        if (isShowDescription)
+        {
+            m_itemDescriptionWindowObject.transform.position = Input.mousePosition;
         }
     }
 }

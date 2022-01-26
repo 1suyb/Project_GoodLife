@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
-using TMPro;
 
 public class InventorySlot : MonoBehaviour
 {
@@ -27,11 +25,11 @@ public class InventorySlot : MonoBehaviour
 
     [Tooltip("ItemCount텍스트를 넣을 게임 오브젝트")]
     [SerializeField]
-    private TextMeshProUGUI m_itemCountText;
+    private Text m_itemCountText;
     //private GameObject itemCountObject;
 
 
-    public TextMeshProUGUI itemCountText
+    public Text itemCountText
     {
         get => m_itemCountText;
     }
@@ -61,20 +59,20 @@ public class InventorySlot : MonoBehaviour
     private bool isShowing = false;
 
 
-    public void SetSlotData(ItemData item, int _itemIndex)
+    public void SetSlotData(ItemData inventoryitem, int _itemIndex)
     {
         
         if (m_slotData.inventoryIndex != -1)
         {
-            m_slotData.itemCount += item.itemCount;
+            m_slotData.itemCount = inventoryitem.itemCount;
         }
         else
         {
-            m_slotData.itemicon = item.itemSprite;
-            m_slotData.itemCount = item.itemCount;
+            m_slotData.itemicon = inventoryitem.itemSprite;
+            m_slotData.itemCount = inventoryitem.itemCount;
             Debug.Log("셋팅데이터"+_itemIndex);
             m_slotData.inventoryIndex = _itemIndex;
-            m_slotData.itemCategory = item.category;
+            m_slotData.itemCategory = inventoryitem.category;
         }
         SlotUpdate();
     }
@@ -127,7 +125,7 @@ public class InventorySlot : MonoBehaviour
     }
     private void OnEnable()
     {
-        //m_itemCountText = itemCountObject.GetComponent<TextMeshProUGUI>();
+        //m_itemCountText = itemCountObject.GetComponent<Text>();
         //m_itemIconImage = itemIconImage.GetComponent<Image>();
     }
 
@@ -150,15 +148,17 @@ public class InventorySlot : MonoBehaviour
             {
                 isSelected = false;
                 isMoving = true;
+                m_currentPointDownTime = 0;
                 m_inventoryUI.MovingItem(m_slotData.itemicon);
             }
         }
     }
 
-    private void OnMouseEnter()
+    public void MouseEnter()
     {
         if (!isActivate)
         {
+            Debug.Log("활성화안되잇음!");
             return;
         }
         if (isMoving)
@@ -170,7 +170,7 @@ public class InventorySlot : MonoBehaviour
             ShowItemDescription();
         }
     }
-    private void OnMouseExit()
+    public void MouseExit()
     {
         if (isMoving)
         {
@@ -181,9 +181,9 @@ public class InventorySlot : MonoBehaviour
             HideItemDescription();
         }
     }
-    private void OnMouseDown()
+    public void MouseDown()
     {
-        if(m_slotData.inventoryIndex != -1)
+        if(m_slotData.inventoryIndex == -1)
         {
             return;
         }
@@ -197,7 +197,7 @@ public class InventorySlot : MonoBehaviour
         }
         
     }
-    private void OnMouseUp()
+    public void MouseUp()
     {
         if (isMoving)
         {
@@ -214,28 +214,34 @@ public class InventorySlot : MonoBehaviour
     }
     private void AllocateInventoryUIPutDownSlot()
     {
+        Debug.Log("allocateinventroyuiputdownslot");
         m_inventoryUI.allocatedSlot = this;
     }
     private void ShowItemDescription()
     {
+        Debug.Log("ShowItemDescription");
         m_inventoryUI.ShowItemDescription(slotData.inventoryIndex);
     }
     private void DeacllocateInventoryUIPutDownSlot()
     {
+        Debug.Log("DeallocateInventoryUIPutDownSlot");
         m_inventoryUI.allocatedSlot = null;
     }
     private void HideItemDescription()
     {
-
-        m_inventoryUI.allocatedSlot = null;
+        Debug.Log("HideItemdescription");
+        m_inventoryUI.HideItemDescription();
     }
     private void EndMoving()
     {
-        m_inventoryUI.EndMoving(this);
+        Debug.Log("Endmoving");
         isMoving = false;
+        m_inventoryUI.EndMoving(this);
+        
     }
     private void SelecctItem()
     {
+        Debug.Log("SlectItem");
         Debug.Log("아이템선택");
     }
     private void ItemUse()
