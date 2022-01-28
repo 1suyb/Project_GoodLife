@@ -241,6 +241,7 @@ public class InventorySlot : MonoBehaviour
     }
     private void SelecctItem()
     {
+        m_inventoryUI.SelectItem(slotData.inventoryIndex);
         Debug.Log("SlectItem");
         Debug.Log("아이템선택");
     }

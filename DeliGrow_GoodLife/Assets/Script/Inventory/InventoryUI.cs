@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class InventoryUI : UI
 {
+    public Inventory inventory;
+
     // 인벤토리 slots
     private InventorySlot[] m_inventorySlots;
 
@@ -20,14 +22,11 @@ public class InventoryUI : UI
     private GameObject m_slotMoveSlotObject;
     private Image m_moveSlotImage;
 
-    
-
     [Tooltip("아이템 설명 윈도우오브젝트")]
     [SerializeField]
     private GameObject m_itemDescriptionWindowObject;
 
     private ItemDescription m_itemDescriptionWindow;
-
 
     [Tooltip("아이템 선택 윈도우게임오브젝트")]
     [SerializeField]
@@ -36,7 +35,19 @@ public class InventoryUI : UI
     private ItemSeletWindow m_itemSeletWindow;
 
     [Tooltip("아이템 나누기 윈도우 게임오브젝트")]
-    private GameObject m_itemDivideWindowGO;
+    private GameObject m_itemDivideSlotWindowGO;
+
+    [Tooltip("돈 텍스트 오브젝트")]
+    [SerializeField]
+    private GameObject m_GoldTextGO;
+
+    private Text m_goldText;
+
+    [Tooltip("팝업 오브젝트")]
+    [SerializeField]
+    private GameObject m_popUpGO;
+
+    private ItemPopUp m_popUp;
 
     [Range(0, 1)]
     [Tooltip("비활성화시 RGB값")]
@@ -48,14 +59,11 @@ public class InventoryUI : UI
     [SerializeField]
     private float deactivateAlpha;
 
-    [Tooltip("돈 텍스트 오브젝트")]
-    [SerializeField]
-    private GameObject m_GoldTextGO;
-
-    private Text m_goldText;
+    
 
     // 비활성화시 적용할 컬러
     private Vector4 m_deactivateColor;
+
     public Vector4 deactivateColor
     {
         get => m_deactivateColor;
@@ -70,6 +78,7 @@ public class InventoryUI : UI
         set => m_activateColor = value;
     }
 
+    // 내려놓을 슬롯
     private InventorySlot m_allocatedSlot;
     public InventorySlot allocatedSlot
     {
@@ -77,7 +86,16 @@ public class InventoryUI : UI
         set => m_allocatedSlot = value;
     }
 
-    public Inventory inventory;
+    // 선택된 아이템
+    private ItemData m_selectedItem;
+    public ItemData selectedItem
+    {
+        get => m_selectedItem;
+        set => m_selectedItem = value;
+    }
+
+
+    
 
     [SerializeField]
     private bool m_isMoving = false;
@@ -218,9 +236,52 @@ public class InventoryUI : UI
         }
     }
 
+    public void SelectItem(int invenindex)
+    {
+        m_selectedItem = inventory.inventoryDatas[invenindex];
+        m_itemSelectWindowGO.transform.position = m_inventorySlots[invenindex].gameObject.transform.position + new Vector3(0, -50, 0);
+        m_itemSelectWindowGO.SetActive(true);
+    }
+    public void UpdateGold(ulong gold)
+    {
+        m_goldText.text = gold.ToString();
+    }
+    public void Sort()
+    {
+        for (int i = 0; i < m_inventorySlots.Length; i++)
+        {
+            m_inventorySlots[i].SetSlotData(inventory.inventoryDatas[i], i);
+        }
+    }
+
+    public void DumpItemButton()
+    {
+        m_popUp.DumpItem(m_selectedItem, DumpItem);
+    }
+    public void DumpItem(ItemData item)
+    {
+        if (!inventory.TakeOutItem(item))
+        {
+            // 실패시 경고 알림.
+        }
+    }
+
+    public void ItemDevideButton()
+    {
+        m_popUp.DevideItem(m_selectedItem, ItemDevide);
+    }
+    public void ItemDevide(ItemData item)
+    {
+
+    }
+
+    public void Warning()
+    {
+
+    }
 
     // Emphasize 관련 부분
-#region
+    #region
     public void EmphasizeItemCategory(Category category)
     {
         foreach(var item in m_inventorySlots)
@@ -265,26 +326,7 @@ public class InventoryUI : UI
 #endregion
 
 
-    public void UpdateGold(ulong gold)
-    {
-        m_goldText.text = gold.ToString();
-    }
 
-    public void Sort()
-    {
-        for(int i = 0; i < m_inventorySlots.Length; i++)
-        {
-            m_inventorySlots[i].SetSlotData(inventory.inventoryDatas[i], i);
-        }
-    }
-    public void DumpItem()
-    {
-
-    }
-    public void ItemDevide()
-    {
-
-    }
 
     void Awake() {
         m_deactivateColor = new Vector4(deactivateRGB, deactivateRGB, deactivateRGB, deactivateAlpha);
@@ -300,7 +342,8 @@ public class InventoryUI : UI
         m_inventoryCategories = m_inventoryCategoryParentObject.GetComponentsInChildren<InventoryCategory>();
         inventory._inventoryUI = this;
         m_itemDescriptionWindow = m_itemDescriptionWindowObject.GetComponent<ItemDescription>();
-        //m_goldText = m_GoldTextGO.GetComponent<TextMeshProUGUI>();
+        //m_goldText = m_GoldTextGO.GetComponent<Text>();
+        m_popUp = m_popUpGO.GetComponent<ItemPopUp>();
 
         Initialize();
     }
