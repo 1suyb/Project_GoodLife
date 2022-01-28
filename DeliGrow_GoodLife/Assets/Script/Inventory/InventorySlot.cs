@@ -133,9 +133,12 @@ public class InventorySlot : MonoBehaviour
     void Start()
     {
         InventoryUI invenui = this.GetComponentInParent<InventoryUI>();
-
-        deactivateColor = invenui.deactivateColor;
-        activateColor = invenui.activateColor;
+        if(inventoryUI != null)
+        {
+            deactivateColor = invenui.deactivateColor;
+            activateColor = invenui.activateColor;
+        }
+        
     }
 
     // Update is called once per frame

@@ -25,7 +25,103 @@ MonoBehaviour:
     m_itemName: "\uC544\uC774\uD15C2"
     m_itemDescription: "\uC544\uC774\uD15C\uC124\uBA852"
     m_category: 6
-    m_itemCount: 60
+    m_itemCount: 72
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
   - m_id: 0
     m_itemSprite: {fileID: 0}
     m_itemName: 

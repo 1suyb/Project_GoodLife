@@ -121,6 +121,7 @@ public class InventoryUI : UI
                 m_inventorySlots[i].ClearSlot();
             }
         }
+        UpdateGold();
     }
     public override bool Open()
     {
@@ -129,6 +130,7 @@ public class InventoryUI : UI
             item.SlotUpdate();
         }
         Unemphasize();
+        UpdateGold();
         this.gameObject.SetActive(true);
         return true;
     }
@@ -242,16 +244,14 @@ public class InventoryUI : UI
         m_itemSelectWindowGO.transform.position = m_inventorySlots[invenindex].gameObject.transform.position + new Vector3(0, -50, 0);
         m_itemSelectWindowGO.SetActive(true);
     }
-    public void UpdateGold(ulong gold)
+    public void UpdateGold()
     {
-        m_goldText.text = gold.ToString();
+        m_goldText.text = inventory.gold.ToString();
     }
-    public void Sort()
+    
+    public void SortButton()
     {
-        for (int i = 0; i < m_inventorySlots.Length; i++)
-        {
-            m_inventorySlots[i].SetSlotData(inventory.inventoryDatas[i], i);
-        }
+        inventory.SortItem();
     }
 
     public void DumpItemButton()
@@ -323,9 +323,15 @@ public class InventoryUI : UI
             item.Activate();
         }
     }
-#endregion
+    #endregion
 
-
+    public void Sort()
+    {
+        for (int i = 0; i < m_inventorySlots.Length; i++)
+        {
+            m_inventorySlots[i].SetSlotData(inventory.inventoryDatas[i], i);
+        }
+    }
 
 
     void Awake() {
@@ -342,7 +348,7 @@ public class InventoryUI : UI
         m_inventoryCategories = m_inventoryCategoryParentObject.GetComponentsInChildren<InventoryCategory>();
         inventory._inventoryUI = this;
         m_itemDescriptionWindow = m_itemDescriptionWindowObject.GetComponent<ItemDescription>();
-        //m_goldText = m_GoldTextGO.GetComponent<Text>();
+        m_goldText = m_GoldTextGO.GetComponent<Text>();
         m_popUp = m_popUpGO.GetComponent<ItemPopUp>();
 
         Initialize();
