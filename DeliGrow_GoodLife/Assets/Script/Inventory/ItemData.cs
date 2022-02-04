@@ -15,12 +15,13 @@ public class ItemData
     }
     [SerializeField]
     private Sprite m_itemSprite;
+    
     public Sprite itemSprite
     {
         get => m_itemSprite;
         set => m_itemSprite = value;
     }
-
+    
     // 아이템 이름
     [SerializeField]
     private string m_itemName;
@@ -66,9 +67,10 @@ public class ItemData
         }
     }
 
-    public ItemData(int id, string itemName, string itemDescription, Category category, int itemcount)
+    public ItemData(int id,Sprite sprite ,string itemName, string itemDescription, Category category, int itemcount)
     {
         m_id = id;
+        m_itemSprite = sprite;
         m_itemName = itemName;
         m_itemDescription = itemDescription;
         m_category = category;
@@ -76,7 +78,7 @@ public class ItemData
     }
     public ItemData Clone()
     {
-        ItemData val = new ItemData(this.m_id,this.m_itemName,this.m_itemDescription,this.m_category,this.m_itemCount);
+        ItemData val = new ItemData(this.m_id,this.m_itemSprite,this.m_itemName,this.m_itemDescription,this.m_category,this.m_itemCount);
         return val;
     }
     public bool IsEqual(ItemData val)

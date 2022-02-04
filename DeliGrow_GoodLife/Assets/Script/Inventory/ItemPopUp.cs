@@ -25,8 +25,11 @@ public class ItemPopUp : MonoBehaviour
     [SerializeField]
     private GameObject _noButton;
 
-    private readonly string DUMPTITLE = "버리기";
-    private readonly string DEVIDETITLE = "나누기";
+    [Tooltip("아이콘")]
+    [SerializeField]
+    private Image icon;
+
+
     private readonly string DESCRIPTION = "수량을 입력하세요";
 
     private ItemData _handlingItem;
@@ -35,20 +38,13 @@ public class ItemPopUp : MonoBehaviour
 
     private FunctionPointer action;
 
-    public void DumpItem(ItemData item, FunctionPointer act)
+    public void PopUp(string title, ItemData item, FunctionPointer act)
     {
         _handlingItem = item.Clone();
         this.gameObject.SetActive(true);
-        _title.text = DUMPTITLE;
+        _title.text = title;
         _description.text = DESCRIPTION;
-        action = act;
-    }
-    public void DevideItem(ItemData item, FunctionPointer act)
-    {
-        _handlingItem = item.Clone();
-        this.gameObject.SetActive(true);
-        _title.text = DEVIDETITLE;
-        _description.text = DESCRIPTION;
+        icon.sprite = _handlingItem.itemSprite;
         action = act;
     }
 
@@ -61,7 +57,8 @@ public class ItemPopUp : MonoBehaviour
     }
     public void NoButton()
     {
-
+        _handlingItem = null;
+        this.gameObject.SetActive(false);
     }
 
 }

@@ -49,31 +49,36 @@ public class InventorySlot : MonoBehaviour
     }
     private float m_currentPointDownTime;
 
+    [SerializeField]
+    public Vector4 deactivateColor;
+    [SerializeField]
+    public Vector4 activateColor;
 
-    private Vector4 deactivateColor;
-    private Vector4 activateColor;
-
+    [SerializeField]
     private bool isActivate = true;
+    [SerializeField]
     private bool isMoving = false;
     private bool isSelected = false;
     private bool isShowing = false;
 
-
+    public void Initialize()
+    {
+    }
     public void SetSlotData(ItemData inventoryitem, int _itemIndex)
     {
-        
-        if (m_slotData.inventoryIndex != -1)
+        Debug.Log(inventoryitem.itemSprite);
+
+        if (m_slotData.inventoryIndex == _itemIndex)
         {
             m_slotData.itemCount = inventoryitem.itemCount;
         }
         else
         {
-            m_slotData.itemicon = inventoryitem.itemSprite;
             m_slotData.itemCount = inventoryitem.itemCount;
-            Debug.Log("셋팅데이터"+_itemIndex);
-            m_slotData.inventoryIndex = _itemIndex;
-            m_slotData.itemCategory = inventoryitem.category;
         }
+        m_slotData.itemicon = inventoryitem.itemSprite;
+        m_slotData.inventoryIndex = _itemIndex;
+        m_slotData.itemCategory = inventoryitem.category;
         SlotUpdate();
     }
     public void ClearSlot()
@@ -90,6 +95,7 @@ public class InventorySlot : MonoBehaviour
     {
         m_itemIconImage.sprite = m_slotData.itemicon;
         m_itemCountText.text = m_slotData.itemCount.ToString();
+
         if (m_slotData.inventoryIndex != -1)
         {
             m_itemIconImage.color = activateColor;
@@ -104,44 +110,24 @@ public class InventorySlot : MonoBehaviour
 
     public void Activate()
     {
+        Debug.Log("Activate호출");
         if(slotData.inventoryIndex == -1)
         {
             m_itemCountText.color = Color.clear;
             m_itemIconImage.color = Color.clear;
+            isActivate = false;
+            return;
         }
-        m_itemIconImage.color = activateColor;
+        m_itemIconImage.color = m_inventoryUI.activateColor;
         isActivate = true;
     }
 
     public void Deactivate()
     {
-        m_itemIconImage.color = deactivateColor;
+        m_itemIconImage.color = m_inventoryUI.deactivateColor;
         isActivate = false;
     }
 
-    private void Awake()
-    {
-        m_slotData.inventoryIndex = -1;
-    }
-    private void OnEnable()
-    {
-        //m_itemCountText = itemCountObject.GetComponent<Text>();
-        //m_itemIconImage = itemIconImage.GetComponent<Image>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        InventoryUI invenui = this.GetComponentInParent<InventoryUI>();
-        if(inventoryUI != null)
-        {
-            deactivateColor = invenui.deactivateColor;
-            activateColor = invenui.activateColor;
-        }
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (isSelected)
@@ -152,6 +138,7 @@ public class InventorySlot : MonoBehaviour
                 isSelected = false;
                 isMoving = true;
                 m_currentPointDownTime = 0;
+                HideItemDescription();
                 m_inventoryUI.MovingItem(m_slotData.itemicon);
             }
         }
@@ -159,12 +146,11 @@ public class InventorySlot : MonoBehaviour
 
     public void MouseEnter()
     {
-        if (!isActivate)
+        if (!isActivate||slotData.inventoryIndex == -1)
         {
-            Debug.Log("활성화안되잇음!");
             return;
         }
-        if (isMoving)
+        if (m_inventoryUI.isMoving == true)
         {
             AllocateInventoryUIPutDownSlot();
         }
@@ -238,8 +224,10 @@ public class InventorySlot : MonoBehaviour
     private void EndMoving()
     {
         Debug.Log("Endmoving");
+        Debug.Log(this.slotData.itemicon);
         isMoving = false;
         m_inventoryUI.EndMoving(this);
+
         
     }
     private void SelecctItem()
@@ -247,11 +235,19 @@ public class InventorySlot : MonoBehaviour
         m_inventoryUI.SelectItem(slotData.inventoryIndex);
         Debug.Log("SlectItem");
         Debug.Log("아이템선택");
+        isSelected = false;
     }
     private void ItemUse()
     {
 
     }
+
+    public void SetSlotData(InventorySlot slot)
+    {
+        this.m_slotData = slot.slotData;
+        SlotUpdate();
+    }
+    
 }
 [System.Serializable]
 public struct SlotData

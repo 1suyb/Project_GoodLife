@@ -8,11 +8,17 @@ public class Inventory : ScriptableObject
     public InventoryUI _inventoryUI;
     [SerializeField]
     private ItemData[] _inventoryDatas;
+
     public ItemData[] inventoryDatas
     {
         get => _inventoryDatas;
     }
 
+    public ItemData tmp;
+    
+
+    
+    [SerializeField]
     private ulong m_gold = 0;
     public ulong gold
     {
@@ -82,8 +88,6 @@ public class Inventory : ScriptableObject
 
         
     }
-
-
     public void AddGold(ulong gold)
     {
         if(m_gold+gold> 18000000000000000000)
@@ -144,9 +148,9 @@ public class Inventory : ScriptableObject
 
     public void Swap(int index1, int index2)
     {
-        ItemData tmp = inventoryDatas[index1];
-        inventoryDatas[index1] = inventoryDatas[index2];
-        inventoryDatas[index2] = tmp;
+        tmp = _inventoryDatas[index1].Clone();
+        _inventoryDatas[index1] = _inventoryDatas[index2].Clone();
+        _inventoryDatas[index2] = tmp.Clone();
     }
 
     private int SearchItem(ItemData item)
