@@ -133,6 +133,7 @@ public class InventoryUI : UI
         
         for (int i = 0; i < m_inventorySlots.Length; i++)
         {
+            
             m_inventorySlots[i].Initialize();
             if (inventory.inventoryDatas[i].id != 0)
             {
@@ -242,8 +243,10 @@ public class InventoryUI : UI
         m_isMoving = false;
         if (m_allocatedSlot != null && m_allocatedSlot != slot)
         {
-            Swap(allocatedSlot, slot);
             inventory.Swap(slot.slotData.inventoryIndex, m_allocatedSlot.slotData.inventoryIndex);
+            
+            Swap(allocatedSlot, slot);
+            
         }
         else
         {

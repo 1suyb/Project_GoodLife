@@ -50,13 +50,13 @@ public class Inventory : ScriptableObject
     }
     public void SortItem()
     {
-        for (int i = 0; i < inventoryDatas.Length; i++)
+        for(int i = 0; i < _inventoryDatas.Length; i++)
         {
-            for (int j = i; j < inventoryDatas.Length; j++)
+            for(int j = i; j < _inventoryDatas.Length; j++)
             {
-                if (inventoryDatas[i] > inventoryDatas[j])
+                if (_inventoryDatas[i] < _inventoryDatas[j])
                 {
-                    swap(ref inventoryDatas[i], ref inventoryDatas[j]);
+                    Swap(ref _inventoryDatas[i], ref _inventoryDatas[j]);
                 }
             }
         }
@@ -117,41 +117,6 @@ public class Inventory : ScriptableObject
     {
 
     }
-    /*
-    private int PutItemInInventory(ItemData item)
-    {
-        if (item.itemCount < 0)
-        {
-            return -1;
-        }
-        for (int i = 0; i < inventoryDatas.Length; i++)
-        {
-            if (inventoryDatas[i] != null)
-            {
-                if (inventoryDatas[i].IsEqual(item))
-                {
-                    inventoryDatas[i].itemCount += item.itemCount;
-                    return i;
-                }
-            }
-        }
-        for (int i = 0; i < inventoryDatas.Length; i++)
-        {
-            if (inventoryDatas[i] == null)
-            {
-                inventoryDatas[i] = item;
-                return i;
-            }
-        }
-        return -1;
-    }*/
-
-    public void Swap(int index1, int index2)
-    {
-        tmp = _inventoryDatas[index1].Clone();
-        _inventoryDatas[index1] = _inventoryDatas[index2].Clone();
-        _inventoryDatas[index2] = tmp.Clone();
-    }
 
     private int SearchItem(ItemData item)
     {
@@ -183,11 +148,15 @@ public class Inventory : ScriptableObject
         return -1;
     }
 
-    private static void swap(ref ItemData val1, ref ItemData val2)
+    private static void Swap(ref ItemData val1, ref ItemData val2)
     {
         ItemData tmp = val1;
         val1 = val2;
         val2 = tmp;
+    }
+    public void Swap(int index1, int index2)
+    {
+        Swap(ref _inventoryDatas[index1], ref _inventoryDatas[index2]);
     }
 
 }

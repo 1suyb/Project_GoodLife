@@ -66,20 +66,17 @@ public class InventorySlot : MonoBehaviour
     }
     public void SetSlotData(ItemData inventoryitem, int _itemIndex)
     {
-        Debug.Log(inventoryitem.itemSprite);
-
-        if (m_slotData.inventoryIndex == _itemIndex)
+        int itemcount = inventoryitem.itemCount;
+        if(itemcount <= 0)
         {
-            m_slotData.itemCount = inventoryitem.itemCount;
-        }
-        else
-        {
-            m_slotData.itemCount = inventoryitem.itemCount;
+            ClearSlot();
+            return;
         }
         m_slotData.itemicon = inventoryitem.itemSprite;
-        m_slotData.inventoryIndex = _itemIndex;
+        m_slotData.itemCount = inventoryitem.itemCount;
         m_slotData.itemCategory = inventoryitem.category;
-        SlotUpdate();
+        m_slotData.inventoryIndex = _itemIndex;
+
     }
     public void ClearSlot()
     {
@@ -93,19 +90,18 @@ public class InventorySlot : MonoBehaviour
 
     public void SlotUpdate()
     {
+        int itemcount = m_slotData.itemCount;
+        if (itemcount <= 0)
+        {
+            m_itemIconImage.sprite = null;
+            m_itemIconImage.color = Color.clear;
+            m_itemCountText.text = " ";
+            return;
+        }
         m_itemIconImage.sprite = m_slotData.itemicon;
+        m_itemIconImage.color = Color.white;
         m_itemCountText.text = m_slotData.itemCount.ToString();
 
-        if (m_slotData.inventoryIndex != -1)
-        {
-            m_itemIconImage.color = activateColor;
-            m_itemCountText.color = Color.black;
-        }
-        else
-        {
-            m_itemIconImage.color = Color.clear;
-            m_itemCountText.color = Color.clear;
-        }
     }
 
     public void Activate()
@@ -146,13 +142,15 @@ public class InventorySlot : MonoBehaviour
 
     public void MouseEnter()
     {
-        if (!isActivate||slotData.inventoryIndex == -1)
-        {
-            return;
-        }
+        
         if (m_inventoryUI.isMoving == true)
         {
             AllocateInventoryUIPutDownSlot();
+            return;
+        }
+        if (!isActivate || slotData.inventoryIndex == -1)
+        {
+            return;
         }
         else
         {
