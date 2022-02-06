@@ -14,126 +14,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inventoryUI: {fileID: 0}
   _inventoryDatas:
+  - m_id: 2
+    m_itemSprite: {fileID: 21300000, guid: 3c25daad1aa92c9439df435bed4f8fa3, type: 3}
+    m_itemName: "\uC544\uC774\uD15C2"
+    m_itemDescription: "\uC544\uC774\uD15C\uC124\uBA85"
+    m_category: 3
+    m_itemCount: 20
+  - m_id: 2
+    m_itemSprite: {fileID: 21300000, guid: 67c57e7d55f393b4fbff74070362cfa6, type: 3}
+    m_itemName: 11
+    m_itemDescription: 11
+    m_category: 1
+    m_itemCount: 11
   - m_id: 0
-    m_itemSprite: {fileID: 0}
-    m_itemName: 
-    m_itemDescription: 
-    m_category: 0
+    m_itemSprite: {fileID: 21300000, guid: 67c57e7d55f393b4fbff74070362cfa6, type: 3}
+    m_itemName: "\uC544\uC774\uD15C2"
+    m_itemDescription: "\uC544\uC774\uD15C\uC124\uBA85"
+    m_category: 4
     m_itemCount: 0
-  - m_id: 0
-    m_itemSprite: {fileID: 0}
-    m_itemName: 
-    m_itemDescription: 
-    m_category: 0
-    m_itemCount: 0
-  - m_id: 0
-    m_itemSprite: {fileID: 0}
-    m_itemName: 
-    m_itemDescription: 
-    m_category: 0
-    m_itemCount: 0
-  - m_id: 0
-    m_itemSprite: {fileID: 0}
-    m_itemName: 
-    m_itemDescription: 
-    m_category: 0
-    m_itemCount: 0
-  - m_id: 0
-    m_itemSprite: {fileID: 0}
-    m_itemName: 
-    m_itemDescription: 
-    m_category: 0
-    m_itemCount: 0
-  - m_id: 0
-    m_itemSprite: {fileID: 0}
-    m_itemName: 
-    m_itemDescription: 
-    m_category: 0
-    m_itemCount: 0
-  - m_id: 0
-    m_itemSprite: {fileID: 0}
-    m_itemName: 
-    m_itemDescription: 
-    m_category: 0
-    m_itemCount: 0
-  - m_id: 0
-    m_itemSprite: {fileID: 0}
-    m_itemName: 
-    m_itemDescription: 
-    m_category: 0
-    m_itemCount: 0
-  - m_id: 0
-    m_itemSprite: {fileID: 0}
-    m_itemName: 
-    m_itemDescription: 
-    m_category: 0
-    m_itemCount: 0
-  - m_id: 0
-    m_itemSprite: {fileID: 0}
-    m_itemName: 
-    m_itemDescription: 
-    m_category: 0
-    m_itemCount: 0
-  - m_id: 0
-    m_itemSprite: {fileID: 0}
-    m_itemName: 
-    m_itemDescription: 
-    m_category: 0
-    m_itemCount: 0
-  - m_id: 0
-    m_itemSprite: {fileID: 0}
-    m_itemName: 
-    m_itemDescription: 
-    m_category: 0
-    m_itemCount: 0
-  - m_id: 0
-    m_itemSprite: {fileID: 0}
-    m_itemName: 
-    m_itemDescription: 
-    m_category: 0
-    m_itemCount: 0
-  - m_id: 0
-    m_itemSprite: {fileID: 0}
-    m_itemName: 
-    m_itemDescription: 
-    m_category: 0
-    m_itemCount: 0
-  - m_id: 0
-    m_itemSprite: {fileID: 0}
-    m_itemName: 
-    m_itemDescription: 
-    m_category: 0
-    m_itemCount: 0
-  - m_id: 0
-    m_itemSprite: {fileID: 0}
-    m_itemName: 
-    m_itemDescription: 
-    m_category: 0
-    m_itemCount: 0
-  - m_id: 0
-    m_itemSprite: {fileID: 0}
-    m_itemName: 
-    m_itemDescription: 
-    m_category: 0
-    m_itemCount: 0
-  - m_id: 0
-    m_itemSprite: {fileID: 0}
-    m_itemName: 
-    m_itemDescription: 
-    m_category: 0
-    m_itemCount: 0
-  - m_id: 0
-    m_itemSprite: {fileID: 0}
-    m_itemName: 
-    m_itemDescription: 
-    m_category: 0
-    m_itemCount: 0
-  - m_id: 0
-    m_itemSprite: {fileID: 0}
-    m_itemName: 
-    m_itemDescription: 
-    m_category: 0
-    m_itemCount: 0
+  - m_id: 1
+    m_itemSprite: {fileID: 21300000, guid: b6d9064d5c3d9644592afaf6016c87cb, type: 3}
+    m_itemName: 11
+    m_itemDescription: 11
+    m_category: 2
+    m_itemCount: 5
   - m_id: 0
     m_itemSprite: {fileID: 0}
     m_itemName: 
@@ -175,25 +79,121 @@ MonoBehaviour:
     m_itemName: 11
     m_itemDescription: 11
     m_category: 2
-    m_itemCount: 12
-  - m_id: 2
-    m_itemSprite: {fileID: 21300000, guid: 3c25daad1aa92c9439df435bed4f8fa3, type: 3}
-    m_itemName: "\uC544\uC774\uD15C2"
-    m_itemDescription: "\uC544\uC774\uD15C\uC124\uBA85"
-    m_category: 6
-    m_itemCount: 20
+    m_itemCount: 10
   - m_id: 1
-    m_itemSprite: {fileID: 21300000, guid: 67c57e7d55f393b4fbff74070362cfa6, type: 3}
-    m_itemName: "\uC544\uC774\uD15C2"
-    m_itemDescription: "\uC544\uC774\uD15C\uC124\uBA85"
-    m_category: 6
-    m_itemCount: 20
-  - m_id: 2
-    m_itemSprite: {fileID: 21300000, guid: 67c57e7d55f393b4fbff74070362cfa6, type: 3}
+    m_itemSprite: {fileID: 21300000, guid: b6d9064d5c3d9644592afaf6016c87cb, type: 3}
     m_itemName: 11
     m_itemDescription: 11
-    m_category: 6
-    m_itemCount: 11
+    m_category: 2
+    m_itemCount: 1
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  - m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
   tmp:
     m_id: 1
     m_itemSprite: {fileID: 21300000, guid: 67c57e7d55f393b4fbff74070362cfa6, type: 3}

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(fileName = "Inventory",menuName = "Scriptable/Inventory")]
+[CreateAssetMenu(fileName = "Inventory", menuName = "Scriptable/Inventory")]
 public class Inventory : ScriptableObject
 {
     [SerializeField]
@@ -15,9 +15,9 @@ public class Inventory : ScriptableObject
     }
 
     public ItemData tmp;
-    
 
-    
+
+
     [SerializeField]
     private ulong m_gold = 0;
     public ulong gold
@@ -25,7 +25,7 @@ public class Inventory : ScriptableObject
         get => m_gold;
     }
 
-    
+
 
     public bool PutInItem(ItemData item)
     {
@@ -35,19 +35,32 @@ public class Inventory : ScriptableObject
         {
             Debug.Log("아이템서치 성공");
             inventoryDatas[index].itemCount += item.itemCount;
-            return _inventoryUI.PutInSlot(index);
+            _inventoryUI.SlotUpdate(index);
+            return true;
         }
         index = SearchNull();
-        if(index != -1)
+        if (index != -1)
         {
             Debug.Log("널슬롯 서치 성공");
             inventoryDatas[index] = item;
-            return _inventoryUI.PutInSlot(index);
+            _inventoryUI.SlotUpdate(index);
+            return true;
         }
         Debug.Log("공간 서치 실패");
         return false;
-        
+
     }
+    public bool PutInItem(ItemData item, int index)
+    {
+        if(_inventoryDatas[index].id != 0)
+        {
+            return false;
+        }
+        _inventoryDatas[index] = item;
+        _inventoryUI.SlotUpdate(index);
+        return true;
+    }
+
     public void SortItem()
     {
         for(int i = 0; i < _inventoryDatas.Length; i++)
@@ -64,9 +77,15 @@ public class Inventory : ScriptableObject
     }
     public bool TakeOutItem(ItemData item)
     {
+        Debug.Log("teackout");
+        Debug.Log(item.itemName);
+        Debug.Log(item.itemCount);
         int index = SearchItem(item);
+        Debug.Log("인덱스");
+
+        Debug.Log(index);
         int itemcount = item.itemCount;
-        int datasitemcount = inventoryDatas[index].itemCount;
+        int datasitemcount = _inventoryDatas[index].itemCount;
         if(index != -1)
         {
             if (datasitemcount < itemcount)
@@ -75,13 +94,16 @@ public class Inventory : ScriptableObject
             }
             else if(datasitemcount > itemcount)
             {
-                inventoryDatas[index].itemCount -= itemcount;
-                return _inventoryUI.TakeOutItemAtSlot(index);
+                _inventoryDatas[index].itemCount -= itemcount;
+                _inventoryUI.SlotUpdate(index);
+                return true;
             }
             else
             {
-                inventoryDatas[index] = null;
-                return _inventoryUI.TakeOutItemAtSlot(index);
+                _inventoryDatas[index].id = 0;
+                _inventoryDatas[index].itemCount = 0;
+                _inventoryUI.SlotUpdate(index);
+                return true;
             }
         }
         return false;
@@ -122,16 +144,14 @@ public class Inventory : ScriptableObject
     {
         for (int i = 0; i < inventoryDatas.Length; i++)
         {
-            if (inventoryDatas[i].id != 0)
+            if (inventoryDatas[i].id == item.id)
             {
-                if (inventoryDatas[i].IsEqual(item))
-                {
-                    return i;
-                }
+                return i;
             }
         }
         return -1;
     }
+
     private int SearchNull()
     {
         for (int i = 0; i < inventoryDatas.Length; i++)

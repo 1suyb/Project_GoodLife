@@ -8,17 +8,14 @@ public class InventoryUI : UI
 {
     [SerializeField]
     private GameObject background;
+    //serializeField 선언부
     #region
+    [Tooltip("인벤토리")]
     public Inventory inventory;
-
-    // 인벤토리 slots
-    private InventorySlot[] m_inventorySlots;
 
     [Tooltip("인벤토리 카테고리슬롯 부모 오브젝트")]
     [SerializeField]
     private GameObject m_inventoryCategoryParentObject;
-
-    private InventoryCategory[] m_inventoryCategories;
 
     [Tooltip("아이템 움직일때 슬롯 GameObject")]
     [SerializeField]
@@ -38,9 +35,10 @@ public class InventoryUI : UI
     private ItemSeletWindow m_itemSeletWindow;
 
     [Tooltip("아이템 나누기 윈도우 게임오브젝트")]
+    [SerializeField]
     private GameObject m_itemDivideSlotWindowGO;
 
-    private ItemDevideWindow m_itemDevideWindw;
+    private ItemDevideWindow m_itemDevideWindow;
 
     [Tooltip("돈 텍스트 오브젝트")]
     [SerializeField]
@@ -65,11 +63,15 @@ public class InventoryUI : UI
     private float deactivateAlpha;
     #endregion
 
+    // 일반 변수 선언부
     #region
-    // 비활성화시 적용할 컬러
-    [SerializeField]
-    private Vector4 m_deactivateColor;
 
+    // 인벤토리 slots
+    private InventorySlot[] m_inventorySlots;
+    private InventoryCategory[] m_inventoryCategories;
+
+    // 비활성화시 적용할 컬러
+    private Vector4 m_deactivateColor;
     public Vector4 deactivateColor
     {
         get => m_deactivateColor;
@@ -77,8 +79,7 @@ public class InventoryUI : UI
     }
 
     // 활성화시 적용할 컬러
-    [SerializeField]
-    private Vector4 m_activateColor;
+    private  Vector4 m_activateColor;
     public Vector4 activateColor
     {
         get => m_activateColor;
@@ -86,14 +87,12 @@ public class InventoryUI : UI
     }
 
     // 내려놓을 슬롯
-    [SerializeField]
-    private InventorySlot m_allocatedSlot;
-    public InventorySlot allocatedSlot
+    private int m_allocatedSlot;
+    public int allocatedSlot
     {
         get => m_allocatedSlot;
         set => m_allocatedSlot = value;
     }
-
     // 선택된 아이템
     private ItemData m_selectedItem;
     public ItemData selectedItem
@@ -101,11 +100,9 @@ public class InventoryUI : UI
         get => m_selectedItem;
         set => m_selectedItem = value;
     }
-
-
-
-
-    [SerializeField]
+    #endregion
+    // is 변수 선언부
+    #region
     private bool m_isMoving = false;
     public bool isMoving
     {
@@ -113,117 +110,71 @@ public class InventoryUI : UI
         set => m_isMoving = value;
     }
     private bool isShowDescription = false;
+    private bool isOpen = false;
     #endregion
 
     public void Initialize()
     {
-        Debug.Log("Initialize호출");
+
         inventory._inventoryUI = this;
 
         m_deactivateColor = new Vector4(deactivateRGB, deactivateRGB, deactivateRGB, deactivateAlpha);
-        m_activateColor = Color.white;
+        m_activateColor = new Vector4(1,1,1,1);
 
         m_moveSlotImage = m_slotMoveSlotObject.GetComponent<Image>();
-        m_inventoryCategories = m_inventoryCategoryParentObject.GetComponentsInChildren<InventoryCategory>();
         m_itemDescriptionWindow = m_itemDescriptionWindowObject.GetComponent<ItemDescription>();
         m_goldText = m_GoldTextGO.GetComponent<Text>();
         m_popUp = m_popUpGO.GetComponent<ItemPopUp>();
-        m_itemDevideWindw = m_itemDescriptionWindowObject.GetComponent<ItemDevideWindow>();
+        m_itemDevideWindow = m_itemDivideSlotWindowGO.GetComponent<ItemDevideWindow>();
+        m_itemSeletWindow = m_itemSelectWindowGO.GetComponent<ItemSeletWindow>();
+
         m_inventorySlots = this.GetComponentsInChildren<InventorySlot>();
-        
+        m_inventoryCategories = m_inventoryCategoryParentObject.GetComponentsInChildren<InventoryCategory>();
+
         for (int i = 0; i < m_inventorySlots.Length; i++)
         {
-            
-            m_inventorySlots[i].Initialize();
-            if (inventory.inventoryDatas[i].id != 0)
-            {
-                Debug.Log(inventory.inventoryDatas[i].itemSprite);
-                m_inventorySlots[i].SetSlotData(inventory.inventoryDatas[i], i);
-            }
-            else
-            {
-                m_inventorySlots[i].ClearSlot();
-            }
+            m_inventorySlots[i].Initialize(i,m_activateColor,m_deactivateColor);
         }
         UpdateGold();
     }
+
     public override bool Open()
     {
         Debug.Log("Open호출");
-        if (background.activeSelf == true)
+        if (isOpen)
         {
             background.SetActive(false);
+            isOpen = false;
         }
+        isOpen = true;
         if (m_inventorySlots == null)
         {
             Initialize();
         }
-        foreach(var item in m_inventorySlots)
+        for(int i = 0; i < m_inventorySlots.Length; i++)
         {
-            item.SlotUpdate();
+            SlotUpdate(i);
         }
+
         Unemphasize();
         UpdateGold();
         background.SetActive(true);
         return true;
     }
 
-    public bool PutInSlot(int invenindex)
-    {
-        if(inventory.inventoryDatas[invenindex] != null)
-        {
-            m_inventorySlots[invenindex].SetSlotData(inventory.inventoryDatas[invenindex],invenindex);
-        }
-
-        return false;
-    }
-    public bool TakeOutItemAtSlot(int invenindex)
-    {
-        int slotindex = SearchSlot(invenindex);
-        ItemData item = inventory.inventoryDatas[invenindex];
-        if (item == null)
-        {
-            
-            if (slotindex != -1)
-            {
-                m_inventorySlots[slotindex].ClearSlot();
-                return true;
-            }
-        }
-        else
-        {
-            m_inventorySlots[slotindex].SetSlotData(item, invenindex);
-            return true;
-        }
-        return false;
-    }
-
-    public int SearchSlot(int inventoryindex)
-    {
-        for(int i = 0; i < m_inventorySlots.Length; i++)
-        {
-            if(m_inventorySlots[i].slotData.inventoryIndex == inventoryindex)
-            {
-                return i;
-            }
-        }
-        return -1;
-    }
-    public int SearchNullSlot()
-    {
-        for(int i = 0; i < m_inventorySlots.Length; i++)
-        {
-            if(m_inventorySlots[i].slotData.inventoryIndex == -1)
-            {
-                return i;
-            }
-        }
-        return -1;
+    public  void SlotUpdate(int index) {
+        m_inventorySlots[index].SlotUpdate(inventory.inventoryDatas[index]);
     }
 
     public void ShowItemDescription(int inventoryIndex)
     {
         m_itemDescriptionWindow.descriptionItem(inventory.inventoryDatas[inventoryIndex]);
+        m_itemDescriptionWindowObject.SetActive(true);
+        isShowDescription = true;
+    }
+    public void ShowItemDescription(ItemData item)
+    {
+        m_itemDescriptionWindow.descriptionItem(item);
         m_itemDescriptionWindowObject.SetActive(true);
         isShowDescription = true;
     }
@@ -238,45 +189,47 @@ public class InventoryUI : UI
         m_moveSlotImage.sprite = sprite;
         m_slotMoveSlotObject.SetActive(true);
     }
-    public void EndMoving(InventorySlot slot) 
+    public void EndMoving(int slotIndex) 
     {
         m_isMoving = false;
-        if (m_allocatedSlot != null && m_allocatedSlot != slot)
+        if (m_allocatedSlot != -1)
         {
-            inventory.Swap(slot.slotData.inventoryIndex, m_allocatedSlot.slotData.inventoryIndex);
-            
-            Swap(allocatedSlot, slot);
-            
+            inventory.Swap(slotIndex, m_allocatedSlot);
+            SlotUpdate(slotIndex);
+            SlotUpdate(m_allocatedSlot);  
         }
         else
         {
-            m_allocatedSlot = null;
+            m_allocatedSlot = -1;
         }
         m_moveSlotImage.gameObject.SetActive(false);
     }
+    public void EndMoving(ItemData item)
+    {
+        m_isMoving = false;
+        if (m_allocatedSlot != -1)
+        {
+            inventory.PutInItem(item,m_allocatedSlot);
+        }
+        else
+        {
+            m_allocatedSlot = -1;
+        }
+        m_moveSlotImage.gameObject.SetActive(false);
+    }
+
     public void SelectItem(int invenindex)
     {
         m_selectedItem = inventory.inventoryDatas[invenindex];
         m_itemSelectWindowGO.transform.position = m_inventorySlots[invenindex].gameObject.transform.position + new Vector3(0, -50, 0);
         m_itemSelectWindowGO.SetActive(true);
+        EmphasizeItem(invenindex);
+        m_itemSeletWindow.Open(m_selectedItem);
     }
-    public void UpdateGold()
-    {
-        m_goldText.text = inventory.gold.ToString();
-    }
-    
-    public void SortButton()
-    {
-        inventory.SortItem();
-        for(int i = 0; i < m_inventorySlots.Length; i++)
-        {
-            m_inventorySlots[i].SetSlotData(inventory.inventoryDatas[i], i);
-        }
-    }
-
+   
     public void DumpItemButton()
     {
-        m_popUp.PopUp("버리기", m_selectedItem, DumpItem);
+        m_popUp.PopUp("버리기", m_selectedItem, this.DumpItem);
     }
     public void DumpItem(ItemData item)
     {
@@ -288,33 +241,54 @@ public class InventoryUI : UI
 
     public void ItemDevideButton()
     {
-        m_popUp.PopUp("나누기", m_selectedItem, ItemDevide);
+        m_popUp.PopUp("나누기", m_selectedItem, this.ItemDevide);
     }
     public void ItemDevide(ItemData item)
     {
+
         //m_itemDevideWindw
+        if(inventory.TakeOutItem(item))
+        {
+            m_itemDevideWindow.OpenDevideWindow(item);
+        }
+        
     }
 
     public void Warning()
     {
 
     }
-    static public void Swap(InventorySlot slot1, InventorySlot slot2)
+    public void UpdateGold()
     {
-        InventorySlot tmpslot = slot1;
-        slot1.SetSlotData(slot2);
-        slot2.SetSlotData(tmpslot);
+        m_goldText.text = inventory.gold.ToString();
+    }
+
+    public void SortButton()
+    {
+        inventory.SortItem();
+
+    }
+    public void Sort()
+    {
+        for (int i = 0; i < m_inventorySlots.Length; i++)
+        {
+            SlotUpdate(i);
+        }
     }
 
     // Emphasize 관련 부분
     #region
     public void EmphasizeItemCategory(Category category)
     {
-        foreach(var item in m_inventorySlots)
+        for(int  i = 0; i < m_inventorySlots.Length; i++)
         {
-            if (item.slotData.itemCategory != category)
+            if(inventory.inventoryDatas[i].category == category)
             {
-                item.Deactivate();
+                m_inventorySlots[i].Activate();
+            }
+            else
+            {
+                m_inventorySlots[i].Deactivate();
             }
         }
     }
@@ -332,7 +306,11 @@ public class InventoryUI : UI
     {
         foreach (var item in m_inventorySlots)
         {
-            if (item.slotData.inventoryIndex != inventoryindex)
+            if(item.invenIndex == inventoryindex)
+            {
+                item.Activate();
+            }
+            else
             {
                 item.Deactivate();
             }
@@ -350,14 +328,6 @@ public class InventoryUI : UI
         }
     }
     #endregion
-
-    public void Sort()
-    {
-        for (int i = 0; i < m_inventorySlots.Length; i++)
-        {
-            m_inventorySlots[i].SetSlotData(inventory.inventoryDatas[i], i);
-        }
-    }
 
     void Update()
     {

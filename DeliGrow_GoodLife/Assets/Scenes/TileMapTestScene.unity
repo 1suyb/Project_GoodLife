@@ -367,14 +367,11 @@ MonoBehaviour:
   m_slotMoveSlotObject: {fileID: 1364602026}
   m_itemDescriptionWindowObject: {fileID: 474429977}
   m_itemSelectWindowGO: {fileID: 139358624}
+  m_itemDivideSlotWindowGO: {fileID: 264339068}
   m_GoldTextGO: {fileID: 472294889}
   m_popUpGO: {fileID: 1039380046}
   deactivateRGB: 0.5
   deactivateAlpha: 0.5
-  m_deactivateColor: {x: 0, y: 0, z: 0, w: 0}
-  m_activateColor: {x: 0, y: 0, z: 0, w: 0}
-  m_allocatedSlot: {fileID: 0}
-  m_isMoving: 0
 --- !u!114 &21374589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -658,7 +655,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -298.2, y: 89.6}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 170}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &139358626
@@ -744,6 +741,7 @@ MonoBehaviour:
   - {fileID: 398502997}
   - {fileID: 1578140145}
   invenUI: {fileID: 21374588}
+  m_deactivateColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
 --- !u!1001 &139875838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1201,13 +1199,14 @@ GameObject:
   - component: {fileID: 264339069}
   - component: {fileID: 264339071}
   - component: {fileID: 264339070}
+  - component: {fileID: 264339072}
   m_Layer: 5
   m_Name: ItemDevide_Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &264339069
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1267,6 +1266,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264339068}
   m_CullTransparentMesh: 1
+--- !u!114 &264339072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264339068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30cf63e5052580541930946d2bedfd07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slot: {fileID: 3731630985424198275}
 --- !u!1 &270609360
 GameObject:
   m_ObjectHideFlags: 0
@@ -2078,7 +2090,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -10, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &469429991
@@ -3040,6 +3052,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_category: 1
+  m_inventoryUI: {fileID: 21374588}
+  m_image: {fileID: 637834188}
 --- !u!114 &637834191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3059,7 +3073,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 637834190}
           m_TargetAssemblyTypeName: InventoryCategory, Assembly-CSharp
-          m_MethodName: SelectedCategory
+          m_MethodName: ActivateCategroy
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5752,6 +5766,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_category: 6
+  m_inventoryUI: {fileID: 21374588}
+  m_image: {fileID: 917216697}
 --- !u!114 &917216700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5771,7 +5787,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 917216699}
           m_TargetAssemblyTypeName: InventoryCategory, Assembly-CSharp
-          m_MethodName: SelectedCategory
+          m_MethodName: ActivateCategroy
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6267,7 +6283,7 @@ MonoBehaviour:
   _input: {fileID: 2023921356}
   _yesButton: {fileID: 565901468}
   _noButton: {fileID: 2137257117}
-  icon: {fileID: 0}
+  icon: {fileID: 353290422}
 --- !u!1 &1039737197
 GameObject:
   m_ObjectHideFlags: 0
@@ -6474,6 +6490,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_category: 4
+  m_inventoryUI: {fileID: 21374588}
+  m_image: {fileID: 1167593406}
 --- !u!114 &1167593409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6493,7 +6511,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1167593408}
           m_TargetAssemblyTypeName: InventoryCategory, Assembly-CSharp
-          m_MethodName: SelectedCategory
+          m_MethodName: ActivateCategroy
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7336,6 +7354,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_category: 5
+  m_inventoryUI: {fileID: 21374588}
+  m_image: {fileID: 1406319360}
 --- !u!114 &1406319363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7355,7 +7375,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1406319362}
           m_TargetAssemblyTypeName: InventoryCategory, Assembly-CSharp
-          m_MethodName: SelectedCategory
+          m_MethodName: ActivateCategroy
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -9105,6 +9125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_category: 3
+  m_inventoryUI: {fileID: 21374588}
+  m_image: {fileID: 1933916621}
 --- !u!114 &1933916624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9787,6 +9809,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_category: 2
+  m_inventoryUI: {fileID: 21374588}
+  m_image: {fileID: 2060710393}
 --- !u!114 &2060710396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9806,7 +9830,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 2060710395}
           m_TargetAssemblyTypeName: InventoryCategory, Assembly-CSharp
-          m_MethodName: SelectedCategory
+          m_MethodName: ActivateCategroy
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -10396,22 +10420,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 3731630985424198273}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f5cc43ba50da43468eb661221811733, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f90251f0cebb3d479ac0026b238aeec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_inventoryUI: {fileID: 21374588}
-  m_itemIconImage: {fileID: 3731630985089082348}
-  m_itemCountText: {fileID: 3731630985628119919}
-  m_slotData:
-    itemicon: {fileID: 0}
-    inventoryIndex: 0
-    itemCount: 0
-    itemCategory: 0
-  m_maxPointDownTime: 0.3
-  deactivateColor: {x: 0, y: 0, z: 0, w: 0}
-  activateColor: {x: 0, y: 0, z: 0, w: 0}
-  isActivate: 1
-  isMoving: 0
+  m_image: {fileID: 3731630985089082348}
+  m_count: {fileID: 3731630985628119919}
+  m_item:
+    m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
 --- !u!114 &3731630985424198276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10430,7 +10451,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 3731630985424198275}
-          m_TargetAssemblyTypeName: InventorySlot, Assembly-CSharp
+          m_TargetAssemblyTypeName: ItemSlot, Assembly-CSharp
           m_MethodName: MouseEnter
           m_Mode: 1
           m_Arguments:
@@ -10446,7 +10467,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 3731630985424198275}
-          m_TargetAssemblyTypeName: InventorySlot, Assembly-CSharp
+          m_TargetAssemblyTypeName: ItemSlot, Assembly-CSharp
           m_MethodName: MouseExit
           m_Mode: 1
           m_Arguments:
@@ -10462,7 +10483,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 3731630985424198275}
-          m_TargetAssemblyTypeName: InventorySlot, Assembly-CSharp
+          m_TargetAssemblyTypeName: ItemSlot, Assembly-CSharp
           m_MethodName: MouseDown
           m_Mode: 1
           m_Arguments:
@@ -10478,7 +10499,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 3731630985424198275}
-          m_TargetAssemblyTypeName: InventorySlot, Assembly-CSharp
+          m_TargetAssemblyTypeName: ItemSlot, Assembly-CSharp
           m_MethodName: MouseUp
           m_Mode: 1
           m_Arguments:
@@ -10556,7 +10577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

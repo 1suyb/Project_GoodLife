@@ -40,7 +40,7 @@ public class ItemPopUp : MonoBehaviour
 
     public void PopUp(string title, ItemData item, FunctionPointer act)
     {
-        _handlingItem = item.Clone();
+        _handlingItem = new ItemData(item.id, item.itemSprite, item.itemName, item.itemDescription, item.category, item.itemCount);
         this.gameObject.SetActive(true);
         _title.text = title;
         _description.text = DESCRIPTION;

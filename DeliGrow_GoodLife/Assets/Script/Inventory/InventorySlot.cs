@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
 {
+
+
     [Tooltip("인벤토리 슬롯 그리드 오브젝트를 넣으면 됩니다.")]
     [SerializeField]
     private InventoryUI m_inventoryUI;
@@ -27,19 +29,11 @@ public class InventorySlot : MonoBehaviour
     [SerializeField]
     private Text m_itemCountText;
     //private GameObject itemCountObject;
-
-
     public Text itemCountText
     {
         get => m_itemCountText;
     }
-    [SerializeField]
-    private SlotData m_slotData = new SlotData();
-    public SlotData slotData
-    {
-        get => m_slotData;
-    }
-    
+
     [Tooltip("아이템 이동하는데 눌러야하는 시간")]
     [SerializeField]
     private float m_maxPointDownTime;
@@ -49,79 +43,65 @@ public class InventorySlot : MonoBehaviour
     }
     private float m_currentPointDownTime;
 
-    [SerializeField]
-    public Vector4 deactivateColor;
-    [SerializeField]
-    public Vector4 activateColor;
+    private Vector4 m_activateColor;
+    private Vector4 m_deactivateColor;
 
-    [SerializeField]
+    private int m_invenindex;
+    public int invenIndex
+    {
+        get => m_invenindex;
+    }
+
+    private ItemData m_item;
+
     private bool isActivate = true;
-    [SerializeField]
     private bool isMoving = false;
     private bool isSelected = false;
     private bool isShowing = false;
 
-    public void Initialize()
+    
+    public void Initialize(int index,Vector4 activatecolor,Vector4 deactivateclor)
     {
-    }
-    public void SetSlotData(ItemData inventoryitem, int _itemIndex)
-    {
-        int itemcount = inventoryitem.itemCount;
-        if(itemcount <= 0)
-        {
-            ClearSlot();
-            return;
-        }
-        m_slotData.itemicon = inventoryitem.itemSprite;
-        m_slotData.itemCount = inventoryitem.itemCount;
-        m_slotData.itemCategory = inventoryitem.category;
-        m_slotData.inventoryIndex = _itemIndex;
-
-    }
-    public void ClearSlot()
-    {
-        m_slotData.itemicon = null;
-        m_slotData.itemCount = 0;
-        m_slotData.inventoryIndex = -1;
-        m_slotData.itemCategory = Category.NONE;
-        SlotUpdate();
-
+        m_invenindex = index;
+        m_activateColor = activatecolor;
+        m_deactivateColor = deactivateclor;
     }
 
-    public void SlotUpdate()
+    public void SlotUpdate(ItemData item)
     {
-        int itemcount = m_slotData.itemCount;
-        if (itemcount <= 0)
+        m_item = item;
+        if(item.id == 0)
         {
             m_itemIconImage.sprite = null;
             m_itemIconImage.color = Color.clear;
             m_itemCountText.text = " ";
+            isActivate = false;
             return;
         }
-        m_itemIconImage.sprite = m_slotData.itemicon;
-        m_itemIconImage.color = Color.white;
-        m_itemCountText.text = m_slotData.itemCount.ToString();
+        m_itemIconImage.sprite = item.itemSprite;
+        m_itemIconImage.color = m_activateColor;
+        m_itemCountText.text = item.itemCount.ToString();
+        isActivate = true;
 
     }
 
     public void Activate()
     {
-        Debug.Log("Activate호출");
-        if(slotData.inventoryIndex == -1)
+        if(itemIconImage.sprite != null)
         {
-            m_itemCountText.color = Color.clear;
-            m_itemIconImage.color = Color.clear;
-            isActivate = false;
-            return;
+            isActivate = true;
+            m_itemIconImage.color = m_activateColor;
         }
-        m_itemIconImage.color = m_inventoryUI.activateColor;
-        isActivate = true;
     }
 
     public void Deactivate()
     {
-        m_itemIconImage.color = m_inventoryUI.deactivateColor;
-        isActivate = false;
+        if (m_itemIconImage.sprite != null)
+        {
+            m_itemIconImage.color = m_deactivateColor;
+            isActivate = false;
+        }
+        
     }
 
     void Update()
@@ -135,7 +115,7 @@ public class InventorySlot : MonoBehaviour
                 isMoving = true;
                 m_currentPointDownTime = 0;
                 HideItemDescription();
-                m_inventoryUI.MovingItem(m_slotData.itemicon);
+                m_inventoryUI.MovingItem(m_item.itemSprite);
             }
         }
     }
@@ -148,7 +128,7 @@ public class InventorySlot : MonoBehaviour
             AllocateInventoryUIPutDownSlot();
             return;
         }
-        if (!isActivate || slotData.inventoryIndex == -1)
+        if (!isActivate)
         {
             return;
         }
@@ -170,7 +150,7 @@ public class InventorySlot : MonoBehaviour
     }
     public void MouseDown()
     {
-        if(m_slotData.inventoryIndex == -1)
+        if(!isActivate)
         {
             return;
         }
@@ -202,17 +182,17 @@ public class InventorySlot : MonoBehaviour
     private void AllocateInventoryUIPutDownSlot()
     {
         Debug.Log("allocateinventroyuiputdownslot");
-        m_inventoryUI.allocatedSlot = this;
+        m_inventoryUI.allocatedSlot = m_invenindex;
     }
     private void ShowItemDescription()
     {
         Debug.Log("ShowItemDescription");
-        m_inventoryUI.ShowItemDescription(slotData.inventoryIndex);
+        m_inventoryUI.ShowItemDescription(m_invenindex);
     }
     private void DeacllocateInventoryUIPutDownSlot()
     {
         Debug.Log("DeallocateInventoryUIPutDownSlot");
-        m_inventoryUI.allocatedSlot = null;
+        m_inventoryUI.allocatedSlot = -1;
     }
     private void HideItemDescription()
     {
@@ -221,16 +201,12 @@ public class InventorySlot : MonoBehaviour
     }
     private void EndMoving()
     {
-        Debug.Log("Endmoving");
-        Debug.Log(this.slotData.itemicon);
         isMoving = false;
-        m_inventoryUI.EndMoving(this);
-
-        
+        m_inventoryUI.EndMoving(invenIndex);
     }
     private void SelecctItem()
     {
-        m_inventoryUI.SelectItem(slotData.inventoryIndex);
+        m_inventoryUI.SelectItem(m_invenindex);
         Debug.Log("SlectItem");
         Debug.Log("아이템선택");
         isSelected = false;
@@ -239,19 +215,5 @@ public class InventorySlot : MonoBehaviour
     {
 
     }
-
-    public void SetSlotData(InventorySlot slot)
-    {
-        this.m_slotData = slot.slotData;
-        SlotUpdate();
-    }
     
-}
-[System.Serializable]
-public struct SlotData
-{
-    public Sprite itemicon;
-    public int inventoryIndex;
-    public int itemCount;
-    public Category itemCategory;
 }

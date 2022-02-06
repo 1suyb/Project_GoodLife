@@ -78,8 +78,7 @@ public class ItemData
     }
     public ItemData Clone()
     {
-        ItemData val = new ItemData(this.m_id,this.m_itemSprite,this.m_itemName,this.m_itemDescription,this.m_category,this.m_itemCount);
-        return val;
+        return new ItemData(this.m_id, this.m_itemSprite, this.m_itemName, this.m_itemDescription, this.m_category, this.m_itemCount);
     }
     public bool IsEqual(ItemData val)
     {
