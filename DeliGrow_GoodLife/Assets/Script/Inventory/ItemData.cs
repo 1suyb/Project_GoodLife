@@ -101,6 +101,15 @@ public class ItemData
         return val1.id < val2.id;
     }
 
+    public static bool operator >=(ItemData val1, ItemData val2)
+    {
+        return val1.id >= val2.id;
+    }
+    public static bool operator <=(ItemData val1, ItemData val2)
+    {
+        return val1.id <= val2.id;
+    }
+
 }
 
 public enum Category

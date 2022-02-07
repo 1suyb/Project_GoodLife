@@ -14,7 +14,8 @@ public class ItemSeletWindow : MonoBehaviour
     private InventoryUI invenUI;
     [SerializeField]
     private Color m_deactivateColor;
-
+    [SerializeField]
+    private Color m_activateColor;
     private bool[] isActive = new bool[3];
 
     private ItemData _itemdata;
@@ -36,7 +37,7 @@ public class ItemSeletWindow : MonoBehaviour
             case Category.CROP:
             case Category.FOOD:
                 isActive[0] = true;
-                images[0].color = Color.white;
+                images[0].color = m_activateColor;
                 break;
             case Category.MATERIAL:
             case Category.QUEST:
@@ -50,15 +51,22 @@ public class ItemSeletWindow : MonoBehaviour
         if (item.category == Category.QUEST)
         {
             isActive[1] = false;
+            images[1].color = m_deactivateColor;
+
             isActive[2] = false;
+            images[2].color = m_deactivateColor;
         }
         else
         {
             isActive[1] = true;
+            images[1].color = m_activateColor;
+
             isActive[2] = true;
+            images[2].color = m_activateColor;
         }
 
     }
+
     public void UseButtonClick()
     {
         if (!isActive[0])

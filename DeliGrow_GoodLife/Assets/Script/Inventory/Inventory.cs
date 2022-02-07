@@ -33,30 +33,31 @@ public class Inventory : ScriptableObject
         int index = SearchItem(item);
         if (index != -1)
         {
-            Debug.Log("아이템서치 성공");
-            inventoryDatas[index].itemCount += item.itemCount;
-            _inventoryUI.SlotUpdate(index);
-            return true;
+            return InsertItem(item, index);
         }
         index = SearchNull();
         if (index != -1)
         {
-            Debug.Log("널슬롯 서치 성공");
-            inventoryDatas[index] = item;
-            _inventoryUI.SlotUpdate(index);
-            return true;
+            return InsertItem(item, index);
         }
         Debug.Log("공간 서치 실패");
         return false;
 
     }
-    public bool PutInItem(ItemData item, int index)
+    public bool InsertItem(ItemData item, int index)
     {
-        if(_inventoryDatas[index].id != 0)
+        if (index < 0)
         {
             return false;
         }
-        _inventoryDatas[index] = item;
+        if (_inventoryDatas[index].id == item.id)
+        {
+            _inventoryDatas[index].itemCount += item.itemCount;
+        }
+        else
+        {
+            _inventoryDatas[index] = item;
+        }
         _inventoryUI.SlotUpdate(index);
         return true;
     }
@@ -65,11 +66,11 @@ public class Inventory : ScriptableObject
     {
         for(int i = 0; i < _inventoryDatas.Length; i++)
         {
-            for(int j = i; j < _inventoryDatas.Length; j++)
+            for(int j = i+1; j < _inventoryDatas.Length; j++)
             {
-                if (_inventoryDatas[i] < _inventoryDatas[j])
+                if (_inventoryDatas[i] <= _inventoryDatas[j])
                 {
-                    Swap(ref _inventoryDatas[i], ref _inventoryDatas[j]);
+                    Swap(i, j);
                 }
             }
         }
@@ -77,13 +78,7 @@ public class Inventory : ScriptableObject
     }
     public bool TakeOutItem(ItemData item)
     {
-        Debug.Log("teackout");
-        Debug.Log(item.itemName);
-        Debug.Log(item.itemCount);
         int index = SearchItem(item);
-        Debug.Log("인덱스");
-
-        Debug.Log(index);
         int itemcount = item.itemCount;
         int datasitemcount = _inventoryDatas[index].itemCount;
         if(index != -1)
@@ -107,9 +102,31 @@ public class Inventory : ScriptableObject
             }
         }
         return false;
-
-        
     }
+    public bool DeleteItem(ItemData item, int index)
+    {
+        if (index < 0)
+        {
+            return false;
+        }
+        if(_inventoryDatas[index].id == item.id)
+        {
+            if(_inventoryDatas[index].itemCount>item.itemCount)
+            {
+                _inventoryDatas[index].itemCount -= item.itemCount;
+                _inventoryUI.SlotUpdate(index);
+                return true;
+            }
+            else if(_inventoryDatas[index].itemCount == item.itemCount)
+            {
+                _inventoryDatas[index].id = 0;
+                _inventoryUI.SlotUpdate(index);
+                return true;
+            }
+        }
+        return true;
+    }
+
     public void AddGold(ulong gold)
     {
         if(m_gold+gold> 18000000000000000000)
@@ -156,26 +173,34 @@ public class Inventory : ScriptableObject
     {
         for (int i = 0; i < inventoryDatas.Length; i++)
         {
-            if (inventoryDatas[i].id != 0)
-            {
-                Debug.Log("널아닌뎁쇼..");
-            }
-            else
+            if (inventoryDatas[i].id == 0)
             {
                 return i;
             }
+
         }
         return -1;
     }
 
     private static void Swap(ref ItemData val1, ref ItemData val2)
     {
+
         ItemData tmp = val1;
         val1 = val2;
         val2 = tmp;
     }
     public void Swap(int index1, int index2)
     {
+        if(_inventoryDatas[index1].id == 0)
+        {
+            return;
+        }
+        if (_inventoryDatas[index1].id == _inventoryDatas[index2].id)
+        {
+            InsertItem(_inventoryDatas[index2], index1);
+            DeleteItem(_inventoryDatas[index2], index2);
+            return;
+        }
         Swap(ref _inventoryDatas[index1], ref _inventoryDatas[index2]);
     }
 

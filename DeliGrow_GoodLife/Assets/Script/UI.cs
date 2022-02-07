@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class UI : MonoBehaviour
 {
-    public virtual bool Open()
+    public virtual void Open()
     {
-        return true;
+    }
+    public virtual void Close()
+    {
     }
     // Start is called before the first frame update
     void Start()

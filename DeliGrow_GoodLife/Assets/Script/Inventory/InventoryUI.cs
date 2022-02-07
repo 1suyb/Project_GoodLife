@@ -94,11 +94,11 @@ public class InventoryUI : UI
         set => m_allocatedSlot = value;
     }
     // 선택된 아이템
-    private ItemData m_selectedItem;
-    public ItemData selectedItem
+    private int m_selectedItemIndex;
+    public int selectedItem
     {
-        get => m_selectedItem;
-        set => m_selectedItem = value;
+        get => m_selectedItemIndex;
+        set => m_selectedItemIndex = value;
     }
     #endregion
     // is 변수 선언부
@@ -138,15 +138,8 @@ public class InventoryUI : UI
         UpdateGold();
     }
 
-    public override bool Open()
+    public override void Open()
     {
-        Debug.Log("Open호출");
-        if (isOpen)
-        {
-            background.SetActive(false);
-            isOpen = false;
-        }
-        isOpen = true;
         if (m_inventorySlots == null)
         {
             Initialize();
@@ -159,7 +152,11 @@ public class InventoryUI : UI
         Unemphasize();
         UpdateGold();
         background.SetActive(true);
-        return true;
+    }
+
+    public override void Close()
+    {
+        background.SetActive(false);
     }
 
     public  void SlotUpdate(int index) {
@@ -192,11 +189,12 @@ public class InventoryUI : UI
     public void EndMoving(int slotIndex) 
     {
         m_isMoving = false;
-        if (m_allocatedSlot != -1)
+        if (m_allocatedSlot != -1 )
         {
-            inventory.Swap(slotIndex, m_allocatedSlot);
+            inventory.Swap(m_allocatedSlot, slotIndex);
             SlotUpdate(slotIndex);
-            SlotUpdate(m_allocatedSlot);  
+            SlotUpdate(m_allocatedSlot);
+            
         }
         else
         {
@@ -209,7 +207,7 @@ public class InventoryUI : UI
         m_isMoving = false;
         if (m_allocatedSlot != -1)
         {
-            inventory.PutInItem(item,m_allocatedSlot);
+            inventory.InsertItem(item,m_allocatedSlot);
         }
         else
         {
@@ -220,20 +218,21 @@ public class InventoryUI : UI
 
     public void SelectItem(int invenindex)
     {
-        m_selectedItem = inventory.inventoryDatas[invenindex];
-        m_itemSelectWindowGO.transform.position = m_inventorySlots[invenindex].gameObject.transform.position + new Vector3(0, -50, 0);
+        m_selectedItemIndex = invenindex;
+        m_itemSelectWindowGO.transform.position = m_inventorySlots[invenindex].gameObject.transform.position + new Vector3(0, -35, 0);
         m_itemSelectWindowGO.SetActive(true);
         EmphasizeItem(invenindex);
-        m_itemSeletWindow.Open(m_selectedItem);
+        m_itemSeletWindow.Open(inventory.inventoryDatas[invenindex]);
     }
    
     public void DumpItemButton()
     {
-        m_popUp.PopUp("버리기", m_selectedItem, this.DumpItem);
+        m_popUp.PopUp("버리기", inventory.inventoryDatas[m_selectedItemIndex], this.DumpItem);
     }
     public void DumpItem(ItemData item)
     {
-        if (!inventory.TakeOutItem(item))
+        Unemphasize();
+        if (!inventory.DeleteItem(item,m_selectedItemIndex))
         {
             // 실패시 경고 알림.
         }
@@ -241,13 +240,13 @@ public class InventoryUI : UI
 
     public void ItemDevideButton()
     {
-        m_popUp.PopUp("나누기", m_selectedItem, this.ItemDevide);
+        m_popUp.PopUp("나누기", inventory.inventoryDatas[m_selectedItemIndex], this.ItemDevide);
     }
     public void ItemDevide(ItemData item)
     {
-
+        Unemphasize();
         //m_itemDevideWindw
-        if(inventory.TakeOutItem(item))
+        if(inventory.DeleteItem(item,m_selectedItemIndex))
         {
             m_itemDevideWindow.OpenDevideWindow(item);
         }
