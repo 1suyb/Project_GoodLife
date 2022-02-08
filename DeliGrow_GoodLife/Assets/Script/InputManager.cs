@@ -28,10 +28,12 @@ public class InputManager : MonoBehaviour
         {
             if (!isInvenOpen)
             {
+                isInvenOpen = true;
                 inventoryUI.Open();
             }
             else
             {
+                isInvenOpen = false;
                 inventoryUI.Close();
                 Debug.Log("¿Ü¾ÊµÊ");
             }

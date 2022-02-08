@@ -52,15 +52,19 @@ public class ItemPopUp : MonoBehaviour
     {
         _handlingItem.itemCount = int.Parse(_input.text);
         this.gameObject.SetActive(false);
-        _input.text = "";
+        CleanInputText();
         action(_handlingItem);
         _handlingItem = null;
     }
     public void NoButton()
     {
-        _input.text = "";
+        CleanInputText();
         _handlingItem = null;
         this.gameObject.SetActive(false);
+    }
+    public void CleanInputText()
+    {
+        _input.text = "";
     }
 
 }

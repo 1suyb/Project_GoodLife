@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class InventoryUI : UI
 {
     [SerializeField]
+    private Warning warning;
+    [SerializeField]
     private GameObject background;
     //serializeField 선언부
     #region
@@ -131,6 +133,8 @@ public class InventoryUI : UI
         m_inventorySlots = this.GetComponentsInChildren<InventorySlot>();
         m_inventoryCategories = m_inventoryCategoryParentObject.GetComponentsInChildren<InventoryCategory>();
 
+        m_allocatedSlot = -1;
+
         for (int i = 0; i < m_inventorySlots.Length; i++)
         {
             m_inventorySlots[i].Initialize(i,m_activateColor,m_deactivateColor);
@@ -186,7 +190,7 @@ public class InventoryUI : UI
         m_moveSlotImage.sprite = sprite;
         m_slotMoveSlotObject.SetActive(true);
     }
-    public void EndMoving(int slotIndex) 
+    public bool EndMoving(int slotIndex) 
     {
         m_isMoving = false;
         if (m_allocatedSlot != -1 )
@@ -194,26 +198,34 @@ public class InventoryUI : UI
             inventory.Swap(m_allocatedSlot, slotIndex);
             SlotUpdate(slotIndex);
             SlotUpdate(m_allocatedSlot);
+            m_moveSlotImage.gameObject.SetActive(false);
+            m_allocatedSlot = -1;
+            return true;
             
         }
         else
         {
             m_allocatedSlot = -1;
+            m_moveSlotImage.gameObject.SetActive(false);
+            return false;
         }
-        m_moveSlotImage.gameObject.SetActive(false);
     }
-    public void EndMoving(ItemData item)
+    public bool EndMoving(ItemData item)
     {
         m_isMoving = false;
         if (m_allocatedSlot != -1)
         {
-            inventory.InsertItem(item,m_allocatedSlot);
+            if(inventory.inventoryDatas[m_allocatedSlot].id == 0)
+            {
+                inventory.InsertItem(item, m_allocatedSlot);
+                m_moveSlotImage.gameObject.SetActive(false);
+                m_allocatedSlot = -1;
+                return true;
+            }
         }
-        else
-        {
-            m_allocatedSlot = -1;
-        }
+        m_allocatedSlot = -1;
         m_moveSlotImage.gameObject.SetActive(false);
+        return false;
     }
 
     public void SelectItem(int invenindex)
@@ -234,6 +246,8 @@ public class InventoryUI : UI
         Unemphasize();
         if (!inventory.DeleteItem(item,m_selectedItemIndex))
         {
+            warning.ShowWaring("소지중인 아이템 수량보다 많이 입력했습니다.");
+            return;
             // 실패시 경고 알림.
         }
     }
@@ -246,17 +260,16 @@ public class InventoryUI : UI
     {
         Unemphasize();
         //m_itemDevideWindw
-        if(inventory.DeleteItem(item,m_selectedItemIndex))
+        if(!inventory.DeleteItem(item,m_selectedItemIndex))
         {
-            m_itemDevideWindow.OpenDevideWindow(item);
+            warning.ShowWaring("소지중인 아이템 수량보다 많이 입력했습니다.");
+            return;
         }
-        
-    }
-
-    public void Warning()
-    {
+        m_itemDevideWindow.OpenDevideWindow(item);
 
     }
+ 
+
     public void UpdateGold()
     {
         m_goldText.text = inventory.gold.ToString();
@@ -328,6 +341,18 @@ public class InventoryUI : UI
     }
     #endregion
 
+
+    public void Realse()
+    {
+        Unemphasize();
+        m_itemDescriptionWindowObject.SetActive(false);
+
+        m_popUpGO.SetActive(false);
+        m_popUp.CleanInputText();
+
+        m_itemSelectWindowGO.SetActive(false);
+        
+    }
     void Update()
     {
         if (isMoving)

@@ -139,7 +139,7 @@ public class InventorySlot : MonoBehaviour
     }
     public void MouseExit()
     {
-        if (isMoving)
+        if (m_inventoryUI.isMoving)
         {
             DeacllocateInventoryUIPutDownSlot();
         }

@@ -38,8 +38,8 @@ public class ItemSlot : MonoBehaviour
     }
     public void MouseUp()
     {
-        m_inventoryUI.EndMoving(m_item);
-        if (act != null){
+        
+        if (act != null&& m_inventoryUI.EndMoving(m_item)){
             act();
         }
     }

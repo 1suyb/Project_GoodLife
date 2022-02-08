@@ -18,6 +18,9 @@ public class ItemSeletWindow : MonoBehaviour
     private Color m_activateColor;
     private bool[] isActive = new bool[3];
 
+    [SerializeField]
+    private Warning waring;
+
     private ItemData _itemdata;
     private int _invenindex;
 
@@ -71,6 +74,7 @@ public class ItemSeletWindow : MonoBehaviour
     {
         if (!isActive[0])
         {
+            waring.ShowWaring("사용가능한 아이템이 아닙니다.");
             return;
         }
         Debug.Log("UseItem");
@@ -80,6 +84,7 @@ public class ItemSeletWindow : MonoBehaviour
     {
         if (!isActive[1])
         {
+            waring.ShowWaring("이 아이템은 나눌 수 없습니다.");
             return;
         }
         invenUI.ItemDevideButton();
@@ -89,6 +94,7 @@ public class ItemSeletWindow : MonoBehaviour
     {
         if (!isActive[2])
         {
+            waring.ShowWaring("이 아이템은 버릴 수 없습니다.");
             return;
         }
         invenUI.DumpItemButton();

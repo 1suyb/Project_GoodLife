@@ -109,10 +109,13 @@ public class Inventory : ScriptableObject
         {
             return false;
         }
-        if(_inventoryDatas[index].id == item.id)
+        Debug.Log(_inventoryDatas[index].itemCount);
+        Debug.Log(item.itemCount);
+        if (_inventoryDatas[index].id == item.id)
         {
             if(_inventoryDatas[index].itemCount>item.itemCount)
             {
+                
                 _inventoryDatas[index].itemCount -= item.itemCount;
                 _inventoryUI.SlotUpdate(index);
                 return true;
@@ -124,7 +127,7 @@ public class Inventory : ScriptableObject
                 return true;
             }
         }
-        return true;
+        return false;
     }
 
     public void AddGold(ulong gold)
@@ -190,11 +193,7 @@ public class Inventory : ScriptableObject
         val2 = tmp;
     }
     public void Swap(int index1, int index2)
-    {
-        if(_inventoryDatas[index1].id == 0)
-        {
-            return;
-        }
+    { 
         if (_inventoryDatas[index1].id == _inventoryDatas[index2].id)
         {
             InsertItem(_inventoryDatas[index2], index1);
