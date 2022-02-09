@@ -144,6 +144,7 @@ public class InventoryUI : UI
 
     public override void Open()
     {
+        base.Open();
         if (m_inventorySlots == null)
         {
             Initialize();
@@ -160,6 +161,7 @@ public class InventoryUI : UI
 
     public override void Close()
     {
+        base.Close();
         background.SetActive(false);
     }
 

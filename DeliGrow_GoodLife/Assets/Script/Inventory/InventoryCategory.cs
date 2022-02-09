@@ -32,10 +32,6 @@ public class InventoryCategory : MonoBehaviour
     }
     public  void ActivateCategroy()
     {
-        if (!isActive)
-        {
-            return;
-        }
         m_inventoryUI.EmphasizeCategory(m_category);
         m_inventoryUI.EmphasizeItemCategory(m_category);
     }
