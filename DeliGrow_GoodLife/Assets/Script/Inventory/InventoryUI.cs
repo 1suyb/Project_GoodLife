@@ -217,9 +217,8 @@ public class InventoryUI : UI
         m_isMoving = false;
         if (m_allocatedSlot != -1)
         {
-            if(inventory.inventoryDatas[m_allocatedSlot].id == 0)
+            if(inventory.InsertItem(item, m_allocatedSlot))
             {
-                inventory.InsertItem(item, m_allocatedSlot);
                 m_moveSlotImage.gameObject.SetActive(false);
                 m_allocatedSlot = -1;
                 return true;
@@ -261,6 +260,11 @@ public class InventoryUI : UI
     public void ItemDevide(ItemData item)
     {
         Unemphasize();
+        if (item.itemCount==0)
+        {
+            Unemphasize();
+            return;
+        }
         //m_itemDevideWindw
         if(!inventory.DeleteItem(item,m_selectedItemIndex))
         {

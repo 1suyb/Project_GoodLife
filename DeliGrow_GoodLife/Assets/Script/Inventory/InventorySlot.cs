@@ -108,8 +108,9 @@ public class InventorySlot : MonoBehaviour
     {
         if (isSelected)
         {
-            m_currentPointDownTime += Time.deltaTime;
-            if(m_currentPointDownTime >= m_maxPointDownTime)
+            Debug.Log(m_currentPointDownTime);
+            m_currentPointDownTime += Time.unscaledDeltaTime;
+            if (m_currentPointDownTime >= m_maxPointDownTime)
             {
                 isSelected = false;
                 isMoving = true;
