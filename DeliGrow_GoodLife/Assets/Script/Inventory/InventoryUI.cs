@@ -241,7 +241,7 @@ public class InventoryUI : UI
    
     public void DumpItemButton()
     {
-        m_popUp.PopUp("버리기", inventory.inventoryDatas[m_selectedItemIndex], this.DumpItem);
+        m_popUp.PopUp("버리기", inventory.inventoryDatas[m_selectedItemIndex], this.DumpItem,this.Unemphasize);
     }
     public void DumpItem(ItemData item)
     {
@@ -256,7 +256,7 @@ public class InventoryUI : UI
 
     public void ItemDevideButton()
     {
-        m_popUp.PopUp("나누기", inventory.inventoryDatas[m_selectedItemIndex], this.ItemDevide);
+        m_popUp.PopUp("나누기", inventory.inventoryDatas[m_selectedItemIndex], this.ItemDevide, this.Unemphasize);
     }
     public void ItemDevide(ItemData item)
     {
@@ -350,7 +350,7 @@ public class InventoryUI : UI
         m_itemDescriptionWindowObject.SetActive(false);
 
         m_popUpGO.SetActive(false);
-        m_popUp.CleanInputText();
+        m_popUp.NoButton();
 
         m_itemSelectWindowGO.SetActive(false);
         

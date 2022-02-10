@@ -15,7 +15,8 @@ public class ItemPopUp : MonoBehaviour
 
     [Tooltip("인풋필드")]
     [SerializeField]
-    private Text _input;
+    private InputField _input;
+    private Text _text;
 
     [Tooltip("확인버튼")]
     [SerializeField]
@@ -34,37 +35,77 @@ public class ItemPopUp : MonoBehaviour
 
     private ItemData _handlingItem;
 
-    public delegate void FunctionPointer(ItemData a);
+    public delegate void YesFunctionPointer(ItemData a);
+    public delegate void NOFunctionPointer();
+    private YesFunctionPointer yesaction;
+    private NOFunctionPointer noaction;
 
-    private FunctionPointer action;
-
-    public void PopUp(string title, ItemData item, FunctionPointer act)
+    public void PopUp(string title, ItemData item, YesFunctionPointer act)
     {
         _handlingItem = new ItemData(item.id, item.itemSprite, item.itemName, item.itemDescription, item.category, item.itemCount);
         this.gameObject.SetActive(true);
         _title.text = title;
         _description.text = DESCRIPTION;
         icon.sprite = _handlingItem.itemSprite;
-        action = act;
+        yesaction = act;
+    }
+    public void PopUp(string title, ItemData item, YesFunctionPointer act,NOFunctionPointer noact)
+    {
+        _handlingItem = new ItemData(item.id, item.itemSprite, item.itemName, item.itemDescription, item.category, item.itemCount);
+        this.gameObject.SetActive(true);
+        _title.text = title;
+        _description.text = DESCRIPTION;
+        icon.sprite = _handlingItem.itemSprite;
+        yesaction = act;
+        noaction = noact;
+
     }
 
-    public void YesButton()
+     public void YesButton()
     {
         _handlingItem.itemCount = int.Parse(_input.text);
         this.gameObject.SetActive(false);
         CleanInputText();
-        action(_handlingItem);
+        yesaction(_handlingItem);
         _handlingItem = null;
+
     }
     public void NoButton()
     {
         CleanInputText();
         _handlingItem = null;
         this.gameObject.SetActive(false);
+        if (noaction != null)
+        {
+            noaction();
+        }
+        
     }
-    public void CleanInputText()
+    private void CleanInputText()
     {
         _input.text = "";
     }
 
+    public void OutofCount()
+    {
+        if (_input.text != "")
+        {
+            if(_input.text == "00")
+            {
+                _input.text = "0";
+            }
+            if(_input.text.Length>=2&&_input.text[0] == '0')
+            {
+                _input.text = _input.text[1].ToString();
+            }
+            if (int.Parse(_input.text) > _handlingItem.itemCount)
+            {
+                _input.text = _handlingItem.itemCount.ToString();
+            }
+            else if (int.Parse(_input.text) < 0)
+            {
+                _input.text = "0";
+            }
+        }
+    }
 }
