@@ -7,14 +7,14 @@ public class InventorySlot : MonoBehaviour
 {
 
 
-    [Tooltip("ÀÎº¥Åä¸® ½½·Ô ±×¸®µå ¿ÀºêÁ§Æ®¸¦ ³ÖÀ¸¸é µË´Ï´Ù.")]
+    [Tooltip("ï¿½Îºï¿½ï¿½ä¸® ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë´Ï´ï¿½.")]
     [SerializeField]
     private InventoryUI m_inventoryUI;
     public InventoryUI inventoryUI
     {
         get; set;
     }
-    [Tooltip("ItemIconÀ» ³ÖÀ» °ÔÀÓ ¿ÀºêÁ§Æ®")]
+    [Tooltip("ItemIconï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®")]
     [SerializeField]
     private Image m_itemIconImage;
     //private GameObject itemIconObject;
@@ -25,7 +25,7 @@ public class InventorySlot : MonoBehaviour
         get => m_itemIconImage;
     }
 
-    [Tooltip("ItemCountÅØ½ºÆ®¸¦ ³ÖÀ» °ÔÀÓ ¿ÀºêÁ§Æ®")]
+    [Tooltip("ItemCountï¿½Ø½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®")]
     [SerializeField]
     private Text m_itemCountText;
     //private GameObject itemCountObject;
@@ -34,7 +34,7 @@ public class InventorySlot : MonoBehaviour
         get => m_itemCountText;
     }
 
-    [Tooltip("¾ÆÀÌÅÛ ÀÌµ¿ÇÏ´Âµ¥ ´­·¯¾ßÇÏ´Â ½Ã°£")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Ï´Âµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ã°ï¿½")]
     [SerializeField]
     private float m_maxPointDownTime;
     public float maxPointDownTime
@@ -153,7 +153,9 @@ public class InventorySlot : MonoBehaviour
     {
         if(!isActivate)
         {
-            return;
+            if(m_inventoryUI.isSelection){
+                m_inventoryUI.DeSelect();
+            }
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -209,7 +211,7 @@ public class InventorySlot : MonoBehaviour
     {
         m_inventoryUI.SelectItem(m_invenindex);
         Debug.Log("SlectItem");
-        Debug.Log("¾ÆÀÌÅÛ¼±ÅÃ");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½Û¼ï¿½ï¿½ï¿½");
         isSelected = false;
     }
     private void ItemUse()

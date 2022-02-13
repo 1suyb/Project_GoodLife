@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 public class InventoryCategory : MonoBehaviour
 {
-    [Tooltip("ÇØ´çÄ«Å×°í¸®")]
+    [Tooltip("ï¿½Ø´ï¿½Ä«ï¿½×°ï¿½ï¿½ï¿½")]
     [SerializeField]
     private Category m_category;
     public Category category
     {
         get => m_category;
     }
-    [Tooltip("ÀÎº¥Åä¸® UI")]
+    [Tooltip("ï¿½Îºï¿½ï¿½ä¸® UI")]
     [SerializeField]
     private InventoryUI m_inventoryUI;
     [SerializeField]
@@ -32,6 +32,9 @@ public class InventoryCategory : MonoBehaviour
     }
     public  void ActivateCategroy()
     {
+        if(m_inventoryUI.isSelection){
+            return ;
+        }
         m_inventoryUI.Unemphasize();
         m_inventoryUI.EmphasizeCategory(m_category);
         m_inventoryUI.EmphasizeItemCategory(m_category);

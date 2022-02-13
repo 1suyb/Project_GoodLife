@@ -94,7 +94,7 @@ MonoBehaviour:
   m_inventoryUI: {fileID: 0}
   m_itemIconImage: {fileID: 8601383886917334100}
   m_itemCountText: {fileID: 8601383887452431575}
-  m_maxPointDownTime: 0.3
+  m_maxPointDownTime: 1
 --- !u!114 &8601383886580501820
 MonoBehaviour:
   m_ObjectHideFlags: 0

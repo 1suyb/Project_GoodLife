@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemSeletWindow : MonoBehaviour
+public class ItemSeletWindow : UI
 {
 
     [SerializeField]
@@ -27,8 +27,8 @@ public class ItemSeletWindow : MonoBehaviour
 
     public void Open(ItemData item)
     {
-        Debug.Log("¿Ü¾ÊµÊ");
-        this.gameObject.SetActive(true);
+        Debug.Log("ï¿½Ü¾Êµï¿½");
+        
         _itemdata = item;
         switch (item.category)
         {
@@ -67,38 +67,46 @@ public class ItemSeletWindow : MonoBehaviour
             isActive[2] = true;
             images[2].color = m_activateColor;
         }
-
+        Open();
     }
-
+    public override void Open()
+    {
+        invenUI.isSelection = true;
+        this.gameObject.SetActive(true);
+    }
+    public override void Close(){
+        gameObject.SetActive(false);
+        invenUI.isSelection = false;
+    }
     public void UseButtonClick()
     {
         if (!isActive[0])
         {
-            waring.ShowWaring("»ç¿ë°¡´ÉÇÑ ¾ÆÀÌÅÛÀÌ ¾Æ´Õ´Ï´Ù.");
+            waring.ShowWaring("ï¿½ï¿½ë°¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´Õ´Ï´ï¿½.");
             return;
         }
         Debug.Log("UseItem");
-        gameObject.SetActive(false);
+        Close();
     }
     public void DevideButtonClick()
     {
         if (!isActive[1])
         {
-            waring.ShowWaring("ÀÌ ¾ÆÀÌÅÛÀº ³ª´­ ¼ö ¾ø½À´Ï´Ù.");
+            waring.ShowWaring("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
             return;
         }
         invenUI.ItemDevideButton();
-        gameObject.SetActive(false);
+        Close();
     }
     public void DeleteButtonClick()
     {
         if (!isActive[2])
         {
-            waring.ShowWaring("ÀÌ ¾ÆÀÌÅÛÀº ¹ö¸± ¼ö ¾ø½À´Ï´Ù.");
+            waring.ShowWaring("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
             return;
         }
         invenUI.DumpItemButton();
-        gameObject.SetActive(false);
+        Close();
     }
 
 }

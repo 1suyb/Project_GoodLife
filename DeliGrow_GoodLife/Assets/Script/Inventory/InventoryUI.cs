@@ -10,69 +10,69 @@ public class InventoryUI : UI
     private Warning warning;
     [SerializeField]
     private GameObject background;
-    //serializeField ¼±¾ğºÎ
+    //serializeField ï¿½ï¿½ï¿½ï¿½ï¿½
     #region
-    [Tooltip("ÀÎº¥Åä¸®")]
+    [Tooltip("ï¿½Îºï¿½ï¿½ä¸®")]
     public Inventory inventory;
 
-    [Tooltip("ÀÎº¥Åä¸® Ä«Å×°í¸®½½·Ô ºÎ¸ğ ¿ÀºêÁ§Æ®")]
+    [Tooltip("ï¿½Îºï¿½ï¿½ä¸® Ä«ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®")]
     [SerializeField]
     private GameObject m_inventoryCategoryParentObject;
 
-    [Tooltip("¾ÆÀÌÅÛ ¿òÁ÷ÀÏ¶§ ½½·Ô GameObject")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½ ï¿½ï¿½ï¿½ï¿½ GameObject")]
     [SerializeField]
     private GameObject m_slotMoveSlotObject;
     private Image m_moveSlotImage;
 
-    [Tooltip("¾ÆÀÌÅÛ ¼³¸í À©µµ¿ì¿ÀºêÁ§Æ®")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®")]
     [SerializeField]
     private GameObject m_itemDescriptionWindowObject;
 
     private ItemDescription m_itemDescriptionWindow;
 
-    [Tooltip("¾ÆÀÌÅÛ ¼±ÅÃ À©µµ¿ì°ÔÀÓ¿ÀºêÁ§Æ®")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ï¿½ï¿½Æ®")]
     [SerializeField]
     private GameObject m_itemSelectWindowGO;
 
     private ItemSeletWindow m_itemSeletWindow;
 
-    [Tooltip("¾ÆÀÌÅÛ ³ª´©±â À©µµ¿ì °ÔÀÓ¿ÀºêÁ§Æ®")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ï¿½ï¿½Æ®")]
     [SerializeField]
     private GameObject m_itemDivideSlotWindowGO;
 
     private ItemDevideWindow m_itemDevideWindow;
 
-    [Tooltip("µ· ÅØ½ºÆ® ¿ÀºêÁ§Æ®")]
+    [Tooltip("ï¿½ï¿½ ï¿½Ø½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®")]
     [SerializeField]
     private GameObject m_GoldTextGO;
 
     private Text m_goldText;
 
-    [Tooltip("ÆË¾÷ ¿ÀºêÁ§Æ®")]
+    [Tooltip("ï¿½Ë¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®")]
     [SerializeField]
     private GameObject m_popUpGO;
 
     private ItemPopUp m_popUp;
 
     [Range(0, 1)]
-    [Tooltip("ºñÈ°¼ºÈ­½Ã RGB°ª")]
+    [Tooltip("ï¿½ï¿½È°ï¿½ï¿½È­ï¿½ï¿½ RGBï¿½ï¿½")]
     [SerializeField]
     private float deactivateRGB;
 
     [Range(0, 1)]
-    [Tooltip("ºñÈ°¼ºÈ­½Ã Alpha°ª")]
+    [Tooltip("ï¿½ï¿½È°ï¿½ï¿½È­ï¿½ï¿½ Alphaï¿½ï¿½")]
     [SerializeField]
     private float deactivateAlpha;
     #endregion
 
-    // ÀÏ¹İ º¯¼ö ¼±¾ğºÎ
+    // ï¿½Ï¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
     #region
 
-    // ÀÎº¥Åä¸® slots
+    // ï¿½Îºï¿½ï¿½ä¸® slots
     private InventorySlot[] m_inventorySlots;
     private InventoryCategory[] m_inventoryCategories;
 
-    // ºñÈ°¼ºÈ­½Ã Àû¿ëÇÒ ÄÃ·¯
+    // ï¿½ï¿½È°ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½
     private Vector4 m_deactivateColor;
     public Vector4 deactivateColor
     {
@@ -80,7 +80,7 @@ public class InventoryUI : UI
         set => m_deactivateColor = value;
     }
 
-    // È°¼ºÈ­½Ã Àû¿ëÇÒ ÄÃ·¯
+    // È°ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½
     private  Vector4 m_activateColor;
     public Vector4 activateColor
     {
@@ -88,14 +88,14 @@ public class InventoryUI : UI
         set => m_activateColor = value;
     }
 
-    // ³»·Á³õÀ» ½½·Ô
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     private int m_allocatedSlot;
     public int allocatedSlot
     {
         get => m_allocatedSlot;
         set => m_allocatedSlot = value;
     }
-    // ¼±ÅÃµÈ ¾ÆÀÌÅÛ
+    // ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private int m_selectedItemIndex;
     public int selectedItem
     {
@@ -103,7 +103,7 @@ public class InventoryUI : UI
         set => m_selectedItemIndex = value;
     }
     #endregion
-    // is º¯¼ö ¼±¾ğºÎ
+    // is ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
     #region
     private bool m_isMoving = false;
     public bool isMoving
@@ -113,6 +113,12 @@ public class InventoryUI : UI
     }
     private bool isShowDescription = false;
     private bool isOpen = false;
+
+    private bool _isSelection = false;
+    public bool isSelection{
+        get => _isSelection;
+        set => _isSelection = value;
+    }
     #endregion
 
     public void Initialize()
@@ -231,31 +237,43 @@ public class InventoryUI : UI
 
     public void SelectItem(int invenindex)
     {
+        if(inventory.inventoryDatas[invenindex].id==0){
+            return;
+        }
+        if(_isSelection){
+            Debug.Log("ì•™ ì™œì•ˆëŒë ");
+            DeSelect();
+            return;
+        }
         m_selectedItemIndex = invenindex;
         m_itemSelectWindowGO.transform.position = m_inventorySlots[invenindex].gameObject.transform.position + new Vector3(0, -35, 0);
         m_itemSelectWindowGO.SetActive(true);
         EmphasizeItem(invenindex);
         m_itemSeletWindow.Open(inventory.inventoryDatas[invenindex]);
     }
-   
+   public void DeSelect(){
+       m_itemSeletWindow.Close();
+       Unemphasize();
+   }
     public void DumpItemButton()
     {
-        m_popUp.PopUp("¹ö¸®±â", inventory.inventoryDatas[m_selectedItemIndex], this.DumpItem,this.Unemphasize);
+        DeSelect();
+        m_popUp.PopUp("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", inventory.inventoryDatas[m_selectedItemIndex], this.DumpItem,this.Unemphasize);
     }
     public void DumpItem(ItemData item)
     {
         Unemphasize();
         if (!inventory.DeleteItem(item,m_selectedItemIndex))
         {
-            warning.ShowWaring("¼ÒÁöÁßÀÎ ¾ÆÀÌÅÛ ¼ö·®º¸´Ù ¸¹ÀÌ ÀÔ·ÂÇß½À´Ï´Ù.");
+            warning.ShowWaring("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.");
             return;
-            // ½ÇÆĞ½Ã °æ°í ¾Ë¸².
+            // ï¿½ï¿½ï¿½Ğ½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ë¸ï¿½.
         }
     }
 
     public void ItemDevideButton()
     {
-        m_popUp.PopUp("³ª´©±â", inventory.inventoryDatas[m_selectedItemIndex], this.ItemDevide, this.Unemphasize);
+        m_popUp.PopUp("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", inventory.inventoryDatas[m_selectedItemIndex], this.ItemDevide, this.Unemphasize);
     }
     public void ItemDevide(ItemData item)
     {
@@ -268,7 +286,7 @@ public class InventoryUI : UI
         //m_itemDevideWindw
         if(!inventory.DeleteItem(item,m_selectedItemIndex))
         {
-            warning.ShowWaring("¼ÒÁöÁßÀÎ ¾ÆÀÌÅÛ ¼ö·®º¸´Ù ¸¹ÀÌ ÀÔ·ÂÇß½À´Ï´Ù.");
+            warning.ShowWaring("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.");
             return;
         }
         m_itemDevideWindow.OpenDevideWindow(item);
@@ -294,7 +312,7 @@ public class InventoryUI : UI
         }
     }
 
-    // Emphasize °ü·Ã ºÎºĞ
+    // Emphasize ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½
     #region
     public void EmphasizeItemCategory(Category category)
     {
@@ -356,7 +374,7 @@ public class InventoryUI : UI
         m_popUpGO.SetActive(false);
         m_popUp.NoButton();
 
-        m_itemSelectWindowGO.SetActive(false);
+        m_itemSeletWindow.Close();
         
     }
     void Update()
