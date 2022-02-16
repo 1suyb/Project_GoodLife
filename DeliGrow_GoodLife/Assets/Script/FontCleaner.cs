@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +8,7 @@ public class FontCleaner : MonoBehaviour
 
     void Start()
     {
-        //ÆùÆ®°¡ Pixel Perfect ÇÏ°Ô º¸ÀÌµµ·Ï ¼³Á¤
+        //í°íŠ¸ê°€ Pixel Perfect í•˜ê²Œ ë³´ì´ë„ë¡ ì„¤ì •
         for (int i = 0; i < fonts.Length; i++)
         {
             fonts[i].material.mainTexture.filterMode = FilterMode.Point;

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Warning : MonoBehaviour
 {
-    [Tooltip("°æ°í ¹®±¸°¡ µé¾î°¥ ÅØ½ºÆ®¸¦ ¿¬°áÇÏ¼¼¿ä")]
+    [Tooltip("ê²½ê³  ë¬¸êµ¬ê°€ ë“¤ì–´ê°ˆ í…ìŠ¤íŠ¸ë¥¼ ì—°ê²°í•˜ì„¸ìš”")]
     [SerializeField]
     Text m_text;
 

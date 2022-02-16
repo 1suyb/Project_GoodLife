@@ -1,11 +1,11 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
 public class ItemData
 {
-    // ¾ÆÀÌÅÛ ID
+    // ì•„ì´í…œ ID
     [SerializeField]
     private int m_id;
     public int id
@@ -22,7 +22,7 @@ public class ItemData
         set => m_itemSprite = value;
     }
     
-    // ¾ÆÀÌÅÛ ÀÌ¸§
+    // ì•„ì´í…œ ì´ë¦„
     [SerializeField]
     private string m_itemName;
     public string itemName
@@ -31,7 +31,7 @@ public class ItemData
         set => m_itemName = value;
     }
 
-    // ¾ÆÀÌÅÛ ¼³¸í
+    // ì•„ì´í…œ ì„¤ëª…
     [SerializeField]
     private string m_itemDescription;
     public string itemDescription
@@ -40,7 +40,7 @@ public class ItemData
         set => m_itemDescription = value;
     }
 
-    // ¾ÆÀÌÅÛ Ä«Å×°í¸®
+    // ì•„ì´í…œ ì¹´í…Œê³ ë¦¬
     [SerializeField]
     private Category m_category;
     public Category category

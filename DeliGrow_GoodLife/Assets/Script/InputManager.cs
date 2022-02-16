@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +9,7 @@ public class InputManager : MonoBehaviour
     private bool isInvenOpen = false;
 
     private KeyCode m_inventoryKey;
-    [Tooltip("ÀÎº¥Åä¸®¸¦ ÇÒ´çÇÒ Å°ÀÔ´Ï´Ù. ¼Ò¹®ÀÚ·Î ÀÔ·ÂÇÏ¼¼¿ä.")]
+    [Tooltip("ì¸ë²¤í† ë¦¬ë¥¼ í• ë‹¹í•  í‚¤ì…ë‹ˆë‹¤. ì†Œë¬¸ìë¡œ ì…ë ¥í•˜ì„¸ìš”.")]
     [SerializeField]
     private char inventoryKey;
 
@@ -35,7 +35,7 @@ public class InputManager : MonoBehaviour
             {
                 isInvenOpen = false;
                 inventoryUI.Close();
-                Debug.Log("¿Ü¾ÊµÊ");
+                Debug.Log("ì™¸ì•Šë¨");
             }
         }
     }

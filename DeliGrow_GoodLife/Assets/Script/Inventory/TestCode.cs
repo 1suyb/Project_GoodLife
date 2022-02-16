@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,12 +7,12 @@ public class TestCode : MonoBehaviour
     public Inventory inven;
     public void InputItem()
     {
-        ItemData item = new ItemData(1, null,"¾ÆÀÌÅÛ", "¾ÆÀÌÅÛ¼³¸í", Category.TOOL, 4);
+        ItemData item = new ItemData(1, null,"ì•„ì´í…œ", "ì•„ì´í…œì„¤ëª…", Category.TOOL, 4);
         Debug.Log(inven.PutInItem(item));
     }
     public void InputItem2()
     {
-        ItemData item = new ItemData(2, null,"¾ÆÀÌÅÛ2", "¾ÆÀÌÅÛ¼³¸í", Category.QUEST, 4);
+        ItemData item = new ItemData(2, null,"ì•„ì´í…œ2", "ì•„ì´í…œì„¤ëª…", Category.QUEST, 4);
         Debug.Log(inven.PutInItem(item));
     }
 

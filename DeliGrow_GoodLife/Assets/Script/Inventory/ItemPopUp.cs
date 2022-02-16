@@ -1,37 +1,37 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemPopUp : MonoBehaviour
 {
-    [Tooltip("Á¦¸ñ")]
+    [Tooltip("ì œëª©")]
     [SerializeField]
     private Text _title;
 
-    [Tooltip("¼³¸í")]
+    [Tooltip("ì„¤ëª…")]
     [SerializeField]
     private Text _description;
 
-    [Tooltip("ÀÎÇ²ÇÊµå")]
+    [Tooltip("ì¸í’‹í•„ë“œ")]
     [SerializeField]
     private InputField _input;
     private Text _text;
 
-    [Tooltip("È®ÀÎ¹öÆ°")]
+    [Tooltip("í™•ì¸ë²„íŠ¼")]
     [SerializeField]
     private GameObject _yesButton;
 
-    [Tooltip("Ãë¼Ò¹öÆ°")]
+    [Tooltip("ì·¨ì†Œë²„íŠ¼")]
     [SerializeField]
     private GameObject _noButton;
 
-    [Tooltip("¾ÆÀÌÄÜ")]
+    [Tooltip("ì•„ì´ì½˜")]
     [SerializeField]
     private Image icon;
 
 
-    private readonly string DESCRIPTION = "¼ö·®À» ÀÔ·ÂÇÏ¼¼¿ä";
+    private readonly string DESCRIPTION = "ìˆ˜ëŸ‰ì„ ì…ë ¥í•˜ì„¸ìš”";
 
     private ItemData _handlingItem;
 

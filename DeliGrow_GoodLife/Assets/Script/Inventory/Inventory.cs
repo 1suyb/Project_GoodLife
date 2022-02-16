@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "Inventory", menuName = "Scriptable/Inventory")]
@@ -40,7 +40,7 @@ public class Inventory : ScriptableObject
         {
             return InsertItem(item, index);
         }
-        Debug.Log("°ø°£ ¼­Ä¡ ½ÇÆÐ");
+        Debug.Log("ê³µê°„ ì„œì¹˜ ì‹¤íŒ¨");
         return false;
 
     }
