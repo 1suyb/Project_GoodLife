@@ -1,55 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Slot : MonoBehaviour
+public abstract class Slot : MonoBehaviour
 {
-    public Item item;
-    public int itemCount;
-    public Image itemImage;
+    [Header("아이템 표시")]
+    [Tooltip("아이템 아이콘")]
+    [SerializeField] private Image _icon;
+    [Tooltip("아이템 카운트")]
+    [SerializeField] private Text _count;
+    [Header("색상")]
+    [Tooltip("비활성화 상태일때 컬러")]
+    [SerializeField] private Color _deactiveColor;
 
-    [SerializedField]
-    private Text text_Count;
-    [SerializedField]
-    private GameObject go_CountImage;
+    private Sprite _itemIconSprite;
+    private int _itemCount;
+    private Category _itemCategory;
 
-    //아이템 이미지 투명도
-    private void SetColor(float _alpha)
+    public void SetSlotData(Sprite itemicon, int itemcount, Category itemcategory)
     {
-        Color color = itemImage.color;
-        color.a = _alpha;
-        itemImage.color = color;
+        _itemIconSprite = itemicon;
+        _itemCount = itemcount;
+        _itemCategory = itemcategory;
+        DataUpdate();
+    }
+    public void SetSlotData(int itemcount)
+    {
+        _itemCount = itemcount;
+        DataUpdate();
+    }
+    public void DataUpdate()
+    {
+        _icon.sprite = _itemIconSprite;
+        _count.text = _itemCount.ToString();
     }
 
-    public void AddItem(Item _item, int _count = 1)
-    {
-        item = _item;
-        itemCount = _count;
-        itemImage.sprite = item.itemImage;
-
-       // if()
-
-
-    }
-
-    public void SetSlotCount(int _count)
-    {
-        itemCount += _count;
-        text_Count.text = itemCount.ToString();
-
-        if (itemCount <= 0)
-            ClearSlot();
-    }
-
-    private void ClearSlot()
-    {
-        item = null;
-        itemCount = 0;
-        itemImage.sprite = null;
-        SetColor(0);
-
-        text_Count.text = "0";
-        go_CountImage.SetActive(false);
-    }
+    public abstract void MouseEnter();
+    public abstract void MouseExit();
+    public abstract void MouseLeftClick();
+    public abstract void MoustRightClick();
 
 }

@@ -6,15 +6,13 @@ using UnityEngine.UI;
 public class InventorySlot : MonoBehaviour
 {
 
-
-    [Tooltip("�κ��丮 ���� �׸��� ������Ʈ�� ������ �˴ϴ�.")]
     [SerializeField]
     private InventoryUI m_inventoryUI;
     public InventoryUI inventoryUI
     {
         get; set;
     }
-    [Tooltip("ItemIcon�� ���� ���� ������Ʈ")]
+    [Tooltip("아이템 아이콘이 들어갈 이미지")]
     [SerializeField]
     private Image m_itemIconImage;
     //private GameObject itemIconObject;
@@ -25,7 +23,7 @@ public class InventorySlot : MonoBehaviour
         get => m_itemIconImage;
     }
 
-    [Tooltip("ItemCount�ؽ�Ʈ�� ���� ���� ������Ʈ")]
+    [Tooltip("아이템 개수가 들어갈 텍스트")]
     [SerializeField]
     private Text m_itemCountText;
     //private GameObject itemCountObject;
@@ -34,7 +32,7 @@ public class InventorySlot : MonoBehaviour
         get => m_itemCountText;
     }
 
-    [Tooltip("������ �̵��ϴµ� �������ϴ� �ð�")]
+    [Tooltip("롱키시간")]
     [SerializeField]
     private float m_maxPointDownTime;
     public float maxPointDownTime
@@ -62,6 +60,11 @@ public class InventorySlot : MonoBehaviour
     
     public void Initialize(int index,Vector4 activatecolor,Vector4 deactivateclor)
     {
+        if(m_inventoryUI == null)
+        {
+            m_inventoryUI = GetComponentInParent<InventoryUI>();
+        }
+        
         m_invenindex = index;
         m_activateColor = activatecolor;
         m_deactivateColor = deactivateclor;
@@ -151,12 +154,18 @@ public class InventorySlot : MonoBehaviour
     }
     public void MouseDown()
     {
+        if (m_inventoryUI.isSelection)
+        {
+            m_inventoryUI.DeSelect();
+            return;
+        }
+        /*
         if(!isActivate)
         {
             if(m_inventoryUI.isSelection){
                 m_inventoryUI.DeSelect();
             }
-        }
+        }*/
         if (Input.GetMouseButtonDown(0))
         {
             isSelected = true;

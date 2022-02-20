@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemPopUp : MonoBehaviour
+public class ItemPopUp : UI
 {
     [Tooltip("제목")]
     [SerializeField]
@@ -40,8 +40,26 @@ public class ItemPopUp : MonoBehaviour
     private YesFunctionPointer yesaction;
     private NOFunctionPointer noaction;
 
+    public override void Open()
+    {
+        //openUIs.Push(this);
+    }
+    public override void Close()
+    {
+        noaction();
+    }
+    public void ClosePopUp()
+    {
+        //openUIs.Pop();
+        CleanInputText();
+        _handlingItem = null;
+        this.gameObject.SetActive(false);
+        yesaction = null;
+        noaction = null;
+    }
     public void PopUp(string title, ItemData item, YesFunctionPointer act)
     {
+        Open();
         _handlingItem = new ItemData(item.id, item.itemSprite, item.itemName, item.itemDescription, item.category, item.itemCount);
         this.gameObject.SetActive(true);
         _title.text = title;
@@ -65,16 +83,12 @@ public class ItemPopUp : MonoBehaviour
     {
         _handlingItem.itemCount = int.Parse(_input.text);
         this.gameObject.SetActive(false);
-        CleanInputText();
         yesaction(_handlingItem);
-        _handlingItem = null;
-
+        ClosePopUp();
     }
     public void NoButton()
     {
-        CleanInputText();
-        _handlingItem = null;
-        this.gameObject.SetActive(false);
+        ClosePopUp();
         if (noaction != null)
         {
             noaction();
