@@ -8,8 +8,8 @@ public class InputManager : MonoBehaviour
     private UI inventoryUI;
     private bool isInvenOpen = false;
 
-    private KeyCode m_ESC;
-    private KeyCode m_inventoryKey;
+    private KeyCode _ESC;
+    private KeyCode _inventoryKey;
     
     [Tooltip("인벤토리를 할당할 키입니다. 소문자로 입력하세요.")]
     [SerializeField]
@@ -27,7 +27,7 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(m_inventoryKey))
+        if (Input.GetKeyDown(_inventoryKey))
         {
             if (!isInvenOpen)
             {
@@ -41,18 +41,29 @@ public class InputManager : MonoBehaviour
                 Debug.Log("외않됨");
             }
         }
-        if (Input.GetKeyDown(m_ESC))
+        if (Input.GetKeyDown(_ESC))
         {
-
+            Debug.Log("이에쓰씨");
+            int count = UIManager.UIMANAGER.openUIs.Count;
+            if(count <= 0)
+            {
+                return;
+            }
+            
+            if (count > 0)
+            {
+                UIManager.UIMANAGER.openUIs[count - 1].Close();
+            }
+            
         }
     }
     private void InitializeKey()
     {
-        m_inventoryKey = KeyCode.Escape;
+        _inventoryKey = KeyCode.Escape;
 
 
         CheackNChangeSmall(ref inventoryKey);
-        m_inventoryKey = (KeyCode)inventoryKey;
+        _inventoryKey = (KeyCode)inventoryKey;
         
     }
     private void CheackNChangeSmall(ref char key)

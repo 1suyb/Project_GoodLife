@@ -10,57 +10,57 @@ public class InventoryUI : UI
     private Warning warning;
     [SerializeField]
     private GameObject background;
-    //serializeField �����
+
     #region
-    [Tooltip("�κ��丮")]
+    [Tooltip("인벤토리 데이터")]
     public Inventory inventory;
 
-    [Tooltip("�κ��丮 ī�װ������� �θ� ������Ʈ")]
+    [Tooltip("인벤토리 카테고리들을 갖고있는 오브젝트")]
     [SerializeField]
     private GameObject m_inventoryCategoryParentObject;
 
-    [Tooltip("������ �����϶� ���� GameObject")]
+    [Tooltip("아이템 옮길때 마우스에 붙어다닐 이미지 오브젝트")]
     [SerializeField]
     private GameObject m_slotMoveSlotObject;
     private Image m_moveSlotImage;
 
-    [Tooltip("������ ���� �����������Ʈ")]
+    [Tooltip("아이템 툴팁 윈도우")]
     [SerializeField]
     private GameObject m_itemDescriptionWindowObject;
 
     private ItemDescription m_itemDescriptionWindow;
 
-    [Tooltip("������ ���� ��������ӿ�����Ʈ")]
+    [Tooltip("아이템 선택 윈도우")]
     [SerializeField]
     private GameObject m_itemSelectWindowGO;
 
     private ItemSeletWindow m_itemSeletWindow;
 
-    [Tooltip("������ ������ ������ ���ӿ�����Ʈ")]
+    [Tooltip("아이템 나누기 윈도우")]
     [SerializeField]
     private GameObject m_itemDivideSlotWindowGO;
 
     private ItemDevideWindow m_itemDevideWindow;
 
-    [Tooltip("�� �ؽ�Ʈ ������Ʈ")]
+    [Tooltip("골드")]
     [SerializeField]
     private GameObject m_GoldTextGO;
 
     private Text m_goldText;
 
-    [Tooltip("�˾� ������Ʈ")]
+    [Tooltip("팝업 윈도우")]
     [SerializeField]
     private GameObject m_popUpGO;
 
     private ItemPopUp m_popUp;
 
     [Range(0, 1)]
-    [Tooltip("��Ȱ��ȭ�� RGB��")]
+    [Tooltip("비활성화 색")]
     [SerializeField]
     private float deactivateRGB;
 
     [Range(0, 1)]
-    [Tooltip("��Ȱ��ȭ�� Alpha��")]
+    [Tooltip("비활성화시 알파값")]
     [SerializeField]
     private float deactivateAlpha;
     #endregion
@@ -69,7 +69,7 @@ public class InventoryUI : UI
     #region
 
     // �κ��丮 slots
-    private InventorySlot[] m_inventorySlots;
+    private InvenSlot[] m_inventorySlots;
     private InventoryCategory[] m_inventoryCategories;
 
     // ��Ȱ��ȭ�� ������ �÷�
@@ -136,14 +136,14 @@ public class InventoryUI : UI
         m_itemDevideWindow = m_itemDivideSlotWindowGO.GetComponent<ItemDevideWindow>();
         m_itemSeletWindow = m_itemSelectWindowGO.GetComponent<ItemSeletWindow>();
 
-        m_inventorySlots = this.GetComponentsInChildren<InventorySlot>();
+        m_inventorySlots = this.GetComponentsInChildren<InvenSlot>();
         m_inventoryCategories = m_inventoryCategoryParentObject.GetComponentsInChildren<InventoryCategory>();
 
         m_allocatedSlot = -1;
 
         for (int i = 0; i < m_inventorySlots.Length; i++)
         {
-            m_inventorySlots[i].Initialize(i,m_activateColor,m_deactivateColor);
+            m_inventorySlots[i].Initialize(i);
         }
         UpdateGold();
     }
@@ -167,12 +167,11 @@ public class InventoryUI : UI
 
     public override void Close()
     {
-        base.Close();
         background.SetActive(false);
     }
 
     public  void SlotUpdate(int index) {
-        m_inventorySlots[index].SlotUpdate(inventory.inventoryDatas[index]);
+        m_inventorySlots[index].SetSlotData(inventory.inventoryDatas[index]);
     }
 
     public void ShowItemDescription(int inventoryIndex)
@@ -324,7 +323,7 @@ public class InventoryUI : UI
             }
             else
             {
-                m_inventorySlots[i].Deactivate();
+                m_inventorySlots[i].DeActivate();
             }
         }
     }
@@ -342,13 +341,13 @@ public class InventoryUI : UI
     {
         foreach (var item in m_inventorySlots)
         {
-            if(item.invenIndex == inventoryindex)
+            if(item.index == inventoryindex)
             {
                 item.Activate();
             }
             else
             {
-                item.Deactivate();
+                item.DeActivate();
             }
         }
     }

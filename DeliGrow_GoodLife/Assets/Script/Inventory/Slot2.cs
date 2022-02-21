@@ -20,8 +20,7 @@ public abstract class Slot2 : MonoBehaviour
 
     public void SetSlotData(Sprite itemicon, int itemcount, Category itemcategory)
     {
-        _icon.gameObject.SetActive(false);
-        _count.gameObject.SetActive(false);
+        
 
         _itemIconSprite = itemicon;
         _itemCount = itemcount;
@@ -39,8 +38,10 @@ public abstract class Slot2 : MonoBehaviour
         {
             _icon.gameObject.SetActive(false);
             _count.gameObject.SetActive(false);
+            return;
         }
-        
+        _icon.gameObject.SetActive(true);
+        _count.gameObject.SetActive(true);
         _icon.sprite = _itemIconSprite;
         _count.text = _itemCount.ToString();
     }
@@ -48,6 +49,11 @@ public abstract class Slot2 : MonoBehaviour
 
     public abstract void MouseEnter();
     public abstract void MouseExit();
-    public abstract void MouseLeftClick();
-    public abstract void MoustRightClick();
+    public abstract void MouseButtonDown();
+    public abstract void MouseButtonUp();
+
+    public abstract void MouseLeftDown();
+    public abstract void MouseLeftUp();
+    public abstract void MoustRightDown();
+    public abstract void MoustRightUp();
 }

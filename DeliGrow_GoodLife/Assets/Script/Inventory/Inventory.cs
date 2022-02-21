@@ -196,8 +196,13 @@ public class Inventory : ScriptableObject
     { 
         if (_inventoryDatas[index1].id == _inventoryDatas[index2].id)
         {
+            if(index1 == index2)
+            {
+                return;
+            }
             InsertItem(_inventoryDatas[index2], index1);
             DeleteItem(_inventoryDatas[index2], index2);
+
             return;
         }
         Swap(ref _inventoryDatas[index1], ref _inventoryDatas[index2]);
