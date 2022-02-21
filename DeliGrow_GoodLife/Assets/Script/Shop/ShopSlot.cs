@@ -4,25 +4,35 @@ using UnityEngine;
 
 public class ShopSlot : Slot
 {
+    [SerializeField] private ShopUI shopUI;
 
     public override void MouseEnter()
     {
-        throw new System.NotImplementedException();
+        ShowItemDescription();
     }
 
     public override void MouseExit()
     {
-        throw new System.NotImplementedException();
+        HideItemDescription();
     }
 
     public override void MouseLeftClick()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("clicked");
     }
 
     public override void MoustRightClick()
     {
         throw new System.NotImplementedException();
+    }
+
+    private void ShowItemDescription()
+    {
+        shopUI.ShowItemDescriptionWindow();
+    }
+    private void HideItemDescription()
+    {
+        shopUI.HideItemDescriptionWindow();
     }
 
 }
