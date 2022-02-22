@@ -45,6 +45,7 @@ public class InputManager : MonoBehaviour
         {
             Debug.Log("이에쓰씨");
             int count = UIManager.UIMANAGER.openUIs.Count;
+            Debug.Log(count);
             if(count <= 0)
             {
                 return;
@@ -59,7 +60,7 @@ public class InputManager : MonoBehaviour
     }
     private void InitializeKey()
     {
-        _inventoryKey = KeyCode.Escape;
+        _ESC = KeyCode.Escape;
 
 
         CheackNChangeSmall(ref inventoryKey);

@@ -15,7 +15,8 @@ public abstract class UI : MonoBehaviour
     }
     public virtual void Close()
     {
-
+        int count = UIManager.UIMANAGER.openUIs.Count - 1;
+        UIManager.UIMANAGER.openUIs.RemoveAt(count);
         IsPause = false;
         Time.timeScale = 1;
 

@@ -42,10 +42,15 @@ public class ItemPopUp : UI
 
     public override void Open()
     {
+        Debug.Log("열림");
+        UIManager.UIMANAGER.openUIs.Add(this);
         //openUIs.Push(this);
     }
     public override void Close()
     {
+        int count = UIManager.UIMANAGER.openUIs.Count - 1;
+        UIManager.UIMANAGER.openUIs.RemoveAt(count);
+        this.gameObject.SetActive(false);
         noaction();
     }
     public void ClosePopUp()
@@ -69,14 +74,8 @@ public class ItemPopUp : UI
     }
     public void PopUp(string title, ItemData item, YesFunctionPointer act,NOFunctionPointer noact)
     {
-        _handlingItem = new ItemData(item.id, item.itemSprite, item.itemName, item.itemDescription, item.category, item.itemCount);
-        this.gameObject.SetActive(true);
-        _title.text = title;
-        _description.text = DESCRIPTION;
-        icon.sprite = _handlingItem.itemSprite;
-        yesaction = act;
+        PopUp(title, item, act);
         noaction = noact;
-
     }
 
      public void YesButton()

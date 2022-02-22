@@ -27,7 +27,7 @@ public class ItemSeletWindow : UI
 
     public void Open(ItemData item)
     {
-        Debug.Log("�ܾʵ�");
+        Debug.Log("열림");
         
         _itemdata = item;
         switch (item.category)

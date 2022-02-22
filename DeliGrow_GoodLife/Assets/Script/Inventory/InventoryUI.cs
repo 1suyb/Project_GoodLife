@@ -167,6 +167,7 @@ public class InventoryUI : UI
 
     public override void Close()
     {
+        base.Close();
         background.SetActive(false);
     }
 
