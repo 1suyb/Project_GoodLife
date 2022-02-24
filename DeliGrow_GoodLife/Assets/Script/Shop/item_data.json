@@ -1,0 +1,50 @@
+[
+  {
+    "ID": 1101011,
+    "korean": "양배추 씨앗",
+    "Name": "cabbage seed",
+    "Main_type": 1,
+    "Sub_type": 101,
+    "Grade": 0,
+    "Price_type": 1,
+    "Purchase_price": 60,
+    "Sell_price": 20,
+    "Option_id_1": 0,
+    "Option_value_1": 0,
+    "Option_id_2": 0,
+    "Option_value_2": 0,
+    "Cool_time": 0
+  },
+  {
+    "ID": 1101012,
+    "korean": "당근 씨앗",
+    "Name": "carrot seed",
+    "Main_type": 1,
+    "Sub_type": 101,
+    "Grade": 0,
+    "Price_type": 1,
+    "Purchase_price": 75,
+    "Sell_price": 25,
+    "Option_id_1": 0,
+    "Option_value_1": 0,
+    "Option_id_2": 0,
+    "Option_value_2": 0,
+    "Cool_time": 0
+  },
+  {
+    "ID": 1101013,
+    "korean": "고추 씨앗",
+    "Name": "pepper seed",
+    "Main_type": 1,
+    "Sub_type": 101,
+    "Grade": 0,
+    "Price_type": 1,
+    "Purchase_price": 90,
+    "Sell_price": 30,
+    "Option_id_1": 0,
+    "Option_value_1": 0,
+    "Option_id_2": 0,
+    "Option_value_2": 0,
+    "Cool_time": 0
+  }
+]

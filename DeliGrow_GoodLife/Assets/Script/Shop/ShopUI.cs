@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class ShopUI : UI
 {
@@ -8,6 +9,8 @@ public class ShopUI : UI
     private GameObject shop;
     [SerializeField]
     private Inventory inventory;
+    [SerializeField]
+    private TempData tempdata;
     [SerializeField]
     private GameObject go_DescriptionWindow;
 
@@ -32,6 +35,7 @@ public class ShopUI : UI
 
     public void GetShopData()
     {
+
         /*
          ¼¥Å×ÀÌºí ÆÄ½Ì
          */
@@ -41,6 +45,23 @@ public class ShopUI : UI
          */
 
     }
+    public void LoadJsonData(string path)
+    {
+        System.IO.FileInfo loadfile = new System.IO.FileInfo(path);
+        if (loadfile.Exists == false)
+        {
+            Debug.LogError("ÆÄÀÏ ¾øÀ½");
+            return;
+        }
+        string JsonData = File.ReadAllText(loadfile.FullName);
+
+        Debug.Log(JsonData);
+
+        TestItemData data = JsonUtility.FromJson<TestItemData>(JsonData);
+        Debug.Log(data.ID);
+
+    }
+   
 
 
     public override void Close()
@@ -83,6 +104,26 @@ public class ShopUI : UI
             }
         }
     }
+
+}
+
+[System.Serializable]
+public class TestItemData
+{
+    public string ID;
+    public string korean;
+    public string Name;
+    public string Main_type;
+    public string Sub_type;
+    public string Grade;
+    public string Price_type;
+    public string Purchase_price;
+    public string Sell_price;
+    public string intOption_id_1;
+    public string Option_value_1;
+    public string Option_id_2;
+    public string Option_value_2;
+    public string Cool_time;
 
 }
 public enum shoptype
