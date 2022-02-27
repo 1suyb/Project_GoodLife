@@ -5,6 +5,6 @@ using UnityEngine;
 public class TempData : ScriptableObject
 
 {   [SerializeField]
-    ItemData[] item = new ItemData[30];
+    public ItemData[] item = new ItemData[30];
 
 }

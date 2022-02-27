@@ -19,11 +19,17 @@ public class ShopUI : UI
     private bool isShowDescription = false;
 
     private shoptype _shopType;
+
+
     public void Open(shoptype type)
     {
         _shopType = type;
         Open();
         slots = this.gameObject.GetComponentsInChildren<Slot>();
+        for(int i=0; i<slots.Length; i++)
+        {
+            slots[i].SetSlotData(tempdata.item[i].itemSprite, tempdata.item[i].itemCount, tempdata.item[i].category);
+        }
         
     }
 

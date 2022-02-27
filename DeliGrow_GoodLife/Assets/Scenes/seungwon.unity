@@ -7640,9 +7640,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1653863909}
+      - m_Target: {fileID: 1857099918}
         m_TargetAssemblyTypeName: ShopUI, Assembly-CSharp
-        m_MethodName: LoadJsonData
+        m_MethodName: 
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
