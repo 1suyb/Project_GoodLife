@@ -91,8 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd4cb3eb0bac4b64dab480a09fed4f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _icon: {fileID: 0}
-  _count: {fileID: 0}
+  _icon: {fileID: 8243432729967023420}
+  _count: {fileID: 4885479458915919928}
   _deactiveColor: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 0}
   shopUI: {fileID: 0}
 --- !u!114 &8452583177957687770

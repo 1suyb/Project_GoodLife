@@ -23,6 +23,8 @@ public abstract class Slot : MonoBehaviour
     public void SetSlotData(Sprite itemicon, int itemcount, Category itemcategory)
     {
         _itemIconSprite = itemicon;
+        Debug.Log("매개변수로받아오는거", itemicon);
+        Debug.Log(_itemIconSprite);
         _itemCount = itemcount;
         _itemCategory = itemcategory;
         DataUpdate();
@@ -34,8 +36,26 @@ public abstract class Slot : MonoBehaviour
     }
     public void DataUpdate()
     {
+        if (_itemCount <= 0)
+        {
+            OffSlot();
+            return;
+        }                   
         _icon.sprite = _itemIconSprite;
         _count.text = _itemCount.ToString();
+        OnSlot();
+    }
+
+    public void OffSlot()
+    {
+        _icon.gameObject.SetActive(false);
+        _count.gameObject.SetActive(false);
+    }
+
+    public void OnSlot()
+    {
+        _icon.gameObject.SetActive(true);
+        _count.gameObject.SetActive(true);
     }
 
     public abstract void MouseEnter();

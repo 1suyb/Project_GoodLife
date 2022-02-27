@@ -21,23 +21,28 @@ public class ShopUI : UI
     private shoptype _shopType;
 
 
-    public void Open(shoptype type)
+    public void Open(int q)
     {
-        _shopType = type;
-        Open();
+        // _shopType = type;
+        shop.SetActive(true);
         slots = this.gameObject.GetComponentsInChildren<Slot>();
+        
         for(int i=0; i<slots.Length; i++)
         {
-            slots[i].SetSlotData(tempdata.item[i].itemSprite, tempdata.item[i].itemCount, tempdata.item[i].category);
+            if (tempdata.item[i].id <= 0)
+            {
+                slots[i].gameObject.SetActive(false);
+               
+            }
+
+            else  
+                slots[i].SetSlotData(tempdata.item[i].itemSprite, tempdata.item[i].itemCount, tempdata.item[i].category);
+            
         }
         
     }
 
-    public override void Open()
-    {
-        base.Open();
-        shop.SetActive(true);
-    }
+  
 
     public void GetShopData()
     {
@@ -68,13 +73,6 @@ public class ShopUI : UI
 
     }
    
-
-
-    public override void Close()
-    {
-        base.Close();
-        shop.SetActive(false);
-    }
 
     public void ShowItemDescriptionWindow()
     {
