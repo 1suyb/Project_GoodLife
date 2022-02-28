@@ -15,34 +15,43 @@ public abstract class Slot : MonoBehaviour
     [Tooltip("비활성화 상태일때 컬러")]
     [SerializeField] protected Color _deactiveColor;
 
-
+    /*
     protected Sprite _itemIconSprite;
     protected int _itemCount;
     protected Category _itemCategory;
+    protected int _itemId; 
+    */
 
-    public void SetSlotData(Sprite itemicon, int itemcount, Category itemcategory)
+    protected ItemData _itemData;
+
+    public void SetSlotData(ItemData itemData)
     {
-        _itemIconSprite = itemicon;
-        Debug.Log("매개변수로받아오는거", itemicon);
-        Debug.Log(_itemIconSprite);
-        _itemCount = itemcount;
-        _itemCategory = itemcategory;
+        // _itemIconSprite = itemicon;
+        //Debug.Log("매개변수로받아오는거", itemicon);
+        // Debug.Log(_itemIconSprite);
+        // _itemCount = itemcount;
+        //_itemCategory = itemcategory;
+        // _itemId = itemId;
+
+        _itemData = itemData;
         DataUpdate();
     }
+    /*
     public void SetSlotData(int itemcount)
     {
         _itemCount = itemcount;
         DataUpdate();
     }
+    */
     public void DataUpdate()
     {
-        if (_itemCount <= 0)
+        if ( (_itemData.itemCount <= 0) || (_itemData.id == 0) )
         {
             OffSlot();
             return;
-        }                   
-        _icon.sprite = _itemIconSprite;
-        _count.text = _itemCount.ToString();
+        }
+        _icon.sprite = _itemData.itemSprite;
+        _count.text = _itemData.itemCount.ToString();
         OnSlot();
     }
 

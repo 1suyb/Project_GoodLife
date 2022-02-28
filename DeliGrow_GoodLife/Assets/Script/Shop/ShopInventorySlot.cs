@@ -4,14 +4,29 @@ using UnityEngine;
 
 public class ShopInventorySlot : Slot
 {
+    [SerializeField] private ShopInventoryUI shopInventoryUI;
+
+
+
+
+    private void ShowItemDescription()
+    {
+
+        shopInventoryUI.ShowItemDescriptionWindow(_itemData);
+    }
+    private void HideItemDescription()
+    {
+        shopInventoryUI.HideItemDescriptionWindow();
+    }
+
     public override void MouseEnter()
     {
-        throw new System.NotImplementedException();
+        ShowItemDescription();
     }
 
     public override void MouseExit()
     {
-        throw new System.NotImplementedException();
+        HideItemDescription();
     }
 
     public override void MouseLeftClick()

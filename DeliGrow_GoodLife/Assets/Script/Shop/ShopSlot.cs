@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShopSlot : Slot
 {
-    [SerializeField] private ShopUI shopUI;
+    [SerializeField] private ShopMaedaeUI shopMaedaeUI;
 
     public override void MouseEnter()
     {
@@ -28,11 +28,11 @@ public class ShopSlot : Slot
 
     private void ShowItemDescription()
     {
-        shopUI.ShowItemDescriptionWindow();
+        shopMaedaeUI.ShowItemDescriptionWindow(_itemData);
     }
     private void HideItemDescription()
     {
-        shopUI.HideItemDescriptionWindow();
+        shopMaedaeUI.HideItemDescriptionWindow();
     }
 
 }
