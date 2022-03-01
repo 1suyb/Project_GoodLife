@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopSlot : Slot
+public class MaedaeSlot : Slot
 {
     [SerializeField] private ShopMaedaeUI shopMaedaeUI;
+    
 
     public override void MouseEnter()
     {
@@ -23,7 +24,7 @@ public class ShopSlot : Slot
 
     public override void MoustRightClick()
     {
-        throw new System.NotImplementedException();
+        shopMaedaeUI.PurchaseSingleItem(_itemData);
     }
 
     private void ShowItemDescription()

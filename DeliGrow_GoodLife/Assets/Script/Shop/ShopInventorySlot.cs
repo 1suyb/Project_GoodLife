@@ -11,7 +11,9 @@ public class ShopInventorySlot : Slot
 
     private void ShowItemDescription()
     {
-
+        if (_itemData.id == 0)
+            return;
+    
         shopInventoryUI.ShowItemDescriptionWindow(_itemData);
     }
     private void HideItemDescription()

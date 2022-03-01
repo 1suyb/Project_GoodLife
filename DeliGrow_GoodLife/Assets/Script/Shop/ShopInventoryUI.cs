@@ -8,8 +8,7 @@ public class ShopInventoryUI : ShopUI
 
     public override void Open()
     {
-        base.Open();
-        slots = this.gameObject.GetComponentsInChildren<Slot>();
+        base.Open(1);
 
         for (int i = 0; i < slots.Length; i++)
         {         

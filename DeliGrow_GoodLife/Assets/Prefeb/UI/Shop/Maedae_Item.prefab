@@ -94,7 +94,7 @@ MonoBehaviour:
   _icon: {fileID: 8243432729967023420}
   _count: {fileID: 4885479458915919928}
   _deactiveColor: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 0}
-  shopUI: {fileID: 0}
+  shopMaedaeUI: {fileID: 0}
 --- !u!114 &8452583177957687770
 MonoBehaviour:
   m_ObjectHideFlags: 0

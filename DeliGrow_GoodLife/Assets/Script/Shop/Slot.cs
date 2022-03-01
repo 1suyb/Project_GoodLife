@@ -22,7 +22,7 @@ public abstract class Slot : MonoBehaviour
     protected int _itemId; 
     */
 
-    protected ItemData _itemData;
+    public ItemData _itemData;
 
     public void SetSlotData(ItemData itemData)
     {

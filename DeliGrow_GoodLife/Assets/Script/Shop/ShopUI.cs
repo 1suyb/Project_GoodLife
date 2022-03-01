@@ -12,7 +12,7 @@ public class ShopUI : UI
     [SerializeField]
     protected GameObject go_DescriptionWindow;
 
-    protected Slot[] slots;
+    public Slot[] slots;
 
     protected bool isShowDescription = false;
 
@@ -23,6 +23,7 @@ public class ShopUI : UI
     {
         // _shopType = type;
         itemDescription = go_DescriptionWindow.GetComponent<ItemDescription>();
+        slots = this.gameObject.GetComponentsInChildren<Slot>();
         panel.SetActive(true);
        
     
