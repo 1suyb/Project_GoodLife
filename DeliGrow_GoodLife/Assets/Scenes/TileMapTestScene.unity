@@ -2980,8 +2980,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1867301147}
-        m_TargetAssemblyTypeName: Deserialize, Assembly-CSharp
-        m_MethodName: Deserilaize
+        m_TargetAssemblyTypeName: Test, Assembly-CSharp
+        m_MethodName: testfunction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
