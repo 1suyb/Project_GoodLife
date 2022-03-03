@@ -4,79 +4,37 @@ using System.Text;
 
 namespace JsonClassMaker
 {
-    class StructFormat
+    class ClassFormat
     {
         // {0} : 데이터 타입 이름 / 번호 목록
-        // {1} : JsonUtil 목록
-        // {2} : class 목록
-        public static string fileFormat =
-@"
-using System;
+        // {1} : class 목록
+        public static string classFileFormat =
+@"using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public enum DataType
 {{
-    {0}
+{0}
 }}
 
-public static class JsonUtil
-{{
-    {1}
-}}
+
 
 public class Table
 {{
     public int ID;
 }}
-{2}
+{1}
 
 ";
         // {0} : type 이름
         // {1} : type 번호
         public static string enumFormat =
-@"
-{0} = {1};
-";
-        #region JsonUtil
-        // {0} : case 문
-        public static string jsonUtilConverTypeFormat =
-@"
-    private static string ConvertType(DataType datatype)
-    {{
-        string filename;
-        switch(datatype){
-         {0}
-        default :
-            filename = "";
-            break;
-        }
-        return filename;
-    }}
-;";
-        // {0} : type 이름 (대문자)
-        // {1} : type에 따른 파일이름 (DataTable 이름)
-        public static string jsonUtilCaseFormat =
-@"
-    case {0} : 
-        filename = {1};
-        break;
-";
-        // {0} : DataTable 이름
-        public static string jsonUtilDeserializeFormat =
-@"
-    public static List<{0}> {0}Deserialize(DataType datatype)
-    {{
-        String{0}[] t = JsonHelper.Deserialize<String{0}>(ConvertType(datatype));
-        List<{0}> l = String{0}.Convert(t);
-        return l;
-    }}
-";
-        #endregion
-
+@"  {0} = {1};";
         #region Class
         // {0} : DataTable이름
+
         // {1} : 맴버 변수
         // {2} : 매개 변수
         // {3} : 변수 초기화 부분
@@ -86,16 +44,16 @@ public class Table
 @"
 public class {0} : Table
 {{
-    {1}
+{1}
     public {0}({2})
     {{
-        {3}
+{3}
     }}
 }}
 
 public class String{0}
 {{
-    {4}
+{4}
 
     public static List<{0}> Convert(String{0}[] table)
     {{
@@ -109,16 +67,58 @@ public class String{0}
 }}
 ";
         // {0} : 변수
-        public static string fullvalueFormat = 
-@"
-public {0};
-";
+        public static string fullValueFormat = 
+@"  public {0};";
         // {0} : 변수 형식
         // {1} : 변수 이름
         public static string valueFormat = 
+@"{0} {1}";
+        public static string setValueFormat = 
+@"      this.{0} = {1};";
+        #endregion
+        
+        // {0} : case 목록
+        // {1} : 역직렬화 목록
+        public static string utilFileFormat =
+@"using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public static class JsonUtil
+{{
+    private static string ConvertType(DataType datatype)
+    {{
+        string filename;
+        switch(datatype){{
+{0}
+            default :
+                filename = """";
+                break;
+        }}
+        return filename;
+    }}
+    {1}
+}}
+";
+        #region JsonUtil
+        // {0} : type 이름 (대문자)
+        // {1} : type에 따른 파일이름 (DataTable 이름)
+        public static string jsonUtilCaseFormat =
+@"          case {0} : 
+                filename = {1};
+                break;";
+        // {0} : DataTable 이름
+        public static string jsonUtilDeserializeFormat =
 @"
-{0} {1}
+    public static List<{0}> {0}Deserialize(DataType datatype)
+    {{
+        String{0}[] t = JsonHelper.Deserialize<String{0}>(ConvertType(datatype));
+        List<{0}> l = String{0}.Convert(t);
+        return l;
+    }}
 ";
         #endregion
     }
+
 }
