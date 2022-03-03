@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>	
+<DataSchema>
+	<table name ="Item">
+		<int name ="ID"/>
+		<string name ="Korean"/>
+		<byte name="Main_type"/>
+		<byte name="Sub_type"/>
+		<byte name="Grade"/>
+		<int name="Option_value_1"/>
+		<int name="Option_value_2"/>
+		<int name="Option_id_1"/>
+		<int name="Option_id_2"/>
+		<int name="Cool_time"/>
+	</table>
+</DataSchema>
+	

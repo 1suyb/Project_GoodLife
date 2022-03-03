@@ -5,16 +5,16 @@ using UnityEngine;
 
 public enum DataType
 {
-  Item = 1;
+  Item = 1,
 }
 
 
-
+[System.Serializable]
 public class Table
 {
     public int ID;
 }
-
+[System.Serializable]
 public class Item : Table
 {
   public int ID;
@@ -41,7 +41,7 @@ public class Item : Table
       this.Cool_time = Cool_time;
     }
 }
-
+[System.Serializable]
 public class StringItem
 {
   public string ID;
@@ -58,9 +58,9 @@ public class StringItem
     public static List<Item> Convert(StringItem[] table)
     {
         List<Item> t = new List<Item>();
-        foreach (StirngItem item in table)
+        foreach (StringItem item in table)
         {
-            t.Add(new Item(ID, Korean, Main_type, Sub_type, Grade, Option_value_1, Option_value_2, Option_id_1, Option_id_2, Cool_time);
+            t.Add(new Item(int.Parse(item.ID), item.Korean, byte.Parse(item.Main_type), byte.Parse(item.Sub_type), byte.Parse(item.Grade), int.Parse(item.Option_value_1), int.Parse(item.Option_value_2), int.Parse(item.Option_id_1), int.Parse(item.Option_id_2), int.Parse(item.Cool_time)));
         }
         return t;
     }

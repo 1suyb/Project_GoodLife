@@ -2932,7 +2932,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1867301145}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5161e9e6ed5b4b04db9d7bd05c834031, type: 3}
+  m_Script: {fileID: 11500000, guid: dab3000eab449e14281668492f1561f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1867301148
@@ -2980,8 +2980,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1867301147}
-        m_TargetAssemblyTypeName: Test, Assembly-CSharp
-        m_MethodName: testfunction
+        m_TargetAssemblyTypeName: JsonTestScript, Assembly-CSharp
+        m_MethodName: but
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

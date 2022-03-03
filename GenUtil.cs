@@ -3,14 +3,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public static class JsonHelper
+{
+    public static T[] Deserialize<T>(string datatype)
+    {
+        string path = Application.dataPath + "/DataTables/" + datatype + ".json";
+        string jsontext = System.IO.File.ReadAllText(path);
+        jsontext = "{ \n \"Items\" : " + jsontext + "}";
+
+        Wrapper<T> w = JsonUtility.FromJson<Wrapper<T>>(jsontext);
+        return w.Items;
+    }
+
+    [System.Serializable]
+    private struct Wrapper<T>
+    {
+        public T[] Items;
+    }
+}
+
 public static class JsonUtil
 {
     private static string ConvertType(DataType datatype)
     {
         string filename;
         switch(datatype){
-          case Item : 
-                filename = ItemTable.json;
+          case DataType.Item : 
+                filename = "ItemTable";
                 break;
             default :
                 filename = "";

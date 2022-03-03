@@ -66,7 +66,7 @@ namespace JsonClassMaker
             Tuple<string, string, string, string, string> tuple = ParseClass(r);
             dataTypeEnums += string.Format(ClassFormat.enumFormat, tableName, ++tableID);
             dataClass += string.Format(ClassFormat.classFormat, tableName, tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5);
-            caseFormat += string.Format(ClassFormat.jsonUtilCaseFormat, tableName, tableName + "Table.json");
+            caseFormat += string.Format(ClassFormat.jsonUtilCaseFormat, tableName, tableName + "Table");
             deserializeFormat += string.Format(ClassFormat.jsonUtilDeserializeFormat, tableName);
         }
 
@@ -119,12 +119,25 @@ namespace JsonClassMaker
                 memberValue += string.Format(ClassFormat.fullValueFormat, membertype + " " + membername);
                 setValue += string.Format(ClassFormat.setValueFormat, membername, membername);
                 stringClassMemberValue += string.Format(ClassFormat.fullValueFormat, string.Format(ClassFormat.valueFormat, "string", membername));
-                parameter += membername;
+                parameter += parameterstring(membername,membertype);
             }
 
             return new Tuple<string, string, string, string, string>(memberValue, newParameter, setValue, stringClassMemberValue, parameter);
         }
-
+        public static string parameterstring(string membername,string membertype)
+        {
+            string parameter = "";
+            if(membertype == "string")
+            {
+                parameter = "item.{0}";
+            }
+            else
+            {
+                parameter = membertype + ".Parse(item.{0})";
+            }
+            parameter = string.Format(parameter, membername);
+            return parameter;
+        }
 
     }
 }

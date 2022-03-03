@@ -1,0 +1,39 @@
+[
+    {
+        "ID": "1101011",
+        "Korean": "양배추 씨앗",
+        "Main_type": "1",
+        "Sub_type": "101",
+        "Grade": "0",
+        "Option_value_1": "0",
+        "Option_value_2": "0",
+        "Option_id_1": "0",
+        "Option_id_2": "0",
+        "Cool_time": "0"
+    },
+    {
+        "ID": "1101012",
+        "Korean": "당근 씨앗",
+        "Main_type": "1",
+        "Sub_type": "101",
+        "Grade": "0",
+        "Option_value_1": "0",
+        "Option_value_2": "0",
+        "Option_id_1": "0",
+        "Option_id_2": "0",
+        "Cool_time": "0"
+    },
+    {
+        "ID": "1101013",
+        "Korean": "고추 씨앗",
+        "Main_type": "1",
+        "Sub_type": "101",
+        "Grade": "0",
+        "Option_value_1": "0",
+        "Option_value_2": "0",
+        "Option_id_1": "0",
+        "Option_id_2": "0",
+        "Cool_time": "0"
+    }
+]
+
