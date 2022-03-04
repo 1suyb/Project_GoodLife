@@ -9,6 +9,8 @@ public class ShopMaedaeUI : ShopUI
     private ShopBasketUI shopBasketUI;
     [SerializeField]
     private TempData tempdata;
+    [SerializeField]
+    private GameObject popUp;
 
     private Slot[] basketSlots;
     
@@ -47,22 +49,30 @@ public class ShopMaedaeUI : ShopUI
 
             if( itemData.id == basketSlots[i]._itemData.id )
             {
-                basketSlots[i]._itemData.itemCount += 1;
-                basketSlots[i].DataUpdate();
+                basketSlots[i].SetSlotData(1);
                 return;
             }
         }
         for(int i = 0; i < basketSlots.Length; i++)
         {
             if( basketSlots[i]._itemData.itemCount == 0)
-            {
-                basketSlots[i]._itemData = itemData;
-                basketSlots[i].DataUpdate();
+            {            
+                basketSlots[i].SetSlotData(itemData.Clone());            
                 return;
             }
         }
         Debug.Log("슬롯 다 참");
 
+    }
+
+    public void PurchaseItems(ItemData itemData)
+    {
+
+    }
+
+    public void PopUpWindow(ItemData itemData)
+    {
+        popUp.GetComponent<ItemPopUp>().PopUp("구매 수량", itemData, PurchaseItems);
     }
    
    

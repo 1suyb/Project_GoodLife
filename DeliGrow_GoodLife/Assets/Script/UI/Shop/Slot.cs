@@ -26,23 +26,16 @@ public abstract class Slot : MonoBehaviour
 
     public void SetSlotData(ItemData itemData)
     {
-        // _itemIconSprite = itemicon;
-        //Debug.Log("매개변수로받아오는거", itemicon);
-        // Debug.Log(_itemIconSprite);
-        // _itemCount = itemcount;
-        //_itemCategory = itemcategory;
-        // _itemId = itemId;
-
         _itemData = itemData;
         DataUpdate();
     }
-    /*
+    
     public void SetSlotData(int itemcount)
     {
-        _itemCount = itemcount;
+        _itemData.itemCount += itemcount;
         DataUpdate();
     }
-    */
+    
     public void DataUpdate()
     {
         if ( (_itemData.itemCount <= 0) || (_itemData.id == 0) )

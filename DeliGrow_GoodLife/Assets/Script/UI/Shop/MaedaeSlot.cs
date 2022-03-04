@@ -24,8 +24,21 @@ public class MaedaeSlot : Slot
 
     public override void MoustRightClick()
     {
-        shopMaedaeUI.PurchaseSingleItem(_itemData);
+        Debug.Log("제발 되어주십시오");
+        if (Input.GetMouseButtonDown(2))
+        {
+            Debug.Log("계십니까");
+            if ((Input.GetKeyDown(KeyCode.LeftShift)))
+            {
+                shopMaedaeUI.PopUpWindow(_itemData);
+                return;
+            }
+            shopMaedaeUI.PurchaseSingleItem(_itemData);
+        }
+
     }
+
+
 
     private void ShowItemDescription()
     {
