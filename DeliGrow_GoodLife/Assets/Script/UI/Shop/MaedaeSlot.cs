@@ -5,6 +5,8 @@ using UnityEngine;
 public class MaedaeSlot : Slot
 {
     [SerializeField] private ShopMaedaeUI shopMaedaeUI;
+
+    private bool isPoped = false;
     
 
     public override void MouseEnter()
@@ -24,13 +26,14 @@ public class MaedaeSlot : Slot
 
     public override void MoustRightClick()
     {
-        Debug.Log("제발 되어주십시오");
-        if (Input.GetMouseButtonDown(2))
+        if (isPoped == true) return;
+
+        if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("계십니까");
-            if ((Input.GetKeyDown(KeyCode.LeftShift)))
+            if ((Input.GetKey(KeyCode.LeftShift)))
             {
                 shopMaedaeUI.PopUpWindow(_itemData);
+                isPoped = true;
                 return;
             }
             shopMaedaeUI.PurchaseSingleItem(_itemData);
