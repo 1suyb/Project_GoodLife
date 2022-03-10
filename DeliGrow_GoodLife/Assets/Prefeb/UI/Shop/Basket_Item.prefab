@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7143936941071334563}
   - component: {fileID: 7448057191140466135}
   - component: {fileID: 665259718565376592}
+  - component: {fileID: 142472483}
   m_Layer: 5
   m_Name: Basket_Item
   m_TagString: Untagged
@@ -76,6 +77,29 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &142472483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029346184574718651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1546fda1ec28dc64e9d3cb63bff05d96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 665259718565376592}
+  _count: {fileID: 9223195768625838839}
+  _deactiveColor: {r: 0, g: 0, b: 0, a: 0}
+  _itemData:
+    m_id: 0
+    m_itemSprite: {fileID: 0}
+    m_itemName: 
+    m_itemDescription: 
+    m_category: 0
+    m_itemCount: 0
+  purchaseAmount: {fileID: 0}
 --- !u!1 &8732019445778887100
 GameObject:
   m_ObjectHideFlags: 0

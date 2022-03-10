@@ -6,7 +6,15 @@ public class ShopInventorySlot : Slot
 {
     [SerializeField] private ShopInventoryUI shopInventoryUI;
 
+    public override void SetSlotData(ItemData itemData)
+    {
+        base.SetSlotData(itemData);
+    }
 
+    public override void SetSlotData(int itemcount)
+    {
+        base.SetSlotData(itemcount);
+    }
 
 
     private void ShowItemDescription()

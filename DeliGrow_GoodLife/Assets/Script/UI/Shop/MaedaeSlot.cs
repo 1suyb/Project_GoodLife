@@ -7,7 +7,16 @@ public class MaedaeSlot : Slot
     [SerializeField] private ShopMaedaeUI shopMaedaeUI;
 
     private bool isPoped = false;
-    
+
+    public override void SetSlotData(ItemData itemData)
+    {
+        base.SetSlotData(itemData);
+    }
+
+    public override void SetSlotData(int itemcount)
+    {
+        base.SetSlotData(itemcount);
+    }
 
     public override void MouseEnter()
     {

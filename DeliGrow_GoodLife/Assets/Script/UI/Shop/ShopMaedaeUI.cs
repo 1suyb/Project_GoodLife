@@ -61,7 +61,7 @@ public class ShopMaedaeUI : ShopUI
                 return;
             }
         }
-        Debug.Log("½½·Ô ´Ù Âü");
+        Debug.Log("½½·Ô ²Ë Âü");
 
     }
 

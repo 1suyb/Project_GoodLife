@@ -13,30 +13,30 @@ MonoBehaviour:
   m_Name: TempShopData
   m_EditorClassIdentifier: 
   item:
-  - m_id: 1
+  - m_id: 6
     m_itemSprite: {fileID: 21300000, guid: e0175a01041b5ef41b133d24e17dc3eb, type: 3}
     m_itemName: "\uC544\uC774\uD15C1"
     m_itemDescription: "\uC544\uC774\uC774\uC774\uD15C\uD15C1"
     m_category: 2
     m_itemCount: 1
-  - m_id: 1
+  - m_id: 7
     m_itemSprite: {fileID: 21300000, guid: e0175a01041b5ef41b133d24e17dc3eb, type: 3}
     m_itemName: "\uC544\uC774\uD15C2"
     m_itemDescription: "\uC544\uC774\uC774\uC774\uD15C\uD15C2"
     m_category: 4
     m_itemCount: 1
-  - m_id: 3
+  - m_id: 8
     m_itemSprite: {fileID: 21300000, guid: fb4ec0183498f25498166b61dd189136, type: 3}
     m_itemName: "\uC544\uC774\uD15C3"
     m_itemDescription: "\uC544\uC774\uC774\uC774\uC774\uD15C\uD15C3"
     m_category: 6
     m_itemCount: 1
-  - m_id: 0
-    m_itemSprite: {fileID: 0}
-    m_itemName: 
-    m_itemDescription: 
-    m_category: 0
-    m_itemCount: 0
+  - m_id: 9
+    m_itemSprite: {fileID: 21300000, guid: fb4ec0183498f25498166b61dd189136, type: 3}
+    m_itemName: "\uC544\uC774\uD15C4"
+    m_itemDescription: "\uC544\uC544\uC774\uC774\uC774\uD15C4"
+    m_category: 1
+    m_itemCount: 1
   - m_id: 0
     m_itemSprite: {fileID: 0}
     m_itemName: 

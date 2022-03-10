@@ -24,13 +24,13 @@ public abstract class Slot : MonoBehaviour
 
     public ItemData _itemData;
 
-    public void SetSlotData(ItemData itemData)
+    public virtual void SetSlotData(ItemData itemData)
     {
         _itemData = itemData;
         DataUpdate();
     }
     
-    public void SetSlotData(int itemcount)
+    public virtual void SetSlotData(int itemcount)
     {
         _itemData.itemCount += itemcount;
         DataUpdate();
