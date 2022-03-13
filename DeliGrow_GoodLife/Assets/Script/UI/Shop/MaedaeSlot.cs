@@ -6,17 +6,7 @@ public class MaedaeSlot : Slot
 {
     [SerializeField] private ShopMaedaeUI shopMaedaeUI;
 
-    private bool isPoped = false;
 
-    public override void SetSlotData(ItemData itemData)
-    {
-        base.SetSlotData(itemData);
-    }
-
-    public override void SetSlotData(int itemcount)
-    {
-        base.SetSlotData(itemcount);
-    }
 
     public override void MouseEnter()
     {
@@ -35,14 +25,13 @@ public class MaedaeSlot : Slot
 
     public override void MoustRightClick()
     {
-        if (isPoped == true) return;
+        if (shopMaedaeUI.isPoped == true) return;
 
         if (Input.GetMouseButtonDown(1))
         {
             if ((Input.GetKey(KeyCode.LeftShift)))
             {
                 shopMaedaeUI.PopUpWindow(_itemData);
-                isPoped = true;
                 return;
             }
             shopMaedaeUI.PurchaseSingleItem(_itemData);

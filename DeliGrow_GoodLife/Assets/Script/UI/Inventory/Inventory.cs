@@ -144,14 +144,14 @@ public class Inventory : ScriptableObject
     }
     public bool SubGold(ulong gold)
     {
-        if(m_gold > gold)
+        if(m_gold < gold)
         {
             return false;
         }
         else
         {
             m_gold -= gold;
-            _inventoryUI.UpdateGold();
+          //  _inventoryUI.UpdateGold();
             return true;
         }
     }

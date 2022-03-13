@@ -87,12 +87,11 @@ public class ItemPopUp : UI
     }
     public void NoButton()
     {
-        ClosePopUp();
         if (noaction != null)
         {
             noaction();
         }
-        
+        ClosePopUp();
     }
     private void CleanInputText()
     {
