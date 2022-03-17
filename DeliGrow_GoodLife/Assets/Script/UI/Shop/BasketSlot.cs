@@ -12,8 +12,8 @@ public class BasketSlot : Slot
     public override void SetSlotData(ItemData itemData)
     {
         base.SetSlotData(itemData);
-        shopBasketUI.purchaseAmount += itemData.itemCount;
-        // shopBasketUI.purchaseAmount += itemData.itemCount * itemData.itemPrice; (향후 수정)
+        shopBasketUI.Amount += itemData.itemCount;
+        // shopBasketUI.Amount += itemData.itemCount * itemData.itemPrice; (향후 수정)
         shopBasketUI.setPurchaseAmount();
 
     }
@@ -21,8 +21,8 @@ public class BasketSlot : Slot
     public override void SetSlotData(int itemcount)
     {
         base.SetSlotData(itemcount);
-        shopBasketUI.purchaseAmount += _itemData.itemCount * itemcount;
-        // shopBasketUI.purchaseAmount += _itemData.itemPrice * itemcount; (향후 수정)
+        shopBasketUI.Amount += _itemData.itemCount * itemcount;
+        // shopBasketUI.Amount += _itemData.itemPrice * itemcount; (향후 수정)
         shopBasketUI.setPurchaseAmount();
     }
 
@@ -43,6 +43,14 @@ public class BasketSlot : Slot
 
     public override void MoustRightClick()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("함수진입");
+      
+        if (Input.GetMouseButtonDown(1))
+        {
+            Debug.Log("if문 진입");
+            _itemData.itemCount = 0;
+            _itemData.id = 0;
+            DataUpdate();
+        }
     }
 }

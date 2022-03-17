@@ -6,17 +6,23 @@ using UnityEngine.UI;
 public class ShopBasketUI : ShopUI
 {
     [SerializeField]
-    private GameObject purchaseAmountText;
+    private GameObject AmountText;
+    [SerializeField]
+    private GameObject BalanceText;
     [SerializeField]
     private ShopInventoryUI shopInventoryUI;
 
-    public int purchaseAmount;
+    public int Amount;
+    public ulong Balance;
+    public bool isPurchase;
 
     public override void Open()
     {
         base.Open(1);
-        purchaseAmount = 0;
-        setPurchaseAmount();
+        isPurchase = true;
+        Amount = 0;
+        Balance = inventory.gold;
+        AmountUpdate();
        for(int i = 0; i < slots.Length; i++)
         {
             slots[i].gameObject.SetActive(false);
@@ -24,33 +30,71 @@ public class ShopBasketUI : ShopUI
 
     }
 
-    public void setPurchaseAmount()
+    public void AmountUpdate()
     {
-        purchaseAmountText.GetComponent<Text>().text = purchaseAmount.ToString();
+        AmountText.GetComponent<Text>().text = Amount.ToString();
+        BalanceText.GetComponent<Text>().text = Balance.ToString();
     }
 
+    public void setPurchaseAmount()
+    {
+        Balance = inventory.gold - (ulong)Amount;
+        AmountUpdate();
+    }
+
+    public void setSellAmount()
+    {
+        Balance = inventory.gold + (ulong)Amount;
+        AmountUpdate();
+    }
     public void clearBasket()
     {
+        if (shopInventoryUI.isPoped == true) return;
+              
         for( int i = 0; i < slots.Length; i++ )
         {
             slots[i]._itemData.itemCount = 0;
             slots[i]._itemData.id = 0;
             slots[i].gameObject.SetActive(false);
 
-            purchaseAmount = 0;
-            setPurchaseAmount();
+            Amount = 0;
+            Balance = inventory.gold;
+            AmountUpdate();
         }
     }
 
+    public void confrimBasket()
+    {
+        if( isPurchase == true )
+        {
+            purchaseItems();
+            return;
+        }
+
+        //sellItems();
+    }
     public void purchaseItems()
     {
-        for( int i = 0; i < slots.Length; i++ )
+        if (shopInventoryUI.isPoped == true) return;
+
+        for ( int i = 0; i < slots.Length; i++ )
         {
             if (slots[i]._itemData.itemCount <= 0)
                 continue;
             shopInventoryUI.putItem(slots[i]._itemData);
         }
+        inventory.SubGold((ulong)Amount);
         clearBasket();
+    }
+
+    public void setIsPopedFalse()
+    {
+        shopInventoryUI.isPoped = false;
+    }
+
+    public void setIsPopedTrue()
+    {
+        shopInventoryUI.isPoped = true;
     }
 
 }

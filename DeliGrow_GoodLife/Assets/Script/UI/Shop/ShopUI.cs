@@ -18,6 +18,7 @@ public class ShopUI : UI
 
     protected ItemDescription itemDescription;
 
+    public bool isPoped = false;
 
     public virtual void Open(int q)
     {
@@ -31,6 +32,8 @@ public class ShopUI : UI
 
     public void ShowItemDescriptionWindow(ItemData itemData)
     {
+        if (isPoped == true) return;
+
         itemDescription.descriptionItem(itemData);
         go_DescriptionWindow.SetActive(true);
         isShowDescription = true;

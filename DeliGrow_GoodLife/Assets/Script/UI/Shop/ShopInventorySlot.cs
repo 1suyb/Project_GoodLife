@@ -6,16 +6,6 @@ public class ShopInventorySlot : Slot
 {
     [SerializeField] private ShopInventoryUI shopInventoryUI;
 
-    public override void SetSlotData(ItemData itemData)
-    {
-        base.SetSlotData(itemData);
-    }
-
-    public override void SetSlotData(int itemcount)
-    {
-        base.SetSlotData(itemcount);
-    }
-
 
     private void ShowItemDescription()
     {
@@ -46,6 +36,16 @@ public class ShopInventorySlot : Slot
 
     public override void MoustRightClick()
     {
-        throw new System.NotImplementedException();
+        if ( (shopInventoryUI.isPoped == true) || (shopInventoryUI.returnIsPurchase() == true) ) return;
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            if ((Input.GetKey(KeyCode.LeftShift)))
+            {
+                //shopInventoryUI.PopUpWindow(_itemData);
+                return;
+            }
+            shopInventoryUI.SellSingleItem(_itemData);
+        }
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.UI;
 
 public class ShopMaedaeUI : ShopUI
 {
@@ -11,9 +12,18 @@ public class ShopMaedaeUI : ShopUI
     private TempData tempdata;
     [SerializeField]
     private GameObject popUp;
+    [SerializeField]
+    private Text amount;
+    [SerializeField]
+    private Text balance;
+    [SerializeField]
+    private Text confirmButtonText;
+
 
     private Slot[] basketSlots;
-    
+
+   
+
 
     public override void Open()
     {
@@ -67,12 +77,66 @@ public class ShopMaedaeUI : ShopUI
 
     public void PurchaseItems(ItemData itemData)
     {
-
+        for(int i = 0; i < basketSlots.Length; i++)
+        {
+            if( itemData.id == basketSlots[i]._itemData.id )
+            {
+                basketSlots[i].SetSlotData(itemData.itemCount);
+                setIsPopedFalse();
+                return;
+            }
+        }
+        for(int i = 0; i < basketSlots.Length; i++)
+        {
+            if( basketSlots[i]._itemData.itemCount == 0 )
+            {
+                basketSlots[i].SetSlotData(itemData.Clone());
+                setIsPopedFalse();
+                return;
+            }
+        }
+        Debug.Log("슬롯 꽉 참");
     }
 
     public void PopUpWindow(ItemData itemData)
     {
-        popUp.GetComponent<ItemPopUp>().PopUp("구매 수량", itemData, PurchaseItems);
+        setIsPopedTrue();
+        popUp.GetComponent<ItemPopUp>().PopUp("구매 수량", itemData, PurchaseItems, setIsPopedFalse);
+    }
+
+    public void setIsPopedFalse()
+    {
+        isPoped = false;
+        shopBasketUI.setIsPopedFalse();
+    }
+
+    public void setIsPopedTrue()
+    {
+        isPoped = true;
+        shopBasketUI.setIsPopedTrue();
+    }
+
+    public void setSellMode()
+    {
+        if (shopBasketUI.isPurchase == false) return;
+        this.gameObject.SetActive(false);
+        shopBasketUI.clearBasket();
+        amount.text = "판매 금액";
+        balance.text = "판매 후 잔액";
+        confirmButtonText.text = "판매하기";
+        shopBasketUI.isPurchase = false;
+
+    }
+
+    public void setPurchaseMode()
+    {
+        if (shopBasketUI.isPurchase == true) return;
+        this.gameObject.SetActive(true);
+        shopBasketUI.clearBasket();
+        amount.text = "구매 금액";
+        balance.text = "구매 후 잔액";
+        confirmButtonText.text = "구매하기";
+        shopBasketUI.isPurchase = true;
     }
    
    
