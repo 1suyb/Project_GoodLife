@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Documents\\Su_Github\\Project_GoodLife\\JsonClassMaker\\JsonClassMaker\\JsonClassMaker.csproj": {}
+    "C:\\Users\\user\\Documents\\Su_Github\\Project_GoodLife\\ExceltoJson\\ExceltoJson\\ExceltoJson.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Documents\\Su_Github\\Project_GoodLife\\JsonClassMaker\\JsonClassMaker\\JsonClassMaker.csproj": {
+    "C:\\Users\\user\\Documents\\Su_Github\\Project_GoodLife\\ExceltoJson\\ExceltoJson\\ExceltoJson.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Documents\\Su_Github\\Project_GoodLife\\JsonClassMaker\\JsonClassMaker\\JsonClassMaker.csproj",
-        "projectName": "JsonClassMaker",
-        "projectPath": "C:\\Users\\user\\Documents\\Su_Github\\Project_GoodLife\\JsonClassMaker\\JsonClassMaker\\JsonClassMaker.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Documents\\Su_Github\\Project_GoodLife\\ExceltoJson\\ExceltoJson\\ExceltoJson.csproj",
+        "projectName": "ExceltoJson",
+        "projectPath": "C:\\Users\\user\\Documents\\Su_Github\\Project_GoodLife\\ExceltoJson\\ExceltoJson\\ExceltoJson.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Documents\\Su_Github\\Project_GoodLife\\JsonClassMaker\\JsonClassMaker\\obj\\",
+        "outputPath": "C:\\Users\\user\\Documents\\Su_Github\\Project_GoodLife\\ExceltoJson\\ExceltoJson\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -43,6 +43,12 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.Office.Interop.Excel": {
+              "target": "Package",
+              "version": "[15.0.4795.1000, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

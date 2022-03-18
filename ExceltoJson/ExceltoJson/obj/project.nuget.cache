@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "AsJnHvO1+fXJJR7aiBH3oqfSHL0Hsurzx9sgDb9GpRTGwTOvVQgJ9EOnmkEkel5XTmnZ7a0ePW//xww9zXcpVw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\user\\Documents\\Su_Github\\Project_GoodLife\\ExceltoJson\\ExceltoJson\\ExceltoJson.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.office.interop.excel\\15.0.4795.1000\\microsoft.office.interop.excel.15.0.4795.1000.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "프로젝트 대상 프레임워크 '.NETCoreApp,Version=v3.1' 대신 '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8'을(를) 사용하여 패키지 'Microsoft.Office.Interop.Excel 15.0.4795.1000'을(를) 복원했습니다. 이 패키지는 프로젝트와 완벽하게 호환되지 않을 수 있습니다.",
+      "libraryId": "Microsoft.Office.Interop.Excel",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
+}
