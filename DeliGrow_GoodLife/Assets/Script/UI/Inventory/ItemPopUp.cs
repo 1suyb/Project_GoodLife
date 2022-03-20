@@ -34,10 +34,14 @@ public class ItemPopUp : UI
     private readonly string DESCRIPTION = "수량을 입력하세요";
 
     private ItemData _handlingItem;
+    private ItemData _originItem;
+    private ShopInventorySlot _slot;
 
     public delegate void YesFunctionPointer(ItemData a);
+    public delegate void ThreeParamYesFunctionPointer(ItemData a, ItemData origin, ShopInventorySlot slot);
     public delegate void NOFunctionPointer();
     private YesFunctionPointer yesaction;
+    private ThreeParamYesFunctionPointer tyesaction;
     private NOFunctionPointer noaction;
 
     public override void Open()
@@ -58,13 +62,17 @@ public class ItemPopUp : UI
         //openUIs.Pop();
         CleanInputText();
         _handlingItem = null;
+        _originItem = null;
+        _slot = null;
         this.gameObject.SetActive(false);
         yesaction = null;
+        tyesaction = null;
         noaction = null;
     }
     public void PopUp(string title, ItemData item, YesFunctionPointer act)
     {
         Open();
+        _originItem = item;
         _handlingItem = new ItemData(item.id, item.itemSprite, item.itemName, item.itemDescription, item.category, item.itemCount);
         this.gameObject.SetActive(true);
         _title.text = title;
@@ -72,17 +80,40 @@ public class ItemPopUp : UI
         icon.sprite = _handlingItem.itemSprite;
         yesaction = act;
     }
+
+    public void PopUp(string title, ItemData item, ShopInventorySlot slot, ThreeParamYesFunctionPointer act)
+    {
+        Open();
+        _originItem = item;
+        _handlingItem = new ItemData(item.id, item.itemSprite, item.itemName, item.itemDescription, item.category, item.itemCount);
+        _slot = slot;
+        this.gameObject.SetActive(true);
+        _title.text = title;
+        _description.text = DESCRIPTION;
+        icon.sprite = _handlingItem.itemSprite;
+        tyesaction = act;
+    }
+
     public void PopUp(string title, ItemData item, YesFunctionPointer act,NOFunctionPointer noact)
     {
         PopUp(title, item, act);
         noaction = noact;
     }
 
-     public void YesButton()
+    public void PopUp(string title, ItemData item, ShopInventorySlot slot, ThreeParamYesFunctionPointer act, NOFunctionPointer noact)
+    {
+        PopUp(title, item, slot, act);
+        noaction = noact;
+    }
+
+    public void YesButton()
     {
         _handlingItem.itemCount = int.Parse(_input.text);
         this.gameObject.SetActive(false);
-        yesaction(_handlingItem);
+        if (yesaction != null)
+            yesaction(_handlingItem);
+        else
+            tyesaction(_handlingItem, _originItem, _slot);
         ClosePopUp();
     }
     public void NoButton()

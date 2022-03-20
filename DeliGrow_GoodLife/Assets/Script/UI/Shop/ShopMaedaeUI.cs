@@ -118,7 +118,7 @@ public class ShopMaedaeUI : ShopUI
 
     public void setSellMode()
     {
-        if (shopBasketUI.isPurchase == false) return;
+        if ( (shopBasketUI.isPurchase == false) || (shopBasketUI.isPoped == true) ) return;
         this.gameObject.SetActive(false);
         shopBasketUI.clearBasket();
         amount.text = "판매 금액";
@@ -130,7 +130,7 @@ public class ShopMaedaeUI : ShopUI
 
     public void setPurchaseMode()
     {
-        if (shopBasketUI.isPurchase == true) return;
+        if ( (shopBasketUI.isPurchase == true) || (shopBasketUI.isPoped == true) ) return;
         this.gameObject.SetActive(true);
         shopBasketUI.clearBasket();
         amount.text = "구매 금액";

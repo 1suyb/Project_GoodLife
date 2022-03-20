@@ -140,7 +140,7 @@ public class Inventory : ScriptableObject
         {
             m_gold += gold;
         }
-        _inventoryUI.UpdateGold();
+      //  _inventoryUI.UpdateGold();
     }
     public bool SubGold(ulong gold)
     {

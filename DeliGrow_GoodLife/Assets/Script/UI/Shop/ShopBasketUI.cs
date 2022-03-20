@@ -50,9 +50,25 @@ public class ShopBasketUI : ShopUI
     public void clearBasket()
     {
         if (shopInventoryUI.isPoped == true) return;
+
+        if(isPurchase == true)
+        {
+            for (int i = 0; i < slots.Length; i++)
+            {
+                slots[i]._itemData.itemCount = 0;
+                slots[i]._itemData.id = 0;
+                slots[i].gameObject.SetActive(false);
+
+                Amount = 0;
+                Balance = inventory.gold;
+                AmountUpdate();
+            }
+            return;
+        }
               
         for( int i = 0; i < slots.Length; i++ )
         {
+            shopInventoryUI.putItem(slots[i]._itemData);
             slots[i]._itemData.itemCount = 0;
             slots[i]._itemData.id = 0;
             slots[i].gameObject.SetActive(false);
@@ -70,8 +86,8 @@ public class ShopBasketUI : ShopUI
             purchaseItems();
             return;
         }
-
-        //sellItems();
+        
+        sellItems();
     }
     public void purchaseItems()
     {
@@ -87,14 +103,39 @@ public class ShopBasketUI : ShopUI
         clearBasket();
     }
 
+    public void sellItems()
+    {
+        if (shopInventoryUI.isPoped == true) return;
+
+        inventory.AddGold((ulong)Amount);
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            slots[i]._itemData.itemCount = 0;
+            slots[i]._itemData.id = 0;
+            slots[i].gameObject.SetActive(false);
+
+            Amount = 0;
+            Balance = inventory.gold;
+            AmountUpdate();
+        }
+    }
+
     public void setIsPopedFalse()
     {
+        isPoped = false;
         shopInventoryUI.isPoped = false;
     }
 
     public void setIsPopedTrue()
     {
+        isPoped = true;
         shopInventoryUI.isPoped = true;
+    }
+
+    public void iPutItem(ItemData itemData)
+    {
+        shopInventoryUI.putItem(itemData);
     }
 
 }

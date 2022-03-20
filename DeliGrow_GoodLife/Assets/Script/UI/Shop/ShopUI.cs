@@ -11,13 +11,13 @@ public class ShopUI : UI
     protected Inventory inventory;
     [SerializeField]
     protected GameObject go_DescriptionWindow;
+    [SerializeField]
+    protected GameObject go_Warning;
 
     public Slot[] slots;
-
     protected bool isShowDescription = false;
-
     protected ItemDescription itemDescription;
-
+    protected Warning warning;
     public bool isPoped = false;
 
     public virtual void Open(int q)
@@ -25,9 +25,9 @@ public class ShopUI : UI
         // _shopType = type;
         itemDescription = go_DescriptionWindow.GetComponent<ItemDescription>();
         slots = this.gameObject.GetComponentsInChildren<Slot>();
+        warning = go_Warning.GetComponent<Warning>();
         panel.SetActive(true);
-       
-    
+        
     }
 
     public void ShowItemDescriptionWindow(ItemData itemData)

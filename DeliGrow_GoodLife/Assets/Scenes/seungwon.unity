@@ -3592,12 +3592,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3153743087026638273, guid: dd95cd7dd5c92c1438a10642570f4158, type: 3}
   m_PrefabInstance: {fileID: 443204338}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 443204341}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d764f6bca64f6f34182e925c2606d30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &443204341 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3153743087026638275, guid: dd95cd7dd5c92c1438a10642570f4158, type: 3}
+  m_PrefabInstance: {fileID: 443204338}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &449539664
 GameObject:
   m_ObjectHideFlags: 0
@@ -12128,6 +12133,7 @@ MonoBehaviour:
   panel: {fileID: 1429274396}
   inventory: {fileID: 11400000, guid: 30b783ca178857b4ca8f9cbf5740052a, type: 2}
   go_DescriptionWindow: {fileID: 1761223081}
+  go_Warning: {fileID: 443204341}
   slots: []
   isPoped: 0
   AmountText: {fileID: 1541441978}
@@ -17827,6 +17833,7 @@ MonoBehaviour:
   panel: {fileID: 886470468}
   inventory: {fileID: 0}
   go_DescriptionWindow: {fileID: 1761223081}
+  go_Warning: {fileID: 443204341}
   slots: []
   isPoped: 0
   shopBasketUI: {fileID: 1371527547}
@@ -21090,9 +21097,11 @@ MonoBehaviour:
   panel: {fileID: 5320073060830539838}
   inventory: {fileID: 11400000, guid: 30b783ca178857b4ca8f9cbf5740052a, type: 2}
   go_DescriptionWindow: {fileID: 1761223081}
+  go_Warning: {fileID: 443204341}
   slots: []
   isPoped: 0
   shopBasketUI: {fileID: 1371527547}
+  popUp: {fileID: 1433225017}
 --- !u!222 &5320073060988041380
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -14,8 +14,9 @@ public class BasketSlot : Slot
         base.SetSlotData(itemData);
         shopBasketUI.Amount += itemData.itemCount;
         // shopBasketUI.Amount += itemData.itemCount * itemData.itemPrice; (향후 수정)
-        shopBasketUI.setPurchaseAmount();
 
+        if (shopBasketUI.isPurchase == true) shopBasketUI.setPurchaseAmount();
+        else shopBasketUI.setSellAmount();
     }
 
     public override void SetSlotData(int itemcount)
@@ -23,7 +24,9 @@ public class BasketSlot : Slot
         base.SetSlotData(itemcount);
         shopBasketUI.Amount += _itemData.itemCount * itemcount;
         // shopBasketUI.Amount += _itemData.itemPrice * itemcount; (향후 수정)
-        shopBasketUI.setPurchaseAmount();
+
+        if (shopBasketUI.isPurchase == true) shopBasketUI.setPurchaseAmount();
+        else shopBasketUI.setSellAmount();
     }
 
     public override void MouseEnter()
@@ -43,11 +46,25 @@ public class BasketSlot : Slot
 
     public override void MoustRightClick()
     {
-        Debug.Log("함수진입");
       
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("if문 진입");
+            if(shopBasketUI.isPurchase == true)
+            {
+                shopBasketUI.Amount -= _itemData.itemCount;
+                // shopBasketUI.Amount -= _itemData.itemCount * _itemData.itemPrice; (향후 수정)
+                if (shopBasketUI.isPurchase == true) shopBasketUI.setPurchaseAmount();
+                else shopBasketUI.setSellAmount();
+                _itemData.itemCount = 0;
+                _itemData.id = 0;
+                DataUpdate();
+                return;
+            }
+            shopBasketUI.iPutItem(_itemData);
+            shopBasketUI.Amount -= _itemData.itemCount;
+            // shopBasketUI.Amount -= _itemData.itemCount * _itemData.itemPrice; (향후 수정)
+            if (shopBasketUI.isPurchase == true) shopBasketUI.setPurchaseAmount();
+            else shopBasketUI.setSellAmount();
             _itemData.itemCount = 0;
             _itemData.id = 0;
             DataUpdate();

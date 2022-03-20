@@ -42,10 +42,11 @@ public class ShopInventorySlot : Slot
         {
             if ((Input.GetKey(KeyCode.LeftShift)))
             {
-                //shopInventoryUI.PopUpWindow(_itemData);
+                shopInventoryUI.PopUpWindow(_itemData, this);
                 return;
             }
             shopInventoryUI.SellSingleItem(_itemData);
+            DataUpdate();
         }
     }
 }
