@@ -18,7 +18,7 @@ namespace ExceltoJson
         // {0} : 칼럼네임
         // {1} : 값
         public static string JsonDataFormat =
-@"{0} : {1}";
+@"""{0}"" : ""{1}""";
 
         // {0} : table name
         // {1} : Datas
@@ -33,6 +33,6 @@ namespace ExceltoJson
         // {0} : 데이터 형식
         // {1} : 칼럼네임
         public static string XmlDataFormat =
-@"{0} name = {1}";
+@"{0} name = ""{1}""";
     }
 }

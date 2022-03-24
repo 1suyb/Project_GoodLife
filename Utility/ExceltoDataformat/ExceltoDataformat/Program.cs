@@ -8,17 +8,21 @@ namespace ExceltoJson
 {
     class Program
     {
+        public static string JsonText;
+        public static string XmlText;
         static void Main(string[] args)
         {
             string filePath = "";
             string readfilename = System.IO.Directory.GetCurrentDirectory() + "\\table.xlsx";
+            string outfilePath = "";
             string writeJsonFileName = "table.json";
             string writeXmlFileName = "table.xml";
 
-            if (args.Length > 1)
+            if (args.Length > 2)
             {
                 filePath = args[0];
                 readfilename = args[1];
+                outfilePath = args[2];
             }
 
             Excel.Application excel = new Excel.Application();
@@ -29,31 +33,62 @@ namespace ExceltoJson
             {
                 worksheet = workbook.Worksheets.Item[i];
                 Console.WriteLine(worksheet.Name);
+
                 if (worksheet.Name.Contains("Table"))
                 {
-                    WriteJsonFile(worksheet);
+                    string column;
+                    string type;
+                    List<string> columns = new List<string>();
+                    List<string> data = new List<string>();
+                    Excel.Range range = worksheet.UsedRange;
+                    for (int j = 1; j < range.Columns.Count + 1; j++)
+                    {
+                        column = (range.Cells[1, i] as Excel.Range).Value2.ToString();
+                        type = (range.Cells[2, i] as Excel.Range).Value2.ToString();
+                        XmlText += string.Format(StringFormat.XmlDataFormat, type, column);
+                        columns.Add(column);
+                    }
+                    for(int j = 1;j<range.Rows.Count + 1; j++)
+                    {
+                        for(int k = 1; k<range.Columns.Count +1; k++)
+                        {
+                            data.Add(range.Cells[j, k]);
+                        }
+                        WriteJsonText(columns, data);
+                    }
+                    WriteJsonFile();
+                    WriteXmlFile();
+                    JsonText = "";
+                    XmlText = "";
                 }
             }
 
             excel.Quit();
         }
 
-        public static void WriteJsonFile(Worksheet worksheet)
+        public static void WriteJsonText(List<string> columns,List<string> data)
         {
-            List<string> column = new List<string>();
-            Excel.Range range = worksheet.UsedRange;
-            for(int i = 1; i < range.Columns.Count+1; i++)
+            string jsondata = "";
+            for(int i = 0; i < data.Count; i++)
             {
-                column.Add((range.Cells[1, i] as Excel.Range).Value2.ToString());
-                Console.WriteLine(column[i-1]);
+                jsondata += string.Format(StringFormat.JsonDataFormat, columns[i], data[i]) + "\n";
             }
+            JsonText += string.Format(StringFormat.JsonFormat, jsondata) + "\n";
+
         }
 
-        public void WriteXmlFile()
+        public static void WriteXmlText(string column, string type)
+        {
+            
+        }
+        public static void WriteJsonFile()
         {
 
         }
-        
+        public static void WriteXmlFile()
+        {
+
+        }        
 
     }
 }
