@@ -15,15 +15,13 @@ namespace ExceltoJson
 ";
         // {0} : 데이터들
         public static string JsonDatasFormat = 
-@"
-{{
+@"  {{
 {0}
-}}
-";
+    }}";
         // {0} : 칼럼네임
         // {1} : 값
         public static string JsonDataFormat =
-@"  ""{0}"" : ""{1}""";
+@"      ""{0}"" : ""{1}""";
 
         // {0} : table name
         // {1} : Datas
