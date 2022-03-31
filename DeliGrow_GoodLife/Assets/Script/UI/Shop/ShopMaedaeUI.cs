@@ -53,6 +53,13 @@ public class ShopMaedaeUI : ShopUI
 
     public void PurchaseSingleItem(ItemData itemData)
     {
+        // if( (int)shopBasketUI.Balance < itemData.itemPrice ) 
+        if ( (int)shopBasketUI.Balance < itemData.itemCount )
+        {
+            warning.ShowWaring("소지금이 부족합니다!");
+            return;
+        }
+           
         // 전체 슬롯 반복문 돌리면서 아이템id 같으면 수량 추가. 없으면 빈 슬롯에 추가       
         for(int i = 0; i < basketSlots.Length; i++)
         {
@@ -72,12 +79,20 @@ public class ShopMaedaeUI : ShopUI
             }
         }
         Debug.Log("슬롯 꽉 참");
+        warning.ShowWaring("바구니 공간이 부족합니다!");
 
     }
 
     public void PurchaseItems(ItemData itemData)
     {
-        for(int i = 0; i < basketSlots.Length; i++)
+        //if ((int)shopBasketUI.Balance < itemData.itemCount * itemData.itemPrice)
+        if ((int)shopBasketUI.Balance < itemData.itemCount )
+        {
+            warning.ShowWaring("소지금이 부족합니다!");
+            return;
+        }
+
+        for (int i = 0; i < basketSlots.Length; i++)
         {
             if( itemData.id == basketSlots[i]._itemData.id )
             {
@@ -96,6 +111,7 @@ public class ShopMaedaeUI : ShopUI
             }
         }
         Debug.Log("슬롯 꽉 참");
+        warning.ShowWaring("바구니 공간이 부족합니다!");
     }
 
     public void PopUpWindow(ItemData itemData)

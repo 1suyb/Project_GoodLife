@@ -97,7 +97,7 @@ public class ShopBasketUI : ShopUI
         {
             if (slots[i]._itemData.itemCount <= 0)
                 continue;
-            shopInventoryUI.putItem(slots[i]._itemData);
+            if (!shopInventoryUI.putItem(slots[i]._itemData)) return;
         }
         inventory.SubGold((ulong)Amount);
         clearBasket();

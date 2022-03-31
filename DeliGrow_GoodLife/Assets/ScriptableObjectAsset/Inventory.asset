@@ -116,84 +116,84 @@ MonoBehaviour:
     m_itemDescription: 
     m_category: 0
     m_itemCount: 0
-  - m_id: 0
+  - m_id: 1
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
-    m_itemCount: 0
-  - m_id: 0
+    m_itemCount: 1
+  - m_id: 1
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
-    m_itemCount: 0
-  - m_id: 0
+    m_itemCount: 1
+  - m_id: 1
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
-    m_itemCount: 0
-  - m_id: 0
+    m_itemCount: 1
+  - m_id: 1
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
-    m_itemCount: 0
-  - m_id: 0
+    m_itemCount: 1
+  - m_id: 1
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
-    m_itemCount: 0
-  - m_id: 0
+    m_itemCount: 1
+  - m_id: 1
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
-    m_itemCount: 0
-  - m_id: 0
+    m_itemCount: 1
+  - m_id: 1
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
-    m_itemCount: 0
-  - m_id: 0
+    m_itemCount: 1
+  - m_id: 1
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
-    m_itemCount: 0
-  - m_id: 0
+    m_itemCount: 1
+  - m_id: 1
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
-    m_itemCount: 0
-  - m_id: 0
+    m_itemCount: 1
+  - m_id: 1
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
-    m_itemCount: 0
-  - m_id: 0
+    m_itemCount: 1
+  - m_id: 1
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
-    m_itemCount: 0
-  - m_id: 0
+    m_itemCount: 1
+  - m_id: 1
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
-    m_itemCount: 0
-  - m_id: 0
+    m_itemCount: 1
+  - m_id: 1
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
-    m_itemCount: 0
+    m_itemCount: 1
   tmp:
     m_id: 1
     m_itemSprite: {fileID: 21300000, guid: 67c57e7d55f393b4fbff74070362cfa6, type: 3}
@@ -201,4 +201,4 @@ MonoBehaviour:
     m_itemDescription: "\uC544\uC774\uD15C\uC124\uBA85"
     m_category: 6
     m_itemCount: 20
-  m_gold: 9659
+  m_gold: 9612

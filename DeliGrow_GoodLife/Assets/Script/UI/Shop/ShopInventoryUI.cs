@@ -22,7 +22,13 @@ public class ShopInventoryUI : ShopUI
         }
     }
     public void SellSingleItem(ItemData itemData)
-    {      
+    {   if( itemData.category == Category.QUEST )
+        {
+            warning.ShowWaring("퀘스트 아이템은 판매할 수 없습니다!");
+            return;
+        }
+        // 특수등급 아이템 예외처리
+    
         for (int i = 0; i < basketSlots.Length; i++)
         {
             if (itemData.id == basketSlots[i]._itemData.id)
@@ -42,11 +48,18 @@ public class ShopInventoryUI : ShopUI
             }
         }
         Debug.Log("슬롯 꽉 참");
+        warning.ShowWaring("바구니 공간이 부족합니다!");
 
     }
 
     public void SellItems(ItemData itemData, ItemData origin, ShopInventorySlot slot)
     {
+        if( itemData.itemCount > origin.itemCount )
+        {
+            warning.ShowWaring("소지한 아이템의 수를 초과하였습니다!");
+            setIsPopedFalse();
+            return;
+        }
         for (int i = 0; i < basketSlots.Length; i++)
         {
             if (itemData.id == basketSlots[i]._itemData.id)
@@ -70,6 +83,7 @@ public class ShopInventoryUI : ShopUI
             }
         }
         Debug.Log("슬롯 꽉 참");
+        warning.ShowWaring("바구니 공간이 부족합니다!");
     }
     
     public void PopUpWindow(ItemData itemData, ShopInventorySlot slot)
@@ -77,14 +91,14 @@ public class ShopInventoryUI : ShopUI
         setIsPopedTrue();
         popUp.GetComponent<ItemPopUp>().PopUp("판매 수량", itemData, slot, SellItems, setIsPopedFalse);
     }
-    public void putItem(ItemData itemData)
+    public bool putItem(ItemData itemData)
     {
         for (int i = 0; i < slots.Length; i++)
         {
             if (itemData.id == slots[i]._itemData.id)
             {
                 slots[i].SetSlotData(itemData.itemCount);
-                return;
+                return true;
             }
         }
         for (int i = 0; i < slots.Length; i++)
@@ -92,10 +106,11 @@ public class ShopInventoryUI : ShopUI
             if (slots[i]._itemData.id <= 0)
             {
                 slots[i].SetSlotData(itemData.Clone());
-                return;
+                return true;
             }
         }
-        Debug.Log("슬롯 꽉 참");
+        warning.ShowWaring("인벤토리 공간이 부족합니다!");
+        return false;
     }
 
     public void setIsPopedFalse()
