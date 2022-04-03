@@ -238,6 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a8de67e1effb84fbfaa1007b709b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transform: {fileID: 370137588}
+  status: {fileID: 11400000, guid: 7d6663ce8634bcb498433b7758a12a23, type: 2}
 --- !u!1 &407273140
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,7 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3736cef7be8748f4e8a4d694cf6bb341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 370137585}
 --- !u!114 &516991788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44581,9 +44583,9 @@ MonoBehaviour:
     action:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 370137585}
-          m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
-          m_MethodName: 
+        - m_Target: {fileID: 370137589}
+          m_TargetAssemblyTypeName: CharacterControl, Assembly-CSharp
+          m_MethodName: GoUp
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -44597,7 +44599,53 @@ MonoBehaviour:
     keycode: 274
     action:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 370137589}
+          m_TargetAssemblyTypeName: CharacterControl, Assembly-CSharp
+          m_MethodName: GoDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - key: 0
+    keycode: 275
+    action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 370137589}
+          m_TargetAssemblyTypeName: CharacterControl, Assembly-CSharp
+          m_MethodName: GoRight
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - key: 0
+    keycode: 276
+    action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 370137589}
+          m_TargetAssemblyTypeName: CharacterControl, Assembly-CSharp
+          m_MethodName: GoLeft
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!4 &1141379033
 Transform:
   m_ObjectHideFlags: 0
@@ -44787,7 +44835,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1867301146
 RectTransform:
   m_ObjectHideFlags: 0
@@ -45108,7 +45156,7 @@ Sprite:
         format: 0
         dimension: 0
       m_DataSize: 80
-      _typelessdata: 000000bf0000003f000000000000003f0000003f00000000000000bf000000bf000000000000003f000000bf000000000000000000000000000000000000000000000000000000000000000000000000
+      _typelessdata: 000000bf0000003f000000000000003f0000003f00000000000000bf000000bf000000000000003f000000bf00000000000000000000803f0000803f0000803f00000000000000000000803f00000000
     m_Bindpose: []
     textureRect:
       serializedVersion: 2

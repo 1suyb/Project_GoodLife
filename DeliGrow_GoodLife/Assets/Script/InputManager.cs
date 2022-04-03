@@ -14,7 +14,7 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InitializeKey();
+        //InitializeKey();
     }
 
     // Update is called once per frame
@@ -32,6 +32,7 @@ public class InputManager : MonoBehaviour
         }
         
     }
+    /*
     private void InitializeKey()
     {
         for (int i = 0; i < _shortcuts.Count; i++)
@@ -41,8 +42,8 @@ public class InputManager : MonoBehaviour
                 _shortcuts[i] = ChangeSmall(_shortcuts[i]);
             }
         }
-    }
-
+    }*/
+    /*
     private Shortcut ChangeSmall(Shortcut shortcut)
     {
         Shortcut rshortcut = new Shortcut();
@@ -51,7 +52,7 @@ public class InputManager : MonoBehaviour
         rshortcut.action = shortcut.action;
         return rshortcut;
     }
-    
+    */
     [Serializable]
     struct Shortcut
     {

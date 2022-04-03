@@ -1,25 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[CreateAssetMenu(fileName = "CharacterStatus", menuName = "Scriptable Object/CharacterStatus")]
 public class CharacterStatus : ScriptableObject
 {
-    private float _max_hp;
-    private float _max_mp;
-    private float _power;
-    private float _move_speed;
-    private float _attack_speed;
+    [Header("적용되고 있는 스텟 값")]
+    #region
+    [Tooltip("현재 속성")]
+    [SerializeField] private byte _element;             // 0~4;
+    [Tooltip("최대 체력")]
+    [SerializeField] private float _max_hp;             // 11
+    [Tooltip("최대 기력")]
+    [SerializeField] private float _max_mp;             // 12
+    [Tooltip("공격력")]
+    [SerializeField] private float _power;              // 13
+    [Tooltip("이동속도")]
+    [SerializeField] private float _move_speed;         // 14
+    [Tooltip("공격속도")]
+    [SerializeField] private float _attack_speed;       // 21
+    [Tooltip("공격범위")]
+    [SerializeField] private int _attack_range;         // 22
+    [Tooltip("구체 크기")]
+    [SerializeField] private int _projectiles_size;     // 23
+    [Tooltip("공격타입에 따른 값")]
+    [SerializeField] private int _attack_value;         // 24
+    [Tooltip("해당 속성 최대 공격 횟수")]
+    [SerializeField] private int _attack_count;
+    #endregion
+    [Header("버프로 인한 증감 값")]
+    #region
+    [SerializeField] private float _up_max_hp;
+    [SerializeField] private float _up_max_mp;
+    [SerializeField] private float _up_power;
+    [SerializeField] private float _up_move_speed;
+    [SerializeField] private float _up_attack_speed;
+    #endregion
 
-    private int _attack_range;
-    private int _projectiles_size;
-    private int _attack_value;
-    private int _attack_count;
-
-    private float _up_max_hp;
-    private float _up_max_mp;
-    private float _up_power;
-    private float _up_move_speed;
-    private float _up_attack_speed;
     public float max_Hp{
         get
         {
@@ -107,26 +123,26 @@ public class CharacterStatus : ScriptableObject
     {
 
     }
-
-    public void UpProficiency(byte stattype, float value)
+    public void UpProficienty(byte stattype, float value)
     {
         switch (stattype)
         {
             case 11:
-                _max_hp += value;
+                max_Hp = value;
                 break;
             case 12:
-                _max_mp += value;
+                max_Mp = value;
                 break;
             case 13:
-                _power += value;
+                power = value;
                 break;
             case 14:
-                _move_speed += value;
+                move_Speed = value;
                 break;
             case 21:
-                _attack_speed += value;
+                attack_Speed = value;
                 break;
+
             default:
                 break;
         }
