@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 370137588}
   - component: {fileID: 370137587}
-  - component: {fileID: 370137586}
   - component: {fileID: 370137589}
   m_Layer: 0
   m_Name: slimeSheet 1_0
@@ -142,25 +141,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &370137586
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 370137585}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8361de55d3f0262499706abbbbbc5ec0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &370137587
 SpriteRenderer:
   m_ObjectHideFlags: 0
