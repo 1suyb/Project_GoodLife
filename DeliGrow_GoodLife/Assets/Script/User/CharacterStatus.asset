@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93bb6a37f49d1c440a0f3791affc7386, type: 3}
+  m_Name: CharacterStatus
+  m_EditorClassIdentifier: 
+  _element: 0
+  _max_hp: 0
+  _max_mp: 0
+  _power: 0
+  _move_speed: 2
+  _attack_speed: 0
+  _attack_range: 0
+  _projectiles_size: 0
+  _attack_value: 0
+  _attack_count: 0
+  _up_max_hp: 0
+  _up_max_mp: 0
+  _up_power: 0
+  _up_move_speed: 0
+  _up_attack_speed: 0
+  _pfc_level_max_hp: 0
+  _pfc_level_max_mp: 0
+  _pfc_level_attack: 0
+  _pfc_level_move_speed: 0
+  _pfc_level_eat: 0
+  _pfc_level_watering: 0
+  _pfc_level_water: 0
+  _pfc_level_fire: 0
+  _pfc_level_ice: 0
+  _pfc_level_earth: 0
+  _pfc_goal_method_max_hp: 0
+  _pfc_goal_method_max_mp: 0
+  _pfc_goal_method_attack: 0
+  _pfc_goal_method_move_speed: 0
+  _pfc_goal_method_eat: 0
+  _pfc_goal_method_watering: 0
+  _pfc_goal_method_fire: 0
+  _pfc_goal_method_ice: 0
+  _pfc_goal_method_earth: 0
+  _pfc_method_max_hp: 0
+  _pfc_method_max_mp: 0
+  _pfc_method_attack: 0
+  _pfc_method_move_speed: 17.913553
+  _pfc_method_eat: 0
+  _pfc_method_watering: 0
+  _pfc_method_fire: 0
+  _pfc_method_ice: 0
+  _pfc_method_earth: 0

@@ -1,78 +1,79 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InputManager : MonoBehaviour
 {
     [SerializeField]
-    private UI inventoryUI;
-    private bool isInvenOpen = false;
-
-    private KeyCode _ESC;
-    private KeyCode _inventoryKey;
-    
-    [Tooltip("인벤토리를 할당할 키입니다. 소문자로 입력하세요.")]
+    private List<Shortcut> _actionkeys = new List<Shortcut>();
     [SerializeField]
-    private char inventoryKey;
-    
-
+    private List<Shortcut> _shortcuts = new List<Shortcut>();
     const int TOSMALL = 32;
 
     // Start is called before the first frame update
     void Start()
     {
-        InitializeKey();
+        //InitializeKey();
     }
 
     // Update is called once per frame
+    private void FixedUpdate()
+    {
+        if (Input.anyKey)
+        {
+            for (int i = 0; i < _actionkeys.Count; i++)
+            {
+                if (Input.GetKey(_actionkeys[i].keycode))
+                {
+                    _actionkeys[i].action.Invoke();
+                }
+            }
+        }
+    }
     void Update()
     {
-        if (Input.GetKeyDown(_inventoryKey))
+        
+        if (Input.anyKey)
         {
-            if (!isInvenOpen)
+            for (int i = 0; i < _shortcuts.Count; i++)
             {
-                isInvenOpen = true;
-                inventoryUI.Open();
-            }
-            else
-            {
-                isInvenOpen = false;
-                inventoryUI.Close();
-                Debug.Log("외않됨");
+                if (Input.GetKey(_shortcuts[i].keycode))
+                {
+                    _shortcuts[i].action.Invoke();
+                }
             }
         }
-        if (Input.GetKeyDown(_ESC))
-        {
-            Debug.Log("이에쓰씨");
-            int count = UIManager.UIMANAGER.openUIs.Count;
-            Debug.Log(count);
-            if(count <= 0)
-            {
-                return;
-            }
-            
-            if (count > 0)
-            {
-                UIManager.UIMANAGER.openUIs[count - 1].Close();
-            }
-            
-        }
-    }
-    private void InitializeKey()
-    {
-        _ESC = KeyCode.Escape;
-
-
-        CheackNChangeSmall(ref inventoryKey);
-        _inventoryKey = (KeyCode)inventoryKey;
         
     }
-    private void CheackNChangeSmall(ref char key)
+    /*
+    private void InitializeKey()
     {
-        if ((int)key < 97)
+        for (int i = 0; i < _shortcuts.Count; i++)
         {
-            key = (char)((int)key + TOSMALL);
-
+            if ((int)_shortcuts[i].key < 97)
+            {
+                _shortcuts[i] = ChangeSmall(_shortcuts[i]);
+            }
         }
+    }*/
+    /*
+    private Shortcut ChangeSmall(Shortcut shortcut)
+    {
+        Shortcut rshortcut = new Shortcut();
+        rshortcut.key = (char)((int)shortcut.key + TOSMALL);
+        rshortcut.keycode = (KeyCode)shortcut.key;
+        rshortcut.action = shortcut.action;
+        return rshortcut;
     }
+    */
+    [Serializable]
+    struct Shortcut
+    {
+        public char key;
+        public KeyCode keycode;
+        public UnityEvent action;
+    }
+
 }
