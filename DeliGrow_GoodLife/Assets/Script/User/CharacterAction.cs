@@ -7,13 +7,17 @@ public class CharacterAction : MonoBehaviour
     [SerializeField]
     private CharacterStatus status;
     private bool activetimer = false;
+    [SerializeField]
+    private CameraMove move;
     private void Update()
     {
         
     }
+
     public void GoUp()
     {
         transform.Translate(0, status.move_Speed * Time.fixedDeltaTime, 0);
+        // move.move();
         if (!activetimer)
         {
             activetimer = true;
@@ -25,6 +29,8 @@ public class CharacterAction : MonoBehaviour
     public void GoDown()
     {
         transform.Translate(0, -status.move_Speed * Time.fixedDeltaTime, 0);
+        // move.move();
+
         if (!activetimer)
         {
             activetimer = true;
@@ -36,6 +42,8 @@ public class CharacterAction : MonoBehaviour
     public void GoLeft()
     {
         transform.Translate(-status.move_Speed * Time.fixedDeltaTime, 0, 0);
+        // move.move();
+
         if (!activetimer)
         {
             activetimer = true;
@@ -47,6 +55,8 @@ public class CharacterAction : MonoBehaviour
     public void GoRight()
     {
         transform.Translate(status.move_Speed * Time.fixedDeltaTime, 0, 0);
+        // move.move();
+
         if (!activetimer)
         {
             activetimer = true;

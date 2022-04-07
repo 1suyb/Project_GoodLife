@@ -11,7 +11,7 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private List<Shortcut> _shortcuts = new List<Shortcut>();
     const int TOSMALL = 32;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -21,32 +21,48 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if (Input.anyKey)
+        if (Input.GetKey(_actionkeys[0].keycode))
         {
-            for (int i = 0; i < _actionkeys.Count; i++)
-            {
-                if (Input.GetKey(_actionkeys[i].keycode))
-                {
-                    _actionkeys[i].action.Invoke();
-                }
-            }
+            _actionkeys[0].action.Invoke();
         }
-    }
-    void Update()
-    {
-        
-        if (Input.anyKey)
+        if (Input.GetKey(_actionkeys[1].keycode))
         {
-            for (int i = 0; i < _shortcuts.Count; i++)
-            {
-                if (Input.GetKey(_shortcuts[i].keycode))
-                {
-                    _shortcuts[i].action.Invoke();
-                }
-            }
+            _actionkeys[1].action.Invoke();
         }
-        
+        if (Input.GetKey(_actionkeys[2].keycode))
+        {
+            _actionkeys[2].action.Invoke();
+        }
+        if (Input.GetKey(_actionkeys[3].keycode))
+        {
+            _actionkeys[3].action.Invoke();
+        }
+        //if (Input.anyKey)
+        //{
+        //    for (int i = 0; i < _actionkeys.Count; i++)
+        //    {
+        //        if (Input.GetKey(_actionkeys[i].keycode))
+        //        {
+        //            _actionkeys[i].action.Invoke();
+        //        }
+        //    }
+        //}
     }
+    //void Update()
+    //{
+    //    
+    //    //if (Input.anyKey)
+    //    //{
+    //    //    for (int i = 0; i < _shortcuts.Count; i++)
+    //    //    {
+    //    //        if (Input.GetKey(_shortcuts[i].keycode))
+    //    //        {
+    //    //            _shortcuts[i].action.Invoke();
+    //    //        }
+    //    //    }
+    //    //}
+    //    
+    //}
     /*
     private void InitializeKey()
     {

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    private void Update()
+    [SerializeField] private CharacterStatus status;
+
+    public void Damaged(float damaged)
     {
-        
+        //status.hp 
     }
 }
