@@ -8,12 +8,8 @@ public class CameraMove : MonoBehaviour
     private GameObject target;
 
     // Update is called once per frame
-    public void move()
+    void Update()
     {
         this.transform.position = target.transform.position+new Vector3(0,0,-10);
-    }
-    public void LateUpdate()
-    {
-        this.transform.position = target.transform.position + new Vector3(0, 0, -10);
     }
 }
