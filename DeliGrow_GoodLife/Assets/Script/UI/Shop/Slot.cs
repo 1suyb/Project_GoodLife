@@ -36,7 +36,7 @@ public abstract class Slot : MonoBehaviour
         DataUpdate();
     }
     
-    public void DataUpdate()
+    public virtual void DataUpdate()
     {
         if ( (_itemData.itemCount <= 0) || (_itemData.id == 0) )
         {

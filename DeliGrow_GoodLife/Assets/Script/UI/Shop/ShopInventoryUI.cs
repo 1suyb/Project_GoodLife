@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopInventoryUI : ShopUI
 {
@@ -8,6 +9,8 @@ public class ShopInventoryUI : ShopUI
     private ShopBasketUI shopBasketUI;
     [SerializeField]
     private GameObject popUp;
+    [SerializeField]
+    private GameObject InventoryGoldText;
 
     private Slot[] basketSlots;
 
@@ -15,11 +18,19 @@ public class ShopInventoryUI : ShopUI
     {
         base.Open(1);
 
+        InventoryGoldText.GetComponent<Text>().text = inventory.gold.ToString();
         basketSlots = shopBasketUI.slots;
         for (int i = 0; i < slots.Length; i++)
         {         
                 slots[i].SetSlotData(inventory.inventoryDatas[i]);
         }
+    }
+
+    public override void CloseShop()
+    {
+        shopBasketUI.clearBasket();
+        base.CloseShop();
+        
     }
     public void SellSingleItem(ItemData itemData)
     {   if( itemData.category == Category.QUEST )
@@ -42,7 +53,7 @@ public class ShopInventoryUI : ShopUI
         {
             if (basketSlots[i]._itemData.itemCount == 0)
             {
-                basketSlots[i].SetSlotData(new ItemData(itemData.id, itemData.itemSprite, itemData.itemName, itemData.itemDescription, itemData.category, 1));
+                basketSlots[i].SetSlotData(new ItemData(itemData.id, itemData.itemSprite, itemData.itemName, itemData.itemDescription, itemData.category, 1, itemData.itemPrice));
                 itemData.itemCount -= 1;
                 return;
             }
@@ -54,12 +65,6 @@ public class ShopInventoryUI : ShopUI
 
     public void SellItems(ItemData itemData, ItemData origin, ShopInventorySlot slot)
     {
-        if( itemData.itemCount > origin.itemCount )
-        {
-            warning.ShowWaring("소지한 아이템의 수를 초과하였습니다!");
-            setIsPopedFalse();
-            return;
-        }
         for (int i = 0; i < basketSlots.Length; i++)
         {
             if (itemData.id == basketSlots[i]._itemData.id)
@@ -109,7 +114,6 @@ public class ShopInventoryUI : ShopUI
                 return true;
             }
         }
-        warning.ShowWaring("인벤토리 공간이 부족합니다!");
         return false;
     }
 
@@ -128,6 +132,17 @@ public class ShopInventoryUI : ShopUI
     public bool returnIsPurchase()
     {
         return shopBasketUI.isPurchase;
+    }
+
+    public int getEmptySlotsCount()
+    {
+        int count = 0;
+        for(int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i]._itemData.itemCount <= 0)
+                count++;
+        }
+        return count;
     }
 
 

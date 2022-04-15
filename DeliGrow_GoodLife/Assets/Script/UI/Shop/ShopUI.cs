@@ -19,15 +19,24 @@ public class ShopUI : UI
     protected ItemDescription itemDescription;
     protected Warning warning;
     public bool isPoped = false;
-
+    public bool isOpened = false;
     public virtual void Open(int q)
     {
         // _shopType = type;
+        isOpened = true;
         itemDescription = go_DescriptionWindow.GetComponent<ItemDescription>();
+        Debug.Log("½½·Ô");
         slots = this.gameObject.GetComponentsInChildren<Slot>();
         warning = go_Warning.GetComponent<Warning>();
         panel.SetActive(true);
         
+    }
+
+    public virtual void CloseShop()
+    {
+        isOpened = false;
+        panel.SetActive(false);
+
     }
 
     public void ShowItemDescriptionWindow(ItemData itemData)

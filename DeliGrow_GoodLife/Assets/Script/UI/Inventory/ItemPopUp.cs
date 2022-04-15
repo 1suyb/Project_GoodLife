@@ -73,7 +73,7 @@ public class ItemPopUp : UI
     {
         Open();
         _originItem = item;
-        _handlingItem = new ItemData(item.id, item.itemSprite, item.itemName, item.itemDescription, item.category, item.itemCount);
+        _handlingItem = new ItemData(item.id, item.itemSprite, item.itemName, item.itemDescription, item.category, item.itemCount, item.itemPrice);
         this.gameObject.SetActive(true);
         _title.text = title;
         _description.text = DESCRIPTION;
@@ -85,7 +85,7 @@ public class ItemPopUp : UI
     {
         Open();
         _originItem = item;
-        _handlingItem = new ItemData(item.id, item.itemSprite, item.itemName, item.itemDescription, item.category, item.itemCount);
+        _handlingItem = new ItemData(item.id, item.itemSprite, item.itemName, item.itemDescription, item.category, item.itemCount, item.itemPrice);
         _slot = slot;
         this.gameObject.SetActive(true);
         _title.text = title;
@@ -133,21 +133,21 @@ public class ItemPopUp : UI
     {
         if (_input.text != "")
         {
-            if(_input.text == "00")
+            if(_input.text == "0")
             {
-                _input.text = "0";
+                _input.text = "1";
             }
-            if(_input.text.Length>=2&&_input.text[0] == '0')
+            if(_input.text == "-")
             {
-                _input.text = _input.text[1].ToString();
+                _input.text = string.Empty;
+            }
+            if(int.Parse(_input.text) > 99)
+            {
+                _input.text = "99";
             }
             if (int.Parse(_input.text) > _handlingItem.itemCount)
             {
                 _input.text = _handlingItem.itemCount.ToString();
-            }
-            else if (int.Parse(_input.text) < 0)
-            {
-                _input.text = "0";
             }
         }
     }

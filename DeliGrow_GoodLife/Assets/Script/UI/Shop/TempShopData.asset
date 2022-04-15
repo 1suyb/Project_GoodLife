@@ -18,178 +18,208 @@ MonoBehaviour:
     m_itemName: "\uC544\uC774\uD15C1"
     m_itemDescription: "\uC544\uC774\uC774\uC774\uD15C\uD15C1"
     m_category: 2
-    m_itemCount: 1
+    m_itemPrice: 10
+    m_itemCount: 99
   - m_id: 7
     m_itemSprite: {fileID: 21300000, guid: e0175a01041b5ef41b133d24e17dc3eb, type: 3}
     m_itemName: "\uC544\uC774\uD15C2"
     m_itemDescription: "\uC544\uC774\uC774\uC774\uD15C\uD15C2"
     m_category: 4
-    m_itemCount: 1
+    m_itemPrice: 15
+    m_itemCount: 99
   - m_id: 8
-    m_itemSprite: {fileID: 21300000, guid: fb4ec0183498f25498166b61dd189136, type: 3}
+    m_itemSprite: {fileID: 21300000, guid: e0175a01041b5ef41b133d24e17dc3eb, type: 3}
     m_itemName: "\uC544\uC774\uD15C3"
     m_itemDescription: "\uC544\uC774\uC774\uC774\uC774\uD15C\uD15C3"
     m_category: 6
-    m_itemCount: 1
+    m_itemPrice: 20
+    m_itemCount: 99
   - m_id: 9
-    m_itemSprite: {fileID: 21300000, guid: fb4ec0183498f25498166b61dd189136, type: 3}
+    m_itemSprite: {fileID: 21300000, guid: e0175a01041b5ef41b133d24e17dc3eb, type: 3}
     m_itemName: "\uC544\uC774\uD15C4"
     m_itemDescription: "\uC544\uC544\uC774\uC774\uC774\uD15C4"
     m_category: 1
-    m_itemCount: 1
+    m_itemPrice: 25
+    m_itemCount: 99
   - m_id: 10
-    m_itemSprite: {fileID: 21300000, guid: fb4ec0183498f25498166b61dd189136, type: 3}
+    m_itemSprite: {fileID: 21300000, guid: e0175a01041b5ef41b133d24e17dc3eb, type: 3}
     m_itemName: 12
     m_itemDescription: 234
     m_category: 1
-    m_itemCount: 1
+    m_itemPrice: 5
+    m_itemCount: 99
   - m_id: 11
     m_itemSprite: {fileID: 21300000, guid: e0175a01041b5ef41b133d24e17dc3eb, type: 3}
     m_itemName: 1324
     m_itemDescription: 1432512534413
     m_category: 1
-    m_itemCount: 1
+    m_itemPrice: 24
+    m_itemCount: 99
   - m_id: 12
-    m_itemSprite: {fileID: 21300000, guid: fb4ec0183498f25498166b61dd189136, type: 3}
+    m_itemSprite: {fileID: 21300000, guid: e0175a01041b5ef41b133d24e17dc3eb, type: 3}
     m_itemName: 123
     m_itemDescription: 466451543
     m_category: 1
-    m_itemCount: 1
+    m_itemPrice: 25
+    m_itemCount: 99
   - m_id: 13
     m_itemSprite: {fileID: 21300000, guid: e0175a01041b5ef41b133d24e17dc3eb, type: 3}
     m_itemName: 1234
     m_itemDescription: 1234564
     m_category: 1
-    m_itemCount: 1
+    m_itemPrice: 34
+    m_itemCount: 99
   - m_id: 14
-    m_itemSprite: {fileID: 21300000, guid: fb4ec0183498f25498166b61dd189136, type: 3}
+    m_itemSprite: {fileID: 21300000, guid: e0175a01041b5ef41b133d24e17dc3eb, type: 3}
     m_itemName: 862
     m_itemDescription: 4286
     m_category: 2
-    m_itemCount: 1
+    m_itemPrice: 36
+    m_itemCount: 99
   - m_id: 15
     m_itemSprite: {fileID: 21300000, guid: e0175a01041b5ef41b133d24e17dc3eb, type: 3}
     m_itemName: 4826
     m_itemDescription: 4286826
     m_category: 2
-    m_itemCount: 1
+    m_itemPrice: 37
+    m_itemCount: 99
   - m_id: 16
-    m_itemSprite: {fileID: 21300000, guid: fb4ec0183498f25498166b61dd189136, type: 3}
+    m_itemSprite: {fileID: 21300000, guid: e0175a01041b5ef41b133d24e17dc3eb, type: 3}
     m_itemName: 4862
     m_itemDescription: 42862846
     m_category: 2
-    m_itemCount: 1
+    m_itemPrice: 0
+    m_itemCount: 99
   - m_id: 17
     m_itemSprite: {fileID: 21300000, guid: e0175a01041b5ef41b133d24e17dc3eb, type: 3}
     m_itemName: 8268462
     m_itemDescription: 482642864628
     m_category: 2
-    m_itemCount: 1
+    m_itemPrice: 38
+    m_itemCount: 99
   - m_id: 18
     m_itemSprite: {fileID: 21300000, guid: e0175a01041b5ef41b133d24e17dc3eb, type: 3}
     m_itemName: 28462486
     m_itemDescription: 48262684
     m_category: 2
-    m_itemCount: 1
+    m_itemPrice: 39
+    m_itemCount: 99
   - m_id: 19
-    m_itemSprite: {fileID: 21300000, guid: fb4ec0183498f25498166b61dd189136, type: 3}
+    m_itemSprite: {fileID: 21300000, guid: e0175a01041b5ef41b133d24e17dc3eb, type: 3}
     m_itemName: 24862864
     m_itemDescription: 24268
     m_category: 2
-    m_itemCount: 1
+    m_itemPrice: 40
+    m_itemCount: 99
   - m_id: 20
-    m_itemSprite: {fileID: 0}
+    m_itemSprite: {fileID: 21300000, guid: e0175a01041b5ef41b133d24e17dc3eb, type: 3}
     m_itemName: 56482
     m_itemDescription: 45634563
     m_category: 2
-    m_itemCount: 1
+    m_itemPrice: 41
+    m_itemCount: 99
   - m_id: 21
-    m_itemSprite: {fileID: 21300000, guid: fb4ec0183498f25498166b61dd189136, type: 3}
+    m_itemSprite: {fileID: 21300000, guid: e0175a01041b5ef41b133d24e17dc3eb, type: 3}
     m_itemName: 123453
     m_itemDescription: 56456456
     m_category: 2
-    m_itemCount: 1
+    m_itemPrice: 42
+    m_itemCount: 99
   - m_id: 0
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
+    m_itemPrice: 0
     m_itemCount: 0
   - m_id: 0
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
+    m_itemPrice: 0
     m_itemCount: 0
   - m_id: 0
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
+    m_itemPrice: 0
     m_itemCount: 0
   - m_id: 0
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
+    m_itemPrice: 0
     m_itemCount: 0
   - m_id: 0
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
+    m_itemPrice: 0
     m_itemCount: 0
   - m_id: 0
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
+    m_itemPrice: 0
     m_itemCount: 0
   - m_id: 0
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
+    m_itemPrice: 0
     m_itemCount: 0
   - m_id: 0
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
+    m_itemPrice: 0
     m_itemCount: 0
   - m_id: 0
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
+    m_itemPrice: 0
     m_itemCount: 0
   - m_id: 0
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
+    m_itemPrice: 0
     m_itemCount: 0
   - m_id: 0
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
+    m_itemPrice: 0
     m_itemCount: 0
   - m_id: 0
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
+    m_itemPrice: 0
     m_itemCount: 0
   - m_id: 0
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
+    m_itemPrice: 0
     m_itemCount: 0
   - m_id: 0
     m_itemSprite: {fileID: 0}
     m_itemName: 
     m_itemDescription: 
     m_category: 0
+    m_itemPrice: 0
     m_itemCount: 0

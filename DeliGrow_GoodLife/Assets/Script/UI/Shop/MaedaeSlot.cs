@@ -34,10 +34,23 @@ public class MaedaeSlot : Slot
                 shopMaedaeUI.PopUpWindow(_itemData);
                 return;
             }
-            shopMaedaeUI.PurchaseSingleItem(_itemData);
+            shopMaedaeUI.PurchaseSingleItem(new ItemData(_itemData.id, _itemData.itemSprite, _itemData.itemName, _itemData.itemDescription, _itemData.category, 1, _itemData.itemPrice));
         }
 
     }
+
+    public override void DataUpdate()
+    {
+        if ((_itemData.itemCount <= 0) || (_itemData.id == 0))
+        {
+            OffSlot();
+            return;
+        }
+        _icon.sprite = _itemData.itemSprite;
+        _count.text = _itemData.itemPrice.ToString();
+        OnSlot();
+    }
+
 
 
 

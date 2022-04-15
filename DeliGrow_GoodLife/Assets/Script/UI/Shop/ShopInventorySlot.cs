@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShopInventorySlot : Slot
 {
     [SerializeField] private ShopInventoryUI shopInventoryUI;
+    [SerializeField] private ShopMaedaeUI shopMaedaeUI;
 
 
     private void ShowItemDescription()
@@ -36,7 +37,10 @@ public class ShopInventorySlot : Slot
 
     public override void MoustRightClick()
     {
-        if ( (shopInventoryUI.isPoped == true) || (shopInventoryUI.returnIsPurchase() == true) ) return;
+        if (shopInventoryUI.isPoped == true) return;
+
+        if (shopInventoryUI.returnIsPurchase())
+            shopMaedaeUI.setSellMode();
 
         if (Input.GetMouseButtonDown(1))
         {
@@ -49,4 +53,6 @@ public class ShopInventorySlot : Slot
             DataUpdate();
         }
     }
+
+
 }

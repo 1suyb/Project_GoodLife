@@ -50,6 +50,15 @@ public class ItemData
     }
 
     [SerializeField]
+    private int m_itemPrice;
+
+    public int itemPrice
+    {
+        get => m_itemPrice;
+        set => m_itemPrice = value;
+    }
+
+    [SerializeField]
     private int m_itemCount;
     public int itemCount
     {
@@ -67,7 +76,7 @@ public class ItemData
         }
     }
 
-    public ItemData(int id,Sprite sprite ,string itemName, string itemDescription, Category category, int itemcount)
+    public ItemData(int id,Sprite sprite ,string itemName, string itemDescription, Category category, int itemcount, int itemPrice)
     {
         m_id = id;
         m_itemSprite = sprite;
@@ -75,10 +84,11 @@ public class ItemData
         m_itemDescription = itemDescription;
         m_category = category;
         m_itemCount = itemcount;
+        m_itemPrice = itemPrice;
     }
     public ItemData Clone()
     {
-        return new ItemData(this.m_id, this.m_itemSprite, this.m_itemName, this.m_itemDescription, this.m_category, this.m_itemCount);
+        return new ItemData(this.m_id, this.m_itemSprite, this.m_itemName, this.m_itemDescription, this.m_category, this.m_itemCount, this.m_itemPrice);
     }
     public bool IsEqual(ItemData val)
     {
