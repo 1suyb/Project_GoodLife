@@ -27,3 +27,33 @@ MonoBehaviour:
   _up_power: 0
   _up_move_speed: 0
   _up_attack_speed: 0
+  _pfc_level_max_hp: 0
+  _pfc_level_max_mp: 0
+  _pfc_level_attack: 0
+  _pfc_level_move_speed: 0
+  _pfc_level_eat: 0
+  _pfc_level_watering: 0
+  _pfc_level_water: 0
+  _pfc_level_fire: 0
+  _pfc_level_ice: 0
+  _pfc_level_earth: 0
+  _pfc_goal_method_max_hp: 0
+  _pfc_goal_method_max_mp: 0
+  _pfc_goal_method_attack: 0
+  _pfc_goal_method_move_speed: 0
+  _pfc_goal_method_eat: 0
+  _pfc_goal_method_watering: 0
+  _pfc_goal_method_fire: 0
+  _pfc_goal_method_ice: 0
+  _pfc_goal_method_earth: 0
+  _pfc_method_max_hp: 0
+  _pfc_method_max_mp: 0
+  _pfc_method_attack: 0
+  _pfc_method_move_speed: 1642.2732
+  _pfc_method_eat: 0
+  _pfc_method_watering: 0
+  _pfc_method_fire: 0
+  _pfc_method_ice: 0
+  _pfc_method_earth: 0
+  _hp: 0
+  _mp: 0
