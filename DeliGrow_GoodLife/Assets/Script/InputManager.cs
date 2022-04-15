@@ -21,6 +21,10 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
+        if(_actionkeys.Count <= 0)
+        {
+            return;
+        }
         if (Input.GetKey(_actionkeys[0].keycode))
         {
             _actionkeys[0].action.Invoke();
@@ -48,42 +52,21 @@ public class InputManager : MonoBehaviour
         //    }
         //}
     }
-    //void Update()
-    //{
-    //    
-    //    //if (Input.anyKey)
-    //    //{
-    //    //    for (int i = 0; i < _shortcuts.Count; i++)
-    //    //    {
-    //    //        if (Input.GetKey(_shortcuts[i].keycode))
-    //    //        {
-    //    //            _shortcuts[i].action.Invoke();
-    //    //        }
-    //    //    }
-    //    //}
-    //    
-    //}
-    /*
-    private void InitializeKey()
+    void Update()
     {
-        for (int i = 0; i < _shortcuts.Count; i++)
+        
+        if (Input.anyKey)
         {
-            if ((int)_shortcuts[i].key < 97)
+            for (int i = 0; i < _shortcuts.Count; i++)
             {
-                _shortcuts[i] = ChangeSmall(_shortcuts[i]);
+                if (Input.GetKey(_shortcuts[i].keycode))
+                {
+                    _shortcuts[i].action.Invoke();
+                }
             }
         }
-    }*/
-    /*
-    private Shortcut ChangeSmall(Shortcut shortcut)
-    {
-        Shortcut rshortcut = new Shortcut();
-        rshortcut.key = (char)((int)shortcut.key + TOSMALL);
-        rshortcut.keycode = (KeyCode)shortcut.key;
-        rshortcut.action = shortcut.action;
-        return rshortcut;
+        
     }
-    */
     [Serializable]
     struct Shortcut
     {

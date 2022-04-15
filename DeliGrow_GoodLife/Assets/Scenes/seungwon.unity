@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3344,14 +3344,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3125f82019f74304e978236c169d1602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _actionkeys: []
   _shortcuts:
   - key: 0
     keycode: 112
     action:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1857099923}
-          m_TargetAssemblyTypeName: ShopMaedaeUI, Assembly-CSharp
+        - m_Target: {fileID: 5320073060988041378}
+          m_TargetAssemblyTypeName: ShopInventoryUI, Assembly-CSharp
           m_MethodName: Open
           m_Mode: 1
           m_Arguments:
@@ -3362,8 +3363,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 5320073060988041378}
-          m_TargetAssemblyTypeName: ShopInventoryUI, Assembly-CSharp
+        - m_Target: {fileID: 1857099923}
+          m_TargetAssemblyTypeName: ShopMaedaeUI, Assembly-CSharp
           m_MethodName: Open
           m_Mode: 1
           m_Arguments:
