@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DataSchema>
+    <table name = "ReswardTable">
+      <int name = "Reward_ID"/>
+      <byte name = "Reward_Get_type"/>
+      <byte name = "Reward_Type_1"/>
+      <int name = "Rward_Value_1"/>
+      <int name = "Rward_Count_1"/>
+      <byte name = "Reward_Type_2"/>
+      <int name = "Rward_Value_2"/>
+      <int name = "Rward_Count_2"/>
+      <byte name = "Reward_Type_3"/>
+      <int name = "Rward_Value_3"/>
+      <int name = "Rward_Count_3"/>
+      <byte name = "Reward_Type_4"/>
+      <int name = "Rward_Value_4"/>
+      <int name = "Rward_Count_4"/>
+      <byte name = "Reward_Type_5"/>
+      <int name = "Rward_Value_5"/>
+      <int name = "Rward_Count_5"/>
+
+    </table>
+</DataSchema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DataSchema>
+    <table name = "QuestTable">
+      <int name = "Quest_ID"/>
+      <byte name = "Quest_Type"/>
+      <string name = "Quest_Name"/>
+      <string name = "Quest_Text"/>
+      <byte name = "Target_Conditions_Type"/>
+      <int name = "Target_Conditions_ID"/>
+      <int name = "Target_Conditions_Value"/>
+      <byte name = "Reward_Get_Type"/>
+      <int name = "Reward_ID"/>
+
+    </table>
+</DataSchema>

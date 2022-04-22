@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DataSchema>
+    <table name = "ShopTable">
+      <int name = "Shop_ID"/>
+      <string name = "Name"/>
+      <int name = "Item_ID"/>
+      <byte name = "Price_Type"/>
+      <int name = "Purchase_Price"/>
+      <int name = "Sell_Price"/>
+      <int name = "Count"/>
+
+    </table>
+</DataSchema>

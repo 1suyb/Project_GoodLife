@@ -1,0 +1,94 @@
+
+[
+  {
+      "ID" : "1101", 
+      "Name" : "Eat_1", 
+      "Skill_Effect_Type" : "11", 
+      "Lv" : "1", 
+      "Skill_Effect_Value" : "1", 
+      "Skill_Cost_Type" : "12", 
+      "Skill_Cost_Value" : "5", 
+      "Skill_Cool" : "0.1", 
+      "Proficiency_ID" : "51511"
+    },
+  {
+      "ID" : "1102", 
+      "Name" : "Eat_2", 
+      "Skill_Effect_Type" : "11", 
+      "Lv" : "2", 
+      "Skill_Effect_Value" : "3", 
+      "Skill_Cost_Type" : "12", 
+      "Skill_Cost_Value" : "10", 
+      "Skill_Cool" : "0.1", 
+      "Proficiency_ID" : "51512"
+    },
+  {
+      "ID" : "1103", 
+      "Name" : "Eat_3", 
+      "Skill_Effect_Type" : "11", 
+      "Lv" : "3", 
+      "Skill_Effect_Value" : "6", 
+      "Skill_Cost_Type" : "12", 
+      "Skill_Cost_Value" : "15", 
+      "Skill_Cool" : "0.1", 
+      "Proficiency_ID" : "51513"
+    },
+  {
+      "ID" : "1201", 
+      "Name" : "Watering_1", 
+      "Skill_Effect_Type" : "12", 
+      "Lv" : "1", 
+      "Skill_Effect_Value" : "1", 
+      "Skill_Cost_Type" : "12", 
+      "Skill_Cost_Value" : "10", 
+      "Skill_Cool" : "1", 
+      "Proficiency_ID" : "52521"
+    },
+  {
+      "ID" : "1202", 
+      "Name" : "Watering_2", 
+      "Skill_Effect_Type" : "12", 
+      "Lv" : "2", 
+      "Skill_Effect_Value" : "3", 
+      "Skill_Cost_Type" : "12", 
+      "Skill_Cost_Value" : "10", 
+      "Skill_Cool" : "1", 
+      "Proficiency_ID" : "52522"
+    },
+  {
+      "ID" : "1203", 
+      "Name" : "Watering_3", 
+      "Skill_Effect_Type" : "12", 
+      "Lv" : "3", 
+      "Skill_Effect_Value" : "6", 
+      "Skill_Cost_Type" : "12", 
+      "Skill_Cost_Value" : "5", 
+      "Skill_Cool" : "1", 
+      "Proficiency_ID" : "52523"
+    },
+  {
+      "ID" : "1301", 
+      "Name" : "Spit_1", 
+      "Skill_Effect_Type" : "13", 
+      "Lv" : "1", 
+      "Skill_Effect_Value" : "1", 
+      "Skill_Cost_Type" : "12", 
+      "Skill_Cost_Value" : "5", 
+      "Skill_Cool" : "0.1", 
+      "Proficiency_ID" : "0"
+    },
+  {
+      "ID" : "1401", 
+      "Name" : "Seed_Plant_1", 
+      "Skill_Effect_Type" : "14", 
+      "Lv" : "1", 
+      "Skill_Effect_Value" : "1", 
+      "Skill_Cost_Type" : "99", 
+      "Skill_Cost_Value" : "1", 
+      "Skill_Cool" : "0.1", 
+      "Proficiency_ID" : "0"
+    },
+  {
+
+    }
+]

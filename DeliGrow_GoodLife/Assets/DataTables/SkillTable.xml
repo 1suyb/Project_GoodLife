@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DataSchema>
+    <table name = "SkillTable">
+      <int name = "ID"/>
+      <string name = "Name"/>
+      <byte name = "Skill_Effect_Type"/>
+      <byte name = "Lv"/>
+      <int name = "Skill_Effect_Value"/>
+      <byte name = "Skill_Cost_Type"/>
+      <int name = "Skill_Cost_Value"/>
+      <float name = "Skill_Cool"/>
+      <int name = "Proficiency_ID"/>
+
+    </table>
+</DataSchema>

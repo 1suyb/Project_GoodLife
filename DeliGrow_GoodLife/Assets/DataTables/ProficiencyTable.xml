@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DataSchema>
+    <table name = "ProficiencyTable">
+      <int name = "ID"/>
+      <string name = "Name"/>
+      <byte name = "Proficiency_type"/>
+      <byte name = "Lv"/>
+      <byte name = "Method_Type"/>
+      <float name = "Method_Value"/>
+
+    </table>
+</DataSchema>

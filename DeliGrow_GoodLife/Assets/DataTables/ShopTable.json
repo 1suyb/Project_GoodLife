@@ -1,0 +1,42 @@
+
+[
+  {
+      "Shop_ID" : "1111", 
+      "Name" : "Npc_Shop_Kingdom_Seed", 
+      "Item_ID" : "1101011", 
+      "Price_Type" : "1", 
+      "Purchase_Price" : "60", 
+      "Sell_Price" : "20", 
+      "Count" : "9999"
+    },
+  {
+      "Shop_ID" : "1111", 
+      "Name" : "Npc_Shop_Kingdom_Seed", 
+      "Item_ID" : "1101012", 
+      "Price_Type" : "1", 
+      "Purchase_Price" : "75", 
+      "Sell_Price" : "25", 
+      "Count" : "9999"
+    },
+  {
+      "Shop_ID" : "1111", 
+      "Name" : "Npc_Shop_Kingdom_Seed", 
+      "Item_ID" : "1101013", 
+      "Price_Type" : "1", 
+      "Purchase_Price" : "90", 
+      "Sell_Price" : "30", 
+      "Count" : "9999"
+    },
+  {
+
+    },
+  {
+
+    },
+  {
+
+    },
+  {
+
+    }
+]

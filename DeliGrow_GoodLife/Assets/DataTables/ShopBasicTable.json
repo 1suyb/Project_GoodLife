@@ -1,0 +1,19 @@
+
+[
+  {
+      "Shop_ID" : "1111", 
+      "Name" : "Npc_Shop_Kingdom_Tools", 
+      "Territory" : "11", 
+      "Type" : "11", 
+      "Likeable_Item_ID" : "0", 
+      "Territory_Item_ID" : "0"
+    },
+  {
+      "Shop_ID" : "1121", 
+      "Name" : "Npc_Shop_Kingdom_Seed", 
+      "Territory" : "11", 
+      "Type" : "21", 
+      "Likeable_Item_ID" : "0", 
+      "Territory_Item_ID" : "0"
+    }
+]

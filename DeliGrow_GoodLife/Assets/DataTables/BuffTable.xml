@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DataSchema>
+    <table name = "BuffTable">
+      <int name = "ID"/>
+      <string name = "Name"/>
+      <int name = "Cool_Time"/>
+      <byte name = "Stat_Type"/>
+      <byte name = "Buff_Type"/>
+      <int name = "Buff_Time"/>
+      <string name = "Resource"/>
+
+    </table>
+</DataSchema>

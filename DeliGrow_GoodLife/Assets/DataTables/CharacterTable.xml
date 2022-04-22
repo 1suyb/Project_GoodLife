@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DataSchema>
+    <table name = "CharacterTable">
+      <int name = "ID"/>
+      <string name = "Name"/>
+      <byte name = "Element"/>
+      <byte name = "Stat_Type_1"/>
+      <float name = "Stat_Value_1"/>
+      <byte name = "Stat_Type_2"/>
+      <float name = "Stat_Value_2"/>
+      <byte name = "Stat_Type_3"/>
+      <float name = "Stat_Value_3"/>
+      <byte name = "Stat_Type_4"/>
+      <float name = "Stat_Value_4"/>
+      <byte name = "Stat_Type_5"/>
+      <float name = "Stat_Value_5"/>
+      <byte name = "Stat_Type_6"/>
+      <float name = "Stat_Value_6"/>
+      <byte name = "Stat_Type_7"/>
+      <float name = "Stat_Value_7"/>
+      <byte name = "Stat_Type_8"/>
+      <float name = "Stat_Value_8"/>
+      <byte name = "Attack_Method_Type"/>
+      <int name = "Attack_Method_Value"/>
+      <int name = "Attack_Count"/>
+
+    </table>
+</DataSchema>

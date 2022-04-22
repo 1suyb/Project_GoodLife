@@ -1,0 +1,131 @@
+
+[
+  {
+      "ID" : "111", 
+      "Name" : "Max_Hp_1", 
+      "Stat_Type" : "11", 
+      "Lv" : "1", 
+      "Stat_Value" : "100", 
+      "Proficiency_ID" : "10111"
+    },
+  {
+      "ID" : "112", 
+      "Name" : "Max_Hp_2", 
+      "Stat_Type" : "11", 
+      "Lv" : "2", 
+      "Stat_Value" : "120", 
+      "Proficiency_ID" : "10112"
+    },
+  {
+      "ID" : "113", 
+      "Name" : "Max_Hp_3", 
+      "Stat_Type" : "11", 
+      "Lv" : "3", 
+      "Stat_Value" : "160", 
+      "Proficiency_ID" : "10113"
+    },
+  {
+      "ID" : "121", 
+      "Name" : "Max_Mp_1", 
+      "Stat_Type" : "12", 
+      "Lv" : "1", 
+      "Stat_Value" : "100", 
+      "Proficiency_ID" : "20211"
+    },
+  {
+      "ID" : "122", 
+      "Name" : "Max_Mp_2", 
+      "Stat_Type" : "12", 
+      "Lv" : "2", 
+      "Stat_Value" : "120", 
+      "Proficiency_ID" : "20212"
+    },
+  {
+      "ID" : "123", 
+      "Name" : "Max_Mp_3", 
+      "Stat_Type" : "12", 
+      "Lv" : "3", 
+      "Stat_Value" : "160", 
+      "Proficiency_ID" : "20213"
+    },
+  {
+      "ID" : "131", 
+      "Name" : "Power_1", 
+      "Stat_Type" : "13", 
+      "Lv" : "1", 
+      "Stat_Value" : "10", 
+      "Proficiency_ID" : "30311"
+    },
+  {
+      "ID" : "132", 
+      "Name" : "Power_2", 
+      "Stat_Type" : "13", 
+      "Lv" : "2", 
+      "Stat_Value" : "15", 
+      "Proficiency_ID" : "30312"
+    },
+  {
+      "ID" : "133", 
+      "Name" : "Power_3", 
+      "Stat_Type" : "13", 
+      "Lv" : "3", 
+      "Stat_Value" : "25", 
+      "Proficiency_ID" : "30313"
+    },
+  {
+      "ID" : "141", 
+      "Name" : "Move_Speed_1", 
+      "Stat_Type" : "14", 
+      "Lv" : "1", 
+      "Stat_Value" : "0.2", 
+      "Proficiency_ID" : "40411"
+    },
+  {
+      "ID" : "142", 
+      "Name" : "Move_Speed_2", 
+      "Stat_Type" : "14", 
+      "Lv" : "2", 
+      "Stat_Value" : "0.25", 
+      "Proficiency_ID" : "40412"
+    },
+  {
+      "ID" : "143", 
+      "Name" : "Move_Speed_3", 
+      "Stat_Type" : "14", 
+      "Lv" : "3", 
+      "Stat_Value" : "0.3", 
+      "Proficiency_ID" : "40413"
+    },
+  {
+      "ID" : "210", 
+      "Name" : "Attack_Speed", 
+      "Stat_Type" : "21", 
+      "Lv" : "0", 
+      "Stat_Value" : "2", 
+      "Proficiency_ID" : "0"
+    },
+  {
+      "ID" : "220", 
+      "Name" : "Attack_Range", 
+      "Stat_Type" : "22", 
+      "Lv" : "0", 
+      "Stat_Value" : "999", 
+      "Proficiency_ID" : "0"
+    },
+  {
+      "ID" : "230", 
+      "Name" : "Projectile_Speed", 
+      "Stat_Type" : "23", 
+      "Lv" : "0", 
+      "Stat_Value" : "0.3", 
+      "Proficiency_ID" : "0"
+    },
+  {
+      "ID" : "240", 
+      "Name" : "Projectile_Size", 
+      "Stat_Type" : "24", 
+      "Lv" : "0", 
+      "Stat_Value" : "50", 
+      "Proficiency_ID" : "0"
+    }
+]

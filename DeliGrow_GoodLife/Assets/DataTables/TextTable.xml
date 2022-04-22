@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DataSchema>
+    <table name = "TextTable">
+      <String name = "Key"/>
+      <Text name = "English"/>
+      <Text name = "Korean"/>
+
+    </table>
+</DataSchema>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DataSchema>
+    <table name = "UnlockTable">
+      <int name = "ID"/>
+      <byte name = "Type"/>
+      <byte name = "Condition_Type"/>
+      <int name = "Condition_Value"/>
+      <int name = "Npc_ID"/>
+
+    </table>
+</DataSchema>

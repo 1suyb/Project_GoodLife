@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DataSchema>
+    <table name = "StatTable">
+      <int name = "ID"/>
+      <string name = "Name"/>
+      <byte name = "Stat_Type"/>
+      <byte name = "Lv"/>
+      <float name = "Stat_Value"/>
+      <int name = "Proficiency_ID"/>
+
+    </table>
+</DataSchema>

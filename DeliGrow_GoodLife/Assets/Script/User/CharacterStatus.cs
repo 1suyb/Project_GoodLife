@@ -28,7 +28,7 @@ public class CharacterStatus : ScriptableObject
     [SerializeField] private int _attack_count;
     #endregion
 
-    [Header("버프로 인한 증감 값")]
+    [Header("버프/디버프로 인한 증감 값")]
     #region
     [SerializeField] private float _up_max_hp;
     [SerializeField] private float _up_max_mp;
@@ -49,6 +49,11 @@ public class CharacterStatus : ScriptableObject
     [SerializeField] private byte _pfc_level_fire;          // 61
     [SerializeField] private byte _pfc_level_ice;           // 62
     [SerializeField] private byte _pfc_level_earth;         // 63
+    #endregion
+
+    [Header("현재 숙련도에 따른 기초 스텟")]
+    #region
+
     #endregion
 
     [Header("현재 목표 숙련도 경험치")]
@@ -76,67 +81,53 @@ public class CharacterStatus : ScriptableObject
     [SerializeField] private float _pfc_method_ice;               // 62
     [SerializeField] private float _pfc_method_earth;             // 63
     #endregion
-    
-    public float max_Hp{
-        get
-        {
-            return _max_hp;
-        }
+
+    // (최대)스탯 버프 적용
+    #region
+    public float buff_Max_Hp
+    {
         set
         {
             _up_max_hp = value;
             _max_hp += value;
         }
     }
-    public float max_Mp
+    public float buff_Max_Mp
     {
-        get
-        {
-            return _max_mp;
-        }
         set
         {
             _up_max_mp = value;
             _max_mp += value;
         }
     }
-    public float power
+    public float buff_Power
     {
-        get
-        {
-            return _power;
-        }
         set
         {
             _up_power = value;
             _power += value;
         }
     }
-    public float move_Speed
+    public float buff_Move_Speed
     {
-        get
-        {
-            return _move_speed;
-        }
         set
         {
             _up_move_speed = value;
             _move_speed += value;
         }
     }
-    public float attack_Speed
+    public float buff_Attack_Speed
     {
-        get
-        {
-            return _attack_speed;
-        }
         set
         {
             _up_attack_speed = value;
             _attack_speed += value; 
         }
     }
+    #endregion
 
+    // 숙련도 경험치 상승
+    #region
     public float pfc_method_max_hp
     {
         get
@@ -243,26 +234,34 @@ public class CharacterStatus : ScriptableObject
 
         }
     }
+    #endregion
 
+    public float move_Speed
+    {
+        get
+        {
+            return _move_speed;
+        }
+    }
     // 버프 적용
     public void BuffStat(byte stattype, float value)
     {
         switch (stattype)
         {
             case 11:
-                max_Hp = value;
+                buff_Max_Hp = value;
                 break;
             case 12:
-                max_Mp = value;
+                buff_Max_Mp = value;
                 break;
             case 13:
-                power = value;
+                buff_Power = value;
                 break;
             case 14:
-                move_Speed = value;
+                buff_Move_Speed = value;
                 break;
             case 21:
-                attack_Speed = value;
+                buff_Attack_Speed = value;
                 break;
             default:
                 break;
@@ -270,7 +269,7 @@ public class CharacterStatus : ScriptableObject
     }
 
     // 버프해제
-    public void EndBuffStat()
+    public void EndBuffStat(byte stattype, float value)
     {
 
     }
@@ -278,6 +277,7 @@ public class CharacterStatus : ScriptableObject
     // 숙련도 레벨 업
     public void UpProficienty(byte stattype, float value)
     {
+        /*
         switch (stattype)
         {
             case 11:
@@ -298,7 +298,11 @@ public class CharacterStatus : ScriptableObject
 
             default:
                 break;
-        }
+        }*/
     }
+    public struct Buff
+    {
+        byte stattype;
 
+    }
 }

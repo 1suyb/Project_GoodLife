@@ -1,0 +1,938 @@
+
+[
+  {
+      "Key" : "Character_Total_Hp", 
+      "English" : "Hp", 
+      "Korean" : "체력"
+    },
+  {
+      "Key" : "Character_Total_Hp_Value", 
+      "English" : "{0}/{1}", 
+      "Korean" : "{0}/{1}"
+    },
+  {
+      "Key" : "Character_Total_Mp", 
+      "English" : "Mp", 
+      "Korean" : "마력"
+    },
+  {
+      "Key" : "Character_Total_Mp_Value", 
+      "English" : "{0}/{1}", 
+      "Korean" : "{0}/{1}"
+    },
+  {
+      "Key" : "Character_Total_Attack_Power", 
+      "English" : "Attack_Power", 
+      "Korean" : "공격력"
+    },
+  {
+      "Key" : "Character_Total_Attack_Power_Value", 
+      "English" : "{0}", 
+      "Korean" : "{0}"
+    },
+  {
+      "Key" : "Character_Total_Move_Speed", 
+      "English" : "Move_Speed", 
+      "Korean" : "이동속도"
+    },
+  {
+      "Key" : "Character_Total_Move_Speed_Value", 
+      "English" : "{0}", 
+      "Korean" : "{0}"
+    },
+  {
+      "Key" : "Character_Total_Attack_Speed", 
+      "English" : "Attack_Speed", 
+      "Korean" : "공격 속도"
+    },
+  {
+      "Key" : "Character_Total_Attack_Speed_Value", 
+      "English" : "{0}", 
+      "Korean" : "{0}"
+    },
+  {
+      "Key" : "Character_Stat_Max_Hp", 
+      "English" : "Max_Hp", 
+      "Korean" : "최대 체력"
+    },
+  {
+      "Key" : "Character_Stat_Max_Hp_Lv", 
+      "English" : "LV_{0}", 
+      "Korean" : "LV_{0}"
+    },
+  {
+      "Key" : "Character_Stat_Max_Mp", 
+      "English" : "Max_Mp", 
+      "Korean" : "최대 기력"
+    },
+  {
+      "Key" : "Character_Stat_Max_Mp_LV", 
+      "English" : "LV_{0}", 
+      "Korean" : "LV_{0}"
+    },
+  {
+      "Key" : "Character_Stat_Attack_Power", 
+      "English" : "Attack_Power", 
+      "Korean" : "공격력"
+    },
+  {
+      "Key" : "Character_Stat_Attack_Power_LV", 
+      "English" : "LV_{0}", 
+      "Korean" : "LV_{0}"
+    },
+  {
+      "Key" : "Character_Stat_Move_Speed", 
+      "English" : "Move_Speed", 
+      "Korean" : "이동 속도"
+    },
+  {
+      "Key" : "Character_Stat_Move_Speed", 
+      "English" : "LV_{0}", 
+      "Korean" : "LV_{0}"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Max_Hp", 
+      "English" : "Max_Hp", 
+      "Korean" : "최대 체력"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Max_Hp_Lv", 
+      "English" : "Lv{0}", 
+      "Korean" : "Lv{0}"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Applied", 
+      "English" : "Applied_Value", 
+      "Korean" : "적용 수치"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Applied_Max_Hp_Value", 
+      "English" : "{0}", 
+      "Korean" : "{0}"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Max_Hp_Target", 
+      "English" : "Up_To_Max_Hp_Lv{0}", 
+      "Korean" : "최대 체력 Lv{0} 까지"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Max_Hp_Target_Take_Damage", 
+      "English" : "Take_Damage", 
+      "Korean" : "피격 데미지"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Max_Hp_Target_Take_Damage_Value", 
+      "English" : "{0}/{1}", 
+      "Korean" : "{0}/{1}"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Max_Mp", 
+      "English" : "Max_Mp", 
+      "Korean" : "최대 기력"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Max_Mp_LV", 
+      "English" : "Lv{0}", 
+      "Korean" : "Lv{0}"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Applied", 
+      "English" : "Applied_Value", 
+      "Korean" : "적용 수치"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Applied_Max_Mp_Value", 
+      "English" : "{0}", 
+      "Korean" : "{0}"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Max_Mp_Target", 
+      "English" : "Up_To_Max_Mp_Lv{0}", 
+      "Korean" : "최대 기력 Lv{0} 까지"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Max_Mp_Target_Use_Mp", 
+      "English" : "Use_Mp_Value", 
+      "Korean" : "기력 소모량"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Max_Mp_Target_Use_Mp_Value", 
+      "English" : "{0}/{1}", 
+      "Korean" : "{0}/{1}"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Attack_Power", 
+      "English" : "Attack_Power", 
+      "Korean" : "공격력"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Attack_Power_Lv", 
+      "English" : "Lv{0}", 
+      "Korean" : "Lv{0}"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Applied", 
+      "English" : "Applied_Value", 
+      "Korean" : "적용 수치"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Applied_Attack_Power_Value", 
+      "English" : "{0}", 
+      "Korean" : "{0}"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Attack_Power_Target", 
+      "English" : "Up_To_Attack_Power_Lv{0}", 
+      "Korean" : "공격력 Lv{0} 까지"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Attack_Power_Target_Hit_Damage", 
+      "English" : "Hit_Damage_Value", 
+      "Korean" : "입힌 데미지"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Attack_Power_Target_Hit_Damage_Value", 
+      "English" : "{0}/{1}", 
+      "Korean" : "{0}/{1}"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Move_Speed", 
+      "English" : "Move_Speed", 
+      "Korean" : "이동 속도"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Move_Speed_Lv", 
+      "English" : "Lv{0}", 
+      "Korean" : "Lv{0}"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Applied", 
+      "English" : "Applied_Value", 
+      "Korean" : "적용 수치"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Applied_Move_Speed_Value", 
+      "English" : "{0}", 
+      "Korean" : "{0}"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Move_Speed_Target", 
+      "English" : "Up_To_Move_Speed_Lv{0}", 
+      "Korean" : "이동속도 Lv{0} 까지"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Move_Speed_Target_Move_Distance", 
+      "English" : "Move_Distance", 
+      "Korean" : "이동 거리"
+    },
+  {
+      "Key" : "Character_Stat_Detail_Move_Speed_Target_Move_Distance_Value", 
+      "English" : "{0}/{1}", 
+      "Korean" : "{0}/{1}"
+    },
+  {
+      "Key" : "Character_Skill_Eat", 
+      "English" : "Eat", 
+      "Korean" : "꿀꺽"
+    },
+  {
+      "Key" : "Character_Skill_Eat_Lv", 
+      "English" : "LV_{0}", 
+      "Korean" : "LV_{0}"
+    },
+  {
+      "Key" : "Character_Skill_Spread_Water", 
+      "English" : "Spread_Water", 
+      "Korean" : "물 주기"
+    },
+  {
+      "Key" : "Character_Skill_Spread_Water_Lv", 
+      "English" : "LV_{0}", 
+      "Korean" : "LV_{0}"
+    },
+  {
+      "Key" : "Character_Skill_Split", 
+      "English" : "Split", 
+      "Korean" : "퉤"
+    },
+  {
+      "Key" : "Character_Skill_Split_Lv", 
+      "English" : "LV_{0}", 
+      "Korean" : "LV_{0}"
+    },
+  {
+      "Key" : "Character_Skill_Detail_Eat", 
+      "English" : "Eat", 
+      "Korean" : "꿀꺽"
+    },
+  {
+      "Key" : "Character_Skill_Detail_Eat_Lv", 
+      "English" : "LV_{0}", 
+      "Korean" : "LV_{0}"
+    },
+  {
+      "Key" : "Character_Skill_Detail_Applied", 
+      "English" : "Applied_Value", 
+      "Korean" : "적용 수치"
+    },
+  {
+      "Key" : "Character_Skill_Detail_Applied_Eat_Value", 
+      "English" : "{0} Block", 
+      "Korean" : "{0} 칸"
+    },
+  {
+      "Key" : "Character_Skill_Detail_Eat_Target", 
+      "English" : "Up_To_Eat_Lv{0}", 
+      "Korean" : "꿀꺽 Lv{0} 까지"
+    },
+  {
+      "Key" : "Character_Skill_Detail_Eat_Target_Use_Eat", 
+      "English" : "Use_Eat", 
+      "Korean" : "꿀꺽 사용"
+    },
+  {
+      "Key" : "Character_Skill_Detail_Eat_Target_Use_Eat_Value", 
+      "English" : "{0}/{1}", 
+      "Korean" : "{0}/{1}"
+    },
+  {
+      "Key" : "Character_Skill_Detail_Spread_Water", 
+      "English" : "Spread_Water", 
+      "Korean" : "물 주기"
+    },
+  {
+      "Key" : "Character_Skill_Detail__Lv", 
+      "English" : "LV_{0}", 
+      "Korean" : "LV_{0}"
+    },
+  {
+      "Key" : "Character_Skill_Detail_Applied", 
+      "English" : "Applied_Value", 
+      "Korean" : "적용 수치"
+    },
+  {
+      "Key" : "Character_Skill_Detail_Applied_Spread_Water_Value", 
+      "English" : "{0} Block", 
+      "Korean" : "{0} 칸"
+    },
+  {
+      "Key" : "Character_Skill_Detail_Spread_Water_Target", 
+      "English" : "Up_To_Spread_Water_Lv{0}", 
+      "Korean" : "물 주기 Lv{0} 까지"
+    },
+  {
+      "Key" : "Character_Skill_Detail_Spread_Water_Target_Watered_Tiles", 
+      "English" : "Number of Watered_Tiles", 
+      "Korean" : "물을 준 타일 수"
+    },
+  {
+      "Key" : "Character_Skill_Detail_Spread_Water_Target_Watered_Tiles_Value", 
+      "English" : "{0}/{1}", 
+      "Korean" : "{0}/{1}"
+    },
+  {
+      "Key" : "Character_Skill_Detail_Split", 
+      "English" : "Split", 
+      "Korean" : "퉤"
+    },
+  {
+      "Key" : "Character_Skill_Detail__Lv", 
+      "English" : "LV_1", 
+      "Korean" : "LV_1"
+    },
+  {
+      "Key" : "Character_Skill_Detail_Applied", 
+      "English" : "Applied_Value", 
+      "Korean" : "적용 수치"
+    },
+  {
+      "Key" : "Character_Skill_Detail_Applied_Split_Value", 
+      "English" : "1 Block", 
+      "Korean" : "1 칸"
+    },
+  {
+      "Key" : "Character_Skill_Detail_Split_Max_Lv", 
+      "English" : "Split_is_Highest_Level", 
+      "Korean" : "퉤는 최고 레벨입니다"
+    },
+  {
+      "Key" : "Character_Element_Water", 
+      "English" : "Water_Element", 
+      "Korean" : "수 속성"
+    },
+  {
+      "Key" : "Character_Element_Water_Lv", 
+      "English" : "LV_{0}", 
+      "Korean" : "LV_{0}"
+    },
+  {
+      "Key" : "Character_Element_Fire", 
+      "English" : "Fire_Element", 
+      "Korean" : "온 속성"
+    },
+  {
+      "Key" : "Character_Element_Fire_Lv", 
+      "English" : "LV_{0}", 
+      "Korean" : "LV_{0}"
+    },
+  {
+      "Key" : "Character_Element_Ice", 
+      "English" : "Ice_Element", 
+      "Korean" : "빙 속성"
+    },
+  {
+      "Key" : "Character_Element_Ice_Lv", 
+      "English" : "LV_{0}", 
+      "Korean" : "LV_{0}"
+    },
+  {
+      "Key" : "Character_Element_Earth", 
+      "English" : "Earth_Element", 
+      "Korean" : "토 속성"
+    },
+  {
+      "Key" : "Character_Element_Earth_Lv", 
+      "English" : "LV_{0}", 
+      "Korean" : "LV_{0}"
+    },
+  {
+      "Key" : "Character_Element_Detail_Water", 
+      "English" : "Water_Element", 
+      "Korean" : "수 속성"
+    },
+  {
+      "Key" : "Character_Element_Detail_Water_Lv", 
+      "English" : "Lv1", 
+      "Korean" : "Lv1"
+    },
+  {
+      "Key" : "Character_Element_Detail_Applied", 
+      "English" : "Applied_Value", 
+      "Korean" : "적용 수치"
+    },
+  {
+      "Key" : "Character_Element_Detail_Water_Max_Hp", 
+      "English" : "Max_Hp", 
+      "Korean" : "최대 체력"
+    },
+  {
+      "Key" : "Character_Element_Detail_Water_Max_Hp_Value", 
+      "English" : "+10%", 
+      "Korean" : "+10%"
+    },
+  {
+      "Key" : "Character_Element_Detail_Water_Max_Mp", 
+      "English" : "Max_Mp", 
+      "Korean" : "최대 기력"
+    },
+  {
+      "Key" : "Character_Element_Detail_Water_Max_Mp_Value", 
+      "English" : "+10%", 
+      "Korean" : "+10%"
+    },
+  {
+      "Key" : "Character_Element_Detail_Water_Max_Lv", 
+      "English" : "Water_Element_is_Highest_Level", 
+      "Korean" : "수 속성은 최고 레벨입니다"
+    },
+  {
+      "Key" : "Character_Element_Detail_Fire", 
+      "English" : "Fire_Element", 
+      "Korean" : "온 속성"
+    },
+  {
+      "Key" : "Character_Element_Detail_Fire_Lv", 
+      "English" : "Lv{0}", 
+      "Korean" : "Lv{0}"
+    },
+  {
+      "Key" : "Character_Element_Detail_Applied", 
+      "English" : "Applied_Value", 
+      "Korean" : "적용 수치"
+    },
+  {
+      "Key" : "Character_Element_Detail_Fire_Max_Hp", 
+      "English" : "Max_Hp", 
+      "Korean" : "최대 체력"
+    },
+  {
+      "Key" : "Character_Element_Detail_Fire_Max_Hp_Value", 
+      "English" : "-{0}%", 
+      "Korean" : "-{0}%"
+    },
+  {
+      "Key" : "Character_Element_Detail_Fire_Attack_Speed", 
+      "English" : "Attack_Speed", 
+      "Korean" : "공격 속도"
+    },
+  {
+      "Key" : "Character_Element_Detail_Fire_Attack_Speed_Value", 
+      "English" : "-{0}%", 
+      "Korean" : "-{0}%"
+    },
+  {
+      "Key" : "Character_Element_Detail_Fire_Target", 
+      "English" : "Up_To_Fire_Element_Lv{0}", 
+      "Korean" : "온 속성 Lv{0} 까지"
+    },
+  {
+      "Key" : "Character_Element_Detail_Fire_Target_Attack_Count", 
+      "English" : "Fire_Element_Attack_Count", 
+      "Korean" : "온 속성 공격"
+    },
+  {
+      "Key" : "Character_Element_Detail_Fire_Target_Attack_Count_Value", 
+      "English" : "{0}/{1}", 
+      "Korean" : "{0}/{1}"
+    },
+  {
+      "Key" : "Character_Element_Detail_Ice", 
+      "English" : "Ice_Element", 
+      "Korean" : "빙 속성"
+    },
+  {
+      "Key" : "Character_Element_Detail_Ice_Lv", 
+      "English" : "Lv{0}", 
+      "Korean" : "Lv{0}"
+    },
+  {
+      "Key" : "Character_Element_Detail_Applied", 
+      "English" : "Applied_Value", 
+      "Korean" : "적용 수치"
+    },
+  {
+      "Key" : "Character_Element_Detail_Ice_Move_Speed", 
+      "English" : "Move_Speed", 
+      "Korean" : "이동 속도"
+    },
+  {
+      "Key" : "Character_Element_Detail_Ice_Move_Speed_Value", 
+      "English" : "+{0}", 
+      "Korean" : "+{0}"
+    },
+  {
+      "Key" : "Character_Element_Detail_Ice_Max_Hp", 
+      "English" : "Max_Hp", 
+      "Korean" : "최대 체력"
+    },
+  {
+      "Key" : "Character_Element_Detail_Ice_Max_Hp_Value", 
+      "English" : "-{0}%", 
+      "Korean" : "-{0}%"
+    },
+  {
+      "Key" : "Character_Element_Detail_Ice_Target", 
+      "English" : "Up_To_Ice_Element_Lv{0}", 
+      "Korean" : "빙 속성 Lv{0} 까지"
+    },
+  {
+      "Key" : "Character_Element_Detail_Ice_Target_Attack_Count", 
+      "English" : "Ice_Element_Attack_Count", 
+      "Korean" : "빙 속성 공격"
+    },
+  {
+      "Key" : "Character_Element_Detail_Ice_Target_Attack_Count_Value", 
+      "English" : "{0}/{1}", 
+      "Korean" : "{0}/{1}"
+    },
+  {
+      "Key" : "Character_Element_Detail_Earth", 
+      "English" : "Earth_Element", 
+      "Korean" : "토 속성"
+    },
+  {
+      "Key" : "Character_Element_Detail_Earth_Lv", 
+      "English" : "Lv{0}", 
+      "Korean" : "Lv{0}"
+    },
+  {
+      "Key" : "Character_Element_Detail_Applied", 
+      "English" : "Applied_Value", 
+      "Korean" : "적용 수치"
+    },
+  {
+      "Key" : "Character_Element_Detail_Earth_Move_Speed", 
+      "English" : "Move_Speed", 
+      "Korean" : "이동 속도"
+    },
+  {
+      "Key" : "Character_Element_Detail_Earth_Move_Speed_Value", 
+      "English" : "-{0}", 
+      "Korean" : "-{0}"
+    },
+  {
+      "Key" : "Character_Element_Detail_Earth_Max_Hp", 
+      "English" : "Max_Hp", 
+      "Korean" : "최대 체력"
+    },
+  {
+      "Key" : "Character_Element_Detail_Earth_Max_Hp_Value", 
+      "English" : "+{0}%", 
+      "Korean" : "+{0}%"
+    },
+  {
+      "Key" : "Character_Element_Detail_Earth_Target", 
+      "English" : "Up_To_Earth_Element_Lv{0}", 
+      "Korean" : "토 속성 Lv{0} 까지"
+    },
+  {
+      "Key" : "Character_Element_Detail_Earth_Target_Attack_Count", 
+      "English" : "Earth_Element_Attack_Count", 
+      "Korean" : "토 속성 공격"
+    },
+  {
+      "Key" : "Character_Element_Detail_Earth_Target_Attack_Count_Value", 
+      "English" : "{0}/{1}", 
+      "Korean" : "{0}/{1}"
+    },
+  {
+      "Key" : "Character_Element_Detail_Fire_Max_Lv", 
+      "English" : "Fire_Element_is_Highest_Level", 
+      "Korean" : "온 속성은 최고 레벨입니다"
+    },
+  {
+      "Key" : "Character_Element_Detail_Ice_Max_Lv", 
+      "English" : "Ice_Element_is_Highest_Level", 
+      "Korean" : "빙 속성은 최고 레벨입니다"
+    },
+  {
+      "Key" : "Character_Element_Detail_Earth_Max_Lv", 
+      "English" : "Earth_Element_is_Highest_Level", 
+      "Korean" : "토 속성은 최고 레벨입니다"
+    },
+  {
+      "Key" : "inven_categori_tools", 
+      "English" : "tools", 
+      "Korean" : "도구"
+    },
+  {
+      "Key" : "inven_categori_seeds", 
+      "English" : "seeds", 
+      "Korean" : "씨앗"
+    },
+  {
+      "Key" : "inven_categori_crops", 
+      "English" : "crops", 
+      "Korean" : "작물"
+    },
+  {
+      "Key" : "inven_categori_cooks", 
+      "English" : "cooks", 
+      "Korean" : "요리"
+    },
+  {
+      "Key" : "inven_categori_materials", 
+      "English" : "material", 
+      "Korean" : "재료"
+    },
+  {
+      "Key" : "inven_slot_001", 
+      "English" : "slot1", 
+      "Korean" : "슬롯1"
+    },
+  {
+      "Key" : "inven_slot_002", 
+      "English" : "slot2", 
+      "Korean" : "슬롯2"
+    },
+  {
+      "Key" : "inven_slot_003", 
+      "English" : "slot3", 
+      "Korean" : "슬롯3"
+    },
+  {
+      "Key" : "inven_slot_004", 
+      "English" : "slot4", 
+      "Korean" : "슬롯4"
+    },
+  {
+      "Key" : "inven_slot_005", 
+      "English" : "slot5", 
+      "Korean" : "슬롯5"
+    },
+  {
+      "Key" : "inven_slot_006", 
+      "English" : "slot6", 
+      "Korean" : "슬롯6"
+    },
+  {
+      "Key" : "inven_slot_007", 
+      "English" : "slot7", 
+      "Korean" : "슬롯7"
+    },
+  {
+      "Key" : "inven_slot_008", 
+      "English" : "slot8", 
+      "Korean" : "슬롯8"
+    },
+  {
+      "Key" : "inven_slot_009", 
+      "English" : "slot9", 
+      "Korean" : "슬롯9"
+    },
+  {
+      "Key" : "inven_slot_010", 
+      "English" : "slot10", 
+      "Korean" : "슬롯10"
+    },
+  {
+      "Key" : "inven_slot_011", 
+      "English" : "slot11", 
+      "Korean" : "슬롯11"
+    },
+  {
+      "Key" : "inven_slot_012", 
+      "English" : "slot12", 
+      "Korean" : "슬롯12"
+    },
+  {
+      "Key" : "inven_slot_013", 
+      "English" : "slot13", 
+      "Korean" : "슬롯13"
+    },
+  {
+      "Key" : "inven_slot_014", 
+      "English" : "slot14", 
+      "Korean" : "슬롯14"
+    },
+  {
+      "Key" : "inven_slot_015", 
+      "English" : "slot15", 
+      "Korean" : "슬롯15"
+    },
+  {
+      "Key" : "inven_slot_016", 
+      "English" : "slot16", 
+      "Korean" : "슬롯16"
+    },
+  {
+      "Key" : "inven_slot_017", 
+      "English" : "slot17", 
+      "Korean" : "슬롯17"
+    },
+  {
+      "Key" : "inven_slot_018", 
+      "English" : "slot18", 
+      "Korean" : "슬롯18"
+    },
+  {
+      "Key" : "inven_slot_019", 
+      "English" : "slot19", 
+      "Korean" : "슬롯19"
+    },
+  {
+      "Key" : "inven_slot_020", 
+      "English" : "slot20", 
+      "Korean" : "슬롯20"
+    },
+  {
+      "Key" : "inven_slot_021", 
+      "English" : "slot21", 
+      "Korean" : "슬롯21"
+    },
+  {
+      "Key" : "inven_slot_022", 
+      "English" : "slot22", 
+      "Korean" : "슬롯22"
+    },
+  {
+      "Key" : "inven_slot_023", 
+      "English" : "slot23", 
+      "Korean" : "슬롯23"
+    },
+  {
+      "Key" : "inven_slot_024", 
+      "English" : "slot24", 
+      "Korean" : "슬롯24"
+    },
+  {
+      "Key" : "inven_slot_025", 
+      "English" : "slot25", 
+      "Korean" : "슬롯25"
+    },
+  {
+      "Key" : "inven_slot_026", 
+      "English" : "slot26", 
+      "Korean" : "슬롯26"
+    },
+  {
+      "Key" : "inven_slot_027", 
+      "English" : "slot27", 
+      "Korean" : "슬롯27"
+    },
+  {
+      "Key" : "inven_slot_028", 
+      "English" : "slot28", 
+      "Korean" : "슬롯28"
+    },
+  {
+      "Key" : "inven_slot_029", 
+      "English" : "slot29", 
+      "Korean" : "슬롯29"
+    },
+  {
+      "Key" : "inven_slot_030", 
+      "English" : "slot30", 
+      "Korean" : "슬롯30"
+    },
+  {
+      "Key" : "inven_select_use_btn", 
+      "English" : "use_btn", 
+      "Korean" : "사용"
+    },
+  {
+      "Key" : "inven_select_divide_btn", 
+      "English" : "divide_btn", 
+      "Korean" : "나누기"
+    },
+  {
+      "Key" : "inven_select_delete_btn", 
+      "English" : "delete_btn", 
+      "Korean" : "버리기"
+    },
+  {
+      "Key" : "inven_categori_none_eh", 
+      "English" : "don’t_have_item", 
+      "Korean" : "아이템이 존재하지 않습니다."
+    },
+  {
+      "Key" : "inven_slot_lack_eh", 
+      "English" : "not_enough_inventory", 
+      "Korean" : "인벤토리 공간이 부족합니다."
+    },
+  {
+      "Key" : "Item_use_impossible_eh", 
+      "English" : "can't_be_use_item", 
+      "Korean" : "사용 가능한 아이템이 아닙니다."
+    },
+  {
+      "Key" : "item_use_cooltime_eh", 
+      "English" : "not_yet_use_item", 
+      "Korean" : "아직 사용할 수 없습니다."
+    },
+  {
+      "Key" : "item_use_impossible_territory_eh", 
+      "English" : "don’t_use_area", 
+      "Korean" : "사용할 수 없는 지역 입니다."
+    },
+  {
+      "Key" : "item_divide_quest_eh", 
+      "English" : "don’t_divide_item", 
+      "Korean" : "이 아이템은 나눌 수 없습니다."
+    },
+  {
+      "Key" : "item_delete_quest_eh", 
+      "English" : "don’t_delete_item", 
+      "Korean" : "이 아이템은 버릴 수 없습니다."
+    },
+  {
+      "Key" : "inven_slot_lack_reward", 
+      "English" : "don’t_gain_reward", 
+      "Korean" : "인벤토리 공간이 부족하여 보상을 수령할 수 없습니다. "
+    },
+  {
+      "Key" : "Shop_swamp_tools_market", 
+      "English" : "Shop_name", 
+      "Korean" : "상점 이름"
+    },
+  {
+      "Key" : "Shop_buy_tab", 
+      "English" : "Purchase_tab", 
+      "Korean" : "구매 탭"
+    },
+  {
+      "Key" : "Shop_buy_multibuy_count_enter", 
+      "English" : "Multiple_purchase_enter_quantity", 
+      "Korean" : "복수 구매 수량 입력"
+    },
+  {
+      "Key" : "Shop_buy_multibuy_confirm", 
+      "English" : "Multiple_purchase_confirmation", 
+      "Korean" : "복수 구매 확인"
+    },
+  {
+      "Key" : "Shop_buy_multibuy_cancle", 
+      "English" : "Multiple_purchase_cancle", 
+      "Korean" : "복수 구매 취소"
+    },
+  {
+      "Key" : "Shop_buy_amount", 
+      "English" : "Purchase_amount", 
+      "Korean" : "구매 금액"
+    },
+  {
+      "Key" : "Shop_buy_balance_after_buy", 
+      "English" : "Balance_after_purchaase", 
+      "Korean" : "구매 후 잔액 "
+    },
+  {
+      "Key" : "Shop_buy_empty", 
+      "English" : "Purchase_empty", 
+      "Korean" : "비우기"
+    },
+  {
+      "Key" : "Shop_buy_confirmation", 
+      "English" : "Purchase_confirmation", 
+      "Korean" : "구매하기"
+    },
+  {
+      "Key" : "Shop_sell_tab", 
+      "English" : "Sell_tab", 
+      "Korean" : "판매 탭"
+    },
+  {
+      "Key" : "Shop_sell_multisell_count_enter", 
+      "English" : "Multiple_sell_enter_quantity", 
+      "Korean" : "복수 판매 수량 입력"
+    },
+  {
+      "Key" : "Shop_sell_multisell_confirm", 
+      "English" : "Multiple_sell_confirmation", 
+      "Korean" : "복수 판매 확인"
+    },
+  {
+      "Key" : "Shop_sell_multisell_cancle", 
+      "English" : "Multiple_sell_cancle", 
+      "Korean" : "복수 판매 취소"
+    },
+  {
+      "Key" : "Shop_sell_amount", 
+      "English" : "Sell_amount", 
+      "Korean" : "판매 금액"
+    },
+  {
+      "Key" : "Shop_sell_balance_after_sell", 
+      "English" : "Balance_after_sell", 
+      "Korean" : "판매 후 잔액"
+    },
+  {
+      "Key" : "Shop_sell_empty", 
+      "English" : "Sell_empty", 
+      "Korean" : "비우기"
+    },
+  {
+      "Key" : "Shop_sell_confirmation", 
+      "English" : "Sell_confirmation", 
+      "Korean" : "판매하기"
+    },
+  {
+      "Key" : "Shop_purchase_inventory_slot_full", 
+      "English" : "Not_enough_inventory", 
+      "Korean" : "인벤토리 공간이 부족합니다!"
+    },
+  {
+      "Key" : "Shop_purchse_lack_gold", 
+      "English" : "Not_enough_gold", 
+      "Korean" : "소지금이 부족합니다!"
+    },
+  {
+      "Key" : "Shop_sell_quest_item", 
+      "English" : "Can't_sell_quest_item", 
+      "Korean" : "퀘스트 아이템은 판매할 수 없습니다!"
+    },
+  {
+      "Key" : "Shop_sell_special_grade_item", 
+      "English" : "This_item_is_special_grade_item", 
+      "Korean" : "해당 아이템은 특수 등급 아이템 입니다!"
+    }
+]

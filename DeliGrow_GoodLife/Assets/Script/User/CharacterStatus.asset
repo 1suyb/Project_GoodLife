@@ -16,7 +16,7 @@ MonoBehaviour:
   _max_hp: 0
   _max_mp: 0
   _power: 0
-  _move_speed: 2
+  _move_speed: 1
   _attack_speed: 0
   _attack_range: 0
   _projectiles_size: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   _pfc_method_max_hp: 0
   _pfc_method_max_mp: 0
   _pfc_method_attack: 0
-  _pfc_method_move_speed: 17.913553
+  _pfc_method_move_speed: 204.90695
   _pfc_method_eat: 0
   _pfc_method_watering: 0
   _pfc_method_fire: 0

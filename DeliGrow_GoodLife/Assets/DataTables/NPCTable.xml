@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DataSchema>
+    <table name = "NPCTable">
+      <int name = "NPC_ID"/>
+      <string name = "Name"/>
+      <byte name = "Type"/>
+      <byte name = "Type_2"/>
+      <byte name = "Likeable_Max_LV"/>
+      <int name = "Shop_ID"/>
+      <string name = "Resource"/>
+
+    </table>
+</DataSchema>

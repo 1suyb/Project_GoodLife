@@ -1,0 +1,227 @@
+
+[
+  {
+      "ID" : "101", 
+      "Name" : "P_Max_Hp_1", 
+      "Proficiency_type" : "10", 
+      "Lv" : "1", 
+      "Method_Type" : "11", 
+      "Method_Value" : "0"
+    },
+  {
+      "ID" : "102", 
+      "Name" : "P_Max_Hp_2", 
+      "Proficiency_type" : "10", 
+      "Lv" : "2", 
+      "Method_Type" : "11", 
+      "Method_Value" : "200"
+    },
+  {
+      "ID" : "103", 
+      "Name" : "P_Max_Hp_3", 
+      "Proficiency_type" : "10", 
+      "Lv" : "3", 
+      "Method_Type" : "11", 
+      "Method_Value" : "300"
+    },
+  {
+      "ID" : "201", 
+      "Name" : "P_Max_Mp_1", 
+      "Proficiency_type" : "20", 
+      "Lv" : "1", 
+      "Method_Type" : "21", 
+      "Method_Value" : "0"
+    },
+  {
+      "ID" : "202", 
+      "Name" : "P_Max_Mp_2", 
+      "Proficiency_type" : "20", 
+      "Lv" : "2", 
+      "Method_Type" : "21", 
+      "Method_Value" : "200"
+    },
+  {
+      "ID" : "203", 
+      "Name" : "P_Max_Mp_3", 
+      "Proficiency_type" : "20", 
+      "Lv" : "3", 
+      "Method_Type" : "21", 
+      "Method_Value" : "400"
+    },
+  {
+      "ID" : "301", 
+      "Name" : "P_Attack_Power_1", 
+      "Proficiency_type" : "30", 
+      "Lv" : "1", 
+      "Method_Type" : "31", 
+      "Method_Value" : "0"
+    },
+  {
+      "ID" : "302", 
+      "Name" : "P_Attack_Power_2", 
+      "Proficiency_type" : "30", 
+      "Lv" : "2", 
+      "Method_Type" : "31", 
+      "Method_Value" : "50"
+    },
+  {
+      "ID" : "303", 
+      "Name" : "P_Attack_Power_3", 
+      "Proficiency_type" : "30", 
+      "Lv" : "3", 
+      "Method_Type" : "31", 
+      "Method_Value" : "120"
+    },
+  {
+      "ID" : "401", 
+      "Name" : "P_Move_Speed_1", 
+      "Proficiency_type" : "40", 
+      "Lv" : "1", 
+      "Method_Type" : "41", 
+      "Method_Value" : "0"
+    },
+  {
+      "ID" : "402", 
+      "Name" : "P_Move_Speed_2", 
+      "Proficiency_type" : "40", 
+      "Lv" : "2", 
+      "Method_Type" : "41", 
+      "Method_Value" : "3600"
+    },
+  {
+      "ID" : "403", 
+      "Name" : "P_Move_Speed_3", 
+      "Proficiency_type" : "40", 
+      "Lv" : "3", 
+      "Method_Type" : "41", 
+      "Method_Value" : "7200"
+    },
+  {
+      "ID" : "511", 
+      "Name" : "P_Eat_1", 
+      "Proficiency_type" : "51", 
+      "Lv" : "1", 
+      "Method_Type" : "51", 
+      "Method_Value" : "0"
+    },
+  {
+      "ID" : "512", 
+      "Name" : "P_Eat_2", 
+      "Proficiency_type" : "51", 
+      "Lv" : "2", 
+      "Method_Type" : "51", 
+      "Method_Value" : "50"
+    },
+  {
+      "ID" : "513", 
+      "Name" : "P_Eat_3", 
+      "Proficiency_type" : "51", 
+      "Lv" : "3", 
+      "Method_Type" : "51", 
+      "Method_Value" : "120"
+    },
+  {
+      "ID" : "521", 
+      "Name" : "P_Watering_1", 
+      "Proficiency_type" : "52", 
+      "Lv" : "1", 
+      "Method_Type" : "52", 
+      "Method_Value" : "0"
+    },
+  {
+      "ID" : "522", 
+      "Name" : "P_Watering_2", 
+      "Proficiency_type" : "52", 
+      "Lv" : "2", 
+      "Method_Type" : "52", 
+      "Method_Value" : "50"
+    },
+  {
+      "ID" : "523", 
+      "Name" : "P_Watering_3", 
+      "Proficiency_type" : "52", 
+      "Lv" : "3", 
+      "Method_Type" : "52", 
+      "Method_Value" : "120"
+    },
+  {
+      "ID" : "601", 
+      "Name" : "P_Water_Element_1", 
+      "Proficiency_type" : "60", 
+      "Lv" : "1", 
+      "Method_Type" : "0", 
+      "Method_Value" : "0"
+    },
+  {
+      "ID" : "611", 
+      "Name" : "P_Fire_Element_1", 
+      "Proficiency_type" : "61", 
+      "Lv" : "1", 
+      "Method_Type" : "61", 
+      "Method_Value" : "0"
+    },
+  {
+      "ID" : "612", 
+      "Name" : "P_Fire_Element_2", 
+      "Proficiency_type" : "61", 
+      "Lv" : "2", 
+      "Method_Type" : "61", 
+      "Method_Value" : "100"
+    },
+  {
+      "ID" : "613", 
+      "Name" : "P_Fire_Element_3", 
+      "Proficiency_type" : "61", 
+      "Lv" : "3", 
+      "Method_Type" : "61", 
+      "Method_Value" : "150"
+    },
+  {
+      "ID" : "621", 
+      "Name" : "P_Ice_Element_1", 
+      "Proficiency_type" : "62", 
+      "Lv" : "1", 
+      "Method_Type" : "62", 
+      "Method_Value" : "0"
+    },
+  {
+      "ID" : "622", 
+      "Name" : "P_Ice_Element_2", 
+      "Proficiency_type" : "62", 
+      "Lv" : "2", 
+      "Method_Type" : "62", 
+      "Method_Value" : "30"
+    },
+  {
+      "ID" : "623", 
+      "Name" : "P_Ice_Element_3", 
+      "Proficiency_type" : "62", 
+      "Lv" : "3", 
+      "Method_Type" : "62", 
+      "Method_Value" : "50"
+    },
+  {
+      "ID" : "631", 
+      "Name" : "P_Earth_Element_1", 
+      "Proficiency_type" : "63", 
+      "Lv" : "1", 
+      "Method_Type" : "63", 
+      "Method_Value" : "0"
+    },
+  {
+      "ID" : "632", 
+      "Name" : "P_Earth_Element_2", 
+      "Proficiency_type" : "63", 
+      "Lv" : "2", 
+      "Method_Type" : "63", 
+      "Method_Value" : "60"
+    },
+  {
+      "ID" : "633", 
+      "Name" : "P_Earth_Element_3", 
+      "Proficiency_type" : "63", 
+      "Lv" : "3", 
+      "Method_Type" : "63", 
+      "Method_Value" : "150"
+    }
+]

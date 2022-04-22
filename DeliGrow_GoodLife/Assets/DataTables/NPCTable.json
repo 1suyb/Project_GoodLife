@@ -1,0 +1,11 @@
+
+[
+  {
+      "NPC_ID" : "1031111", 
+      "Name" : "Npc_Shop_Kingdom_Seed", 
+      "Type" : "1", 
+      "Type_2" : "0", 
+      "Likeable_Max_LV" : "3", 
+      "Shop_ID" : "1111"
+    }
+]

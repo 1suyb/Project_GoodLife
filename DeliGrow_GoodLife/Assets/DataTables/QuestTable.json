@@ -1,0 +1,25 @@
+
+[
+  {
+      "Quest_ID" : "10010", 
+      "Quest_Type" : "2", 
+      "Quest_Name" : "딸기 수확하기", 
+      "Quest_Text" : "딸기를 5개 수확하세요", 
+      "Target_Conditions_Type" : "2", 
+      "Target_Conditions_ID" : "12202104", 
+      "Target_Conditions_Value" : "5", 
+      "Reward_Get_Type" : "1", 
+      "Reward_ID" : "10010"
+    },
+  {
+      "Quest_ID" : "10011", 
+      "Quest_Type" : "5", 
+      "Quest_Name" : "딸기 판매하기", 
+      "Quest_Text" : "딸기를 5개 판매하세요", 
+      "Target_Conditions_Type" : "3", 
+      "Target_Conditions_ID" : "12202104", 
+      "Target_Conditions_Value" : "5", 
+      "Reward_Get_Type" : "1", 
+      "Reward_ID" : "10011"
+    }
+]

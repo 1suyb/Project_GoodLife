@@ -1,0 +1,43 @@
+
+[
+  {
+      "ID" : "1011111", 
+      "Name" : "체력 회복", 
+      "Cool_Time" : "101", 
+      "Stat_Type" : "11", 
+      "Buff_Type" : "11", 
+      "Buff_Time" : "0"
+    },
+  {
+      "ID" : "1021211", 
+      "Name" : "기력 회복", 
+      "Cool_Time" : "102", 
+      "Stat_Type" : "12", 
+      "Buff_Type" : "11", 
+      "Buff_Time" : "0"
+    },
+  {
+      "ID" : "3013111", 
+      "Name" : "이동속도 증가", 
+      "Cool_Time" : "301", 
+      "Stat_Type" : "31", 
+      "Buff_Type" : "11", 
+      "Buff_Time" : "60"
+    },
+  {
+      "ID" : "8019113", 
+      "Name" : "경험치 획득량 증가", 
+      "Cool_Time" : "801", 
+      "Stat_Type" : "91", 
+      "Buff_Type" : "13", 
+      "Buff_Time" : "3600"
+    },
+  {
+      "ID" : "9011213", 
+      "Name" : "속성 변화 최대 체력 증가", 
+      "Cool_Time" : "901", 
+      "Stat_Type" : "12", 
+      "Buff_Type" : "13", 
+      "Buff_Time" : "99999"
+    }
+]

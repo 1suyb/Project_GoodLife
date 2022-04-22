@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DataSchema>
+    <table name = "ElementTable">
+      <int name = "ID"/>
+      <string name = "Name"/>
+      <byte name = "Elemental_Type"/>
+      <byte name = "Lv"/>
+      <int name = "Max_Hp"/>
+      <int name = "Power"/>
+      <float name = "Move_Speed"/>
+      <float name = "Attack_Speed"/>
+      <int name = "Attack_Range"/>
+      <int name = "Projectiles_Size"/>
+      <int name = "Attack_Value"/>
+      <int name = "Attack_Count"/>
+      <int name = "Proficiency_ID"/>
+
+    </table>
+</DataSchema>
